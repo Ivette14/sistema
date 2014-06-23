@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 mysql_select_db("sys_activofijo");
 
 ?>
@@ -17,7 +17,7 @@ mysql_select_db("sys_activofijo");
         </div><!-- /.row -->
 
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-5">
 
             <form  name="fvalida" id="fvalida" method="post" role="form" border="0.5" >
               <div class="form-group">
@@ -157,19 +157,20 @@ echo ">";
 <table>
 <tr>
 <td>
-
 <div class="form-group">
-                <label>Valor de Compra (Dolares)</label>
+                <label>Valor de Compra</label>
                 <input class="form-control" name="valor_original" maxlength="6" placeholder="$"  onkeyUp="return ValNumero(this);"    value="<?= set_value('valor_original');?>">
                 
               </div>
 
 </td>
-&nbsp;
-&nbsp;
-&nbsp;
 <td>
-<div>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+</td>
+<td>
+<div class="form-group">
                 <label>Otros Gastos</label>
                  <input class="form-control" name="gastos" maxlength="6" placeholder="$"  onkeyUp="return ValNumero(this);"  value="<?= set_value('gastos');?>">
 
@@ -178,6 +179,7 @@ echo ">";
 
 </td>
 </tr>
+<tr></tr>
 <tr>
 <td>
 <div class="form-group">
@@ -186,9 +188,11 @@ echo ">";
                 
               </div>
 </td>
-&nbsp;
-&nbsp;
-&nbsp;
+<td>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+</td>
 <td>
 <div class="form-group">
                 
@@ -202,25 +206,24 @@ echo ">";
 </tr>
 
 
-</table>
        
               
               
 
               
 
-<table> 
 <tr>
 <td><div class="form-group">
                 <label>Cuota Anual (Dolares)</label>
                 <input class="form-control" readonly  name="cuota_anual"  placeholder="$"      value="<?= set_value('cuota_anual');?>" >
                 
               </div>
-            </td>
-
+</td>
+<td>
             &nbsp;
             &nbsp;
             &nbsp;
+</td>
 <td>
  <div class="form-group">
                 <label>Cuota Mensual (Dolares)</label>

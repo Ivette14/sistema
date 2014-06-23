@@ -194,4 +194,19 @@ public function activar()
         }
     }
 
+
+     public function ver_activo($id_activofijo=0)
+    {
+        $activo=$this->crud_model_activo->get_activo($id_activofijo);
+        $data['dato'] = $activo;
+    
+
+        
+            //cargamos la vista
+            $this->load->view('header/header');
+            $this->load->view('form/veractivo',$data);
+            $this->load->view('footer');
+    }
+
+
 }
