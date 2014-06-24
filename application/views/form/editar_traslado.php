@@ -15,21 +15,12 @@
             <form method="post" role="form">
               <div class="form-group">
                 <label>Codigo Traslado de Activo </label>
-                <input name="codigo_traslado" class="form-control" value="<?= set_value('codigo_traslado',$dato['codigo_traslado']);?>">
+                <input name="codigo_traslado" readonly class="form-control" value="<?= set_value('codigo_traslado',$dato['codigo_traslado']);?>">
               </div>
 
                <div class="form-group">
                 <label>Codigo Activo </label>
-                <select name="id_activofijo" class="form-control" id="id_activofijo">
-                <?php 
-                  foreach($activofijo as $fila)
-                  {
-                ?>
-                  <option value="<?=$fila -> id_activofijo ?>"><?=$fila -> id_activofijo ?></option>
-                <?php
-                  }
-                ?>        
-                </select>
+                 <input name="id_activofijo" class="form-control" readonly value="<?= set_value('id_activofijo',$dato['id_activofijo']);?>">
               </div>
 
               <div class="form-group">
@@ -57,7 +48,7 @@
               </div>
 
               <div class="form-group">
-                <label>Encargado </label>
+                <label>Nuevo Responsable del bien </label>
                 <select name="id_empleado" class="form-control" id="id_empleado">
                 <?php 
                   foreach($empleado as $fila)

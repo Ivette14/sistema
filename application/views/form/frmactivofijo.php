@@ -62,7 +62,7 @@
                                        <!-- <td><?= $activo->descripcion?></td>   -->
                                          
                                              <input  type="hidden" name="post" value="1" /> 
-                                            <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_activo/ver_activo/'.$activo->id_activofijo; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Ver</button></td>
+                                            <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_activo/ver_activo/'.$activo->id_activofijo; ?>" class="btn btn-primary"><i class=""></i>&nbsp;Ver</button></td>
                                            <!--  <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_activo/eliminar/'.$activo->id_activofijo; ?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>&nbsp;Eliminar</button></td> 
                                             -->
                                             </tr>

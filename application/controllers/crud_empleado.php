@@ -37,7 +37,7 @@ parent::__construct();
             $this->form_validation->set_rules('id_sucursal', 'Sucursal', 'required|trim|xss_clean');
             $this->form_validation->set_rules('nombre_empleado', '  Nombre de Empleado', 'required|trim|xss_clean');
             $this->form_validation->set_rules('direccion_empleado', 'Direccion', 'required|trim|xss_clean');
-            $this->form_validation->set_rules('telefono_empleado', 'Telefono', 'required|numeric|trim|xss_clean');            
+            $this->form_validation->set_rules('telefono_empleado', 'Telefono', 'required|trim|xss_clean');            
             $this->form_validation->set_rules('email_empleado', 'Email', 'required|valid_email');
              
             $this->form_validation->set_message('required','El Campo <b>%s</b> Es Obligatorio');
@@ -82,7 +82,7 @@ parent::__construct();
             $this->form_validation->set_rules('id_sucursal', 'Sucursal', 'required|trim|xss_clean');
             $this->form_validation->set_rules('nombre_empleado', '  Nombre de Empleado', 'required|trim|xss_clean');            
             $this->form_validation->set_rules('direccion_empleado', 'Direccion', 'required|trim|xss_clean');
-            $this->form_validation->set_rules('telefono_empleado', 'Telefono', 'required|numeric|trim|xss_clean');
+            $this->form_validation->set_rules('telefono_empleado', 'Telefono', 'required|trim|xss_clean');
             $this->form_validation->set_rules('email_empleado', 'Email', 'required|valid_email');
              
             $this->form_validation->set_message('required','El Campo <b>%s</b> Es Obligatorio');
