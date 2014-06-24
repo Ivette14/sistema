@@ -34,7 +34,7 @@ parent::__construct();
         if($this->input->post('post') && $this->input->post('post')==1)
         {
             $this->form_validation->set_rules('codigo_empleado', 'Codigo de Empleado', 'required|trim|xss_clean');
-            $this->form_validation->set_rules('id_sucursal', 'Sucursal', 'required|trim|xss_clean');
+           // $this->form_validation->set_rules('id_sucursal', 'Sucursal', 'required|trim|xss_clean');
             $this->form_validation->set_rules('nombre_empleado', '  Nombre de Empleado', 'required|trim|xss_clean');
             $this->form_validation->set_rules('direccion_empleado', 'Direccion', 'required|trim|xss_clean');
             $this->form_validation->set_rules('telefono_empleado', 'Telefono', 'required|trim|xss_clean');            
@@ -46,12 +46,13 @@ parent::__construct();
             if ($this->form_validation->run() == TRUE)
             {
                 $codigo_empleado    = $this->input->post('codigo_empleado');
-                $id_sucursal        = $this->input->post('id_sucursal');
+             //   $id_sucursal        = $this->input->post('id_sucursal');
                 $nombre_empleado    = $this->input->post('nombre_empleado');
                 $direccion_empleado = $this->input->post('direccion_empleado');
                 $telefono_empleado  = $this->input->post('telefono_empleado');                               
                 $email_empleado     = $this->input->post('email_empleado');
-                $this->crud_model_empleado->agregar_empleado($codigo_empleado, $id_sucursal, $nombre_empleado, $direccion_empleado, $telefono_empleado, $email_empleado);
+                $this->crud_model_empleado->agregar_empleado($codigo_empleado, $nombre_empleado, $direccion_empleado, $telefono_empleado, $email_empleado);
+//$this->crud_model_empleado->agregar_empleado($codigo_empleado, $id_sucursal, $nombre_empleado, $direccion_empleado, $telefono_empleado, $email_empleado);
 
                 redirect('crud_empleado');               
             }
@@ -79,7 +80,7 @@ parent::__construct();
             if($this->input->post('post') && $this->input->post('post')==1)
             {
             $this->form_validation->set_rules('codigo_empleado', 'Codigo de Empleado', 'required|trim|xss_clean');
-            $this->form_validation->set_rules('id_sucursal', 'Sucursal', 'required|trim|xss_clean');
+           // $this->form_validation->set_rules('id_sucursal', 'Sucursal', 'required|trim|xss_clean');
             $this->form_validation->set_rules('nombre_empleado', '  Nombre de Empleado', 'required|trim|xss_clean');            
             $this->form_validation->set_rules('direccion_empleado', 'Direccion', 'required|trim|xss_clean');
             $this->form_validation->set_rules('telefono_empleado', 'Telefono', 'required|trim|xss_clean');
@@ -91,12 +92,13 @@ parent::__construct();
             if ($this->form_validation->run() == TRUE)
             {
                 $codigo_empleado    = $this->input->post('codigo_empleado');
-                $id_sucursal        = $this->input->post('id_sucursal');
+             //   $id_sucursal        = $this->input->post('id_sucursal');
                 $nombre_empleado    = $this->input->post('nombre_empleado');
                 $direccion_empleado = $this->input->post('direccion_empleado');
                 $telefono_empleado  = $this->input->post('telefono_empleado');                               
                 $email_empleado     = $this->input->post('email_empleado');
-                $this->crud_model_empleado->actualizar_empleado($id_empleado, $codigo_empleado, $id_sucursal, $nombre_empleado, $direccion_empleado, $telefono_empleado, $email_empleado);
+                $this->crud_model_empleado->actualizar_empleado($id_empleado, $codigo_empleado, $nombre_empleado, $direccion_empleado, $telefono_empleado, $email_empleado);
+ //$this->crud_model_empleado->actualizar_empleado($id_empleado, $codigo_empleado, $id_sucursal, $nombre_empleado, $direccion_empleado, $telefono_empleado, $email_empleado);
 
                 redirect('crud_empleado');               
             }

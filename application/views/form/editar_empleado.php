@@ -15,22 +15,22 @@
               <div class="form-group">
                 <label>Codigo de empleado</label>
                 <input name="codigo_empleado" class="form-control" value="<?= set_value('codigo_empleado',$dato['codigo_empleado']);?>">
-              </div>
+             <!-- </div>
 
               <label>Sucursal en la que operara</label>
                  <div class="form-group">
               <select name="id_sucursal" class="form-control" id="id_sucursal">
                  <?php 
-                foreach($sucursal as $fila)
+              //  foreach($sucursal as $fila)
                 {
                  ?>
-            <option value="<?=$fila -> id_sucursal ?>"><?=$fila -> nombre_sucursal ?></option>
+            <option value="<?=$fila //-> id_sucursal ?>"><?=$fila //-> nombre_sucursal ?></option>
                 <?php
                 }
                 ?>        
               </select>
               </div>    
-
+-->
               <div class="form-group">
                 <label>Nombre del empleado</label>
                 <input name="nombre_empleado" class="form-control" value="<?= set_value('nombre_empleado',$dato['nombre_empleado']);?>">

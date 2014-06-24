@@ -21,7 +21,7 @@
               </div>
 
              
-              <div class="form-group">
+             <!-- <div class="form-group">
                    <label>Sucursal en la que operara</label>
               <select name="id_sucursal" class="form-control" id="id_sucursal">
                 <?php 
@@ -34,10 +34,10 @@
                 ?>        
               </select>
               </div>    
-
+-->
               <div class="form-group">
                 <label>Nombre del empleado</label>
-                <input name="nombre_empleado" class="form-control" value="<?= set_value('nombre_empleado');?>">
+                <input name="nombre_empleado" class="form-control" value="<?= set_value('nombre_empleado');?>" >
               </div>
 
               <div class="form-group">
@@ -52,7 +52,7 @@
 
                <div class="form-group">
                 <label>Email</label>
-                <input name="email_empleado" class="form-control" value="<?= set_value('email_empleado');?>">
+                <input name="email_empleado" class="form-control" value="<?= set_value('email_empleado');?>" placeholder="example@example.com">
               </div> 
 
               <div class="form-group">

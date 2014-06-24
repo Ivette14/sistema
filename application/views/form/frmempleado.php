@@ -21,7 +21,7 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>Sucursal</th>
+                                           
                                             <th>Codigo de Empleado</th>
                                             <th>Nombre del Empleado</th>
                                             <th>Direccion</th>
@@ -34,7 +34,7 @@
                                     <tbody>
                                             <?php foreach ($empleados as $empleado):?>
                                             <tr>
-                                            <td><?= $empleado->nombre_sucursal?></td> 
+                                            
                                             <td><?= $empleado->codigo_empleado?></td>                                     
                                             <td><?= $empleado->nombre_empleado?></td> 
                                             <td><?= $empleado->direccion_empleado?></td> 

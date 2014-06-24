@@ -36,8 +36,9 @@
                                             <th>Area </th>
                                             <th>Responsable </th>
                                             <th>Fecha De ingreso</th>
-                                            <th>Proveedor </th>
+                                            
                                             <th>Ficha </th>
+                                            <th>Editar </th>
                                         <!--    <th> Descripcion </th> -->
                                           
                                     <!--        <th>Editar</th>
@@ -57,14 +58,15 @@
                                             <td><?= $activo->nombre_area?></td>
                                             <td><?= $activo->nombre_empleado?></td>
                                             <td><?= $activo->fecha_ingreso?></td>
-                                            <td><?= $activo->nombre_provee?></td>
+                                            
 
                                        <!-- <td><?= $activo->descripcion?></td>   -->
                                          
                                              <input  type="hidden" name="post" value="1" /> 
-                                            <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_activo/ver_activo/'.$activo->id_activofijo; ?>" class="btn btn-primary"><i class=""></i>&nbsp;Ver</button></td>
+                                            <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_activo/ver_activo/'.$activo->id_activofijo; ?>" class="btn btn-primary"><i class=""></i>Ver</button></td>
                                            <!--  <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_activo/eliminar/'.$activo->id_activofijo; ?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>&nbsp;Eliminar</button></td> 
                                             -->
+                                            <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_activo/eliminar/'.$activo->id_activofijo; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Editar</button></td>
                                             </tr>
                                             <?php endforeach ;?>
                                            
