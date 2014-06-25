@@ -53,9 +53,15 @@
           ?>        
               </select>
               </div>
-              <div>
 
+              <div class="form-group">               
+                <input type="hidden" name="cuota_mensual" class="form-control" value="<?= set_value('cuota_mensual',$dato['cuota_mensual']);?>">
               </div>
+
+              <div class="form-group">                
+                <input type="hidden" name="parte1" class="form-control" value="<?= set_value('parte1',$dato['parte1']);?>">
+              </div>
+
               <div class="form-group">
                 <input  type="hidden" name="post" value="1" />          
                 <button type="submit" value="activar_activo" class="btn btn-primary">Activar</button>

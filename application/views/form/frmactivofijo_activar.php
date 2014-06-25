@@ -41,7 +41,7 @@
                                              <td><?= $activo->nombre_sucursal?></td> 
                                             <td><?= $activo->nombre_provee?></td> 
                                             <td><?= $activo->fecha_ingreso?></td>
-                                           <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_activo/activar_activo/'.$activo->id_activofijo; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Activar</button></td>            
+                                                                                       <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_activo/activar_activo/'.$activo->id_activofijo; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Activar</button></td>            
                                             
                                             </tr>
                                             <?php endforeach ;?>

@@ -89,7 +89,8 @@ public function activar()
             $this->form_validation->set_rules('fecha_compra', 'Campo fecha compra',             'required|trim|xss_clean');
             $this->form_validation->set_rules('fecha_ingreso', 'Campo fecha ingreso',           'required|trim|xss_clean');
             $this->form_validation->set_rules('descripcion', 'Campo descripcion',               'required|trim|xss_clean');
-            $this->form_validation->set_rules('importe_depreciable', 'Campo importe_depreciable','required|trim|xss_clean'); 
+            $this->form_validation->set_rules('importe_depreciable', 'Campo importe_depreciable','required|trim|xss_clean');
+            $this->form_validation->set_rules('parte1', 'Campo parte1',                         'required|trim|xss_clean'); 
             $this->form_validation->set_rules('vida_util', 'Campo vida_util',                    'required|trim|xss_clean');
             $this->form_validation->set_rules('varlor_residual', 'Campo varlor residual',        'numeric|trim|xss_clean');
             $this->form_validation->set_rules('tipo_valor', 'Campo tipo valor',                            'required|trim|xss_clean');
@@ -120,6 +121,7 @@ public function activar()
          
                 $descripcion = $this->input->post('descripcion');
                 $importe_depreciable = $this->input->post('importe_depreciable');
+                $parte1 = $this->input->post('parte1');
                 $vida_util = $this->input->post('vida_util');
                 $valor_residual = $this->input->post('valor_residual');
             
@@ -129,7 +131,7 @@ public function activar()
                 $activado = 0;
                 $this->crud_model_activo->agregar_activo($id_activofijo,$id_cuentacontable, 
                     $id_area, $id_sucursal, $id_empleado, $id_proveedor,$nombre_activo_fijo,$valor_original,
-                    $fecha_compra, $fecha_ingreso,$descripcion,$importe_depreciable, $vida_util,
+                    $fecha_compra, $fecha_ingreso,$descripcion,$importe_depreciable, $parte1, $vida_util,
                     $valor_residual, $tipo_valor,$cuota_anual,$cuota_mensual, $activado);
 
 
@@ -171,7 +173,9 @@ public function activar()
                 $id_area           = $this->input->post('id_area');
                 $id_empleado       = $this->input->post('id_empleado');
                 $id_cuentacontable = $this->input->post('id_cuentacontable');
-       
+                $cuota_mensual     = $this->input->post('cuota_mensual');
+                $parte1            = $this->input->post('parte1');
+               
         $timestamp = now();
         $timezone = 'UM8';
         $daylight_saving = FALSE;
@@ -180,7 +184,7 @@ public function activar()
         $datestring = "%Y-%m-%d %h:%i:%s";
         $fecha_inicio_uso = $this->now = mdate($datestring, $now);
         $activado = 1;
-        $this->crud_model_activo->alta_activo($id_activofijo,$id_area,$id_empleado,$fecha_inicio_uso,$activado,$id_cuentacontable);
+        $this->crud_model_activo->alta_activo($id_activofijo,$id_area,$id_empleado,$fecha_inicio_uso,$activado,$id_cuentacontable,$cuota_mensual,$parte1);
                     //redireccionamos al controlador CRUD
                     redirect('crud_activo/activar');               
                 }

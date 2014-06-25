@@ -16,7 +16,9 @@
         cat_sucursal.nombre_sucursal,
         cat_area.nombre_area,
         cat_empleado.nombre_empleado,
-        cat_proveedor.nombre_provee
+        cat_proveedor.nombre_provee,
+        cat_activo_fijo.cuota_mensual,
+        cat_activo_fijo.parte1
         FROM
         cat_activo_fijo
         INNER JOIN cat_cuentas_contables ON cat_cuentas_contables.id_cuentacontable = cat_activo_fijo.id_cuentacontable
@@ -34,9 +36,12 @@
         cat_activo_fijo.id_activofijo,        
         cat_activo_fijo.nombre_activo_fijo,
         cat_activo_fijo.fecha_ingreso,
+        cat_activo_fijo.cuota_mensual,
+        cat_activo_fijo.parte1,
         cat_cuentas_contables.nombre_cuenta,
         cat_sucursal.nombre_sucursal,
         cat_proveedor.nombre_provee
+
         FROM
         cat_activo_fijo
         INNER JOIN cat_cuentas_contables ON cat_cuentas_contables.id_cuentacontable = cat_activo_fijo.id_cuentacontable
@@ -46,19 +51,24 @@
          cat_activo_fijo.activado  = "0";');
         return $query->result();
     }
-     public function alta_activo($id_activofijo,$id_area,$id_empleado,$fecha_inicio_uso,$activado,$id_cuentacontable)
+     public function alta_activo($id_activofijo,$id_area,$id_empleado,$fecha_inicio_uso,$activado,$id_cuentacontable,$cuota_mensual,$parte1)
     {
         $this->db->where('id_activofijo', $id_activofijo);
         $this->db->update('cat_activo_fijo',array(
             'id_area'           => $id_area,
             'id_empleado'       => $id_empleado,
-            'fecha_inicio_uso'     => $fecha_inicio_uso,
+            'fecha_inicio_uso'  => $fecha_inicio_uso,
             'activado'          => $activado
         ));
-$this->db->insert('cat_depreciacion_activo', array(
-'id_activofijo'               =>$id_activofijo,
-'id_cuentacontable'           =>$id_cuentacontable,
-'año_mes'                     =>$fecha_inicio_uso
+
+
+        $this->db->insert('cat_depreciacion_activo', array(
+        'id_activofijo'               =>$id_activofijo,
+        'id_cuentacontable'           =>$id_cuentacontable,
+        'año_mes'                     =>$fecha_inicio_uso,
+        'cuota_mensual'               =>$cuota_mensual,
+        'parte1'                      =>$parte1
+
     ));
     }
      //vamos a cargar todos los datos para Combobox
@@ -66,7 +76,7 @@ $this->db->insert('cat_depreciacion_activo', array(
     //agregamos un activo
     public function agregar_activo($id_activofijo, $id_cuentacontable,$id_area, $id_sucursal, $id_empleado, $id_proveedor,$nombre_activo_fijo,$valor_original,
     $fecha_compra,$fecha_ingreso,$descripcion,
-     $importe_depreciable,$vida_util,$valor_residual,$tipo_valor,$cuota_anual,$cuota_mensual,  $activado) 
+     $importe_depreciable,$parte1,$vida_util,$valor_residual,$tipo_valor,$cuota_anual,$cuota_mensual,$activado) 
     {
         $this->db->insert('cat_activo_fijo',array(
             'id_activofijo'                =>  $id_activofijo,
@@ -83,6 +93,7 @@ $this->db->insert('cat_depreciacion_activo', array(
             'fecha_ingreso'                =>  $fecha_ingreso,
           
             'importe_depreciable'          =>  $importe_depreciable,
+            'parte1'                       =>  $parte1,
             'vida_util'                    =>  $vida_util,
             'valor_residual'               =>  $valor_residual,
             'cuota_anual'                  =>  $cuota_anual,

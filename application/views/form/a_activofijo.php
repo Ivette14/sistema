@@ -159,7 +159,7 @@ echo ">";
 <tr>
 <td>
 <div class="form-group">
-                <label>Valor de Compra</label>
+                <label>Precio de Compra</label>
                 <input class="form-control" name="valor_original" maxlength="6" placeholder="$"  onkeyUp="return ValNumero(this);"    value="<?= set_value('valor_original');?>">
                 
               </div>
@@ -170,7 +170,11 @@ echo ">";
             &nbsp;
             &nbsp;
 </td>
+</tr>
+<tr>
+
 <td>
+
 <div class="form-group">
                 <label>Otros Gastos</label>
                  <input class="form-control" name="gastos" maxlength="6" placeholder="$"  onkeyUp="return ValNumero(this);"  value="<?= set_value('gastos');?>">
@@ -179,8 +183,26 @@ echo ">";
 
 
 </td>
+<td>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+</td>
+<td>
+
+<div class="form-group">
+                
+                 <label>Precio de compra + otros gastos</label>
+
+                <input class="form-control" readonly  name="importe_depreciable"  placeholder="$"  id="importe_depreciable" value="<?= set_value('importe_depreciable');?>">
+              
+              </div>
+
+
+</td>
 </tr>
-<tr></tr>
+
+
 <tr>
 <td>
 <div class="form-group">
@@ -188,33 +210,27 @@ echo ">";
                 <input class="form-control" name="valor_residual" maxlength="6"onkeyUp="return ValNumero(this);"  placeholder="$"  id="valor_residual" value="<?= set_value('valor_residual');?>">
                 
               </div>
-</td>
-<td>
-            &nbsp;
-            &nbsp;
-            &nbsp;
-</td>
-<td>
-<div class="form-group">
-                
-                 <label>Importe Depreciable (Dolares)</label>
 
-                <input class="form-control" readonly  name="importe_depreciable"  placeholder="$"  id="importe_depreciable" value="<?= set_value('importe_depreciable');?>">
-              
+
+</td>
+<td>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+</td>
+<td>
+
+<div class="form-group">
+                <label>Total a depreciar</label>
+                <input class="form-control" name="parte1" readonly maxlength="6"onkeyUp="return ValNumero(this);"  placeholder="$"  id="parte1" value="<?= set_value('parte1');?>">
+                
               </div>
 
 </td>
 </tr>
-
-
-       
-              
-              
-
-              
-
 <tr>
-<td><div class="form-group">
+<td>
+<div class="form-group">
                 <label>Cuota Anual (Dolares)</label>
                 <input class="form-control" readonly  name="cuota_anual"  placeholder="$"      value="<?= set_value('cuota_anual');?>" >
                 
@@ -299,6 +315,7 @@ var dep_anual =  (parte1) / (vida_util);
 
 document.forms["fvalida"].cuota_anual.value =dep_anual;
 document.forms["fvalida"].cuota_mensual.value = dep_mensual;
+document.forms["fvalida"].parte1.value = parte1;
 //alert(dep_anual);
 
 //alert(dep_mensual);
