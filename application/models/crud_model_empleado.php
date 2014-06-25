@@ -1,5 +1,5 @@
 <?php 
- 	class Crud_model_empleado extends CI_Model
+    class Crud_model_empleado extends CI_Model
 {
     public function __construct()
     {
@@ -12,7 +12,7 @@
         return $sql->result();
     }
     //agregamos un empleado
-    public function agregar_empleado($codigo_empleado,  $nombre_empleado, $direccion_empleado, $telefono_empleado, $email_empleado)
+    public function agregar_empleado($id_empleado,$codigo_empleado,  $nombre_empleado, $direccion_empleado, $telefono_empleado, $email_empleado)
     //public function agregar_empleado($codigo_empleado, $id_sucursal, $nombre_empleado, $direccion_empleado, $telefono_empleado, $email_empleado)
     
     {
@@ -55,22 +55,11 @@
         return false;
     }
 
-     public function sucur()
-    {
-        $this->db->order_by('nombre_sucursal','asc');
-        $sucursal = $this->db->get('cat_sucursal');
-        if($sucursal->num_rows()>0)
-        {
-            return $sucursal->result();
-        }
-    }
-
      public function tabla()
     {        
-       $query = $this->db->query('SELECT cat_sucursal.nombre_sucursal, cat_empleado.codigo_empleado, cat_empleado.nombre_empleado,
-                                            cat_empleado.direccion_empleado, cat_empleado.telefono_empleado, cat_empleado.email_empleado, cat_empleado.id_empleado
+       $query = $this->db->query('SELECT *
                                     FROM cat_empleado 
-                                     INNER JOIN cat_sucursal ON cat_sucursal.id_sucursal = cat_empleado.id_sucursal');
+                                     GROUP BY codigo_empleado');
        return $query->result();    
     }
 

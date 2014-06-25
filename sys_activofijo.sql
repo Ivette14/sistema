@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-06-2014 a las 15:46:21
+-- Tiempo de generación: 25-06-2014 a las 23:54:05
 -- Versión del servidor: 5.6.16
 -- Versión de PHP: 5.5.11
 
@@ -95,7 +95,7 @@ INSERT INTO `cat_activo_fijo` (`id_activofijo`, `id_cuentacontable`, `id_area`, 
 ('maf002', 1, NULL, 6, '0', 1, 'Tanque_combustible', 'Tanque para combustible de 3,500 galones con bomba.', 4000, 'real', '2014-04-07', '2014-04-16 06:00:00', NULL, 4075, 10, 300, 377.5, 31.4583, 0),
 ('taf001', 5, NULL, 8, '0', 1, 'YamahaVStar650', 'Yamaha V Star 650 Custom  Año: 2006 Marca: Yamaha', 4500, 'real', '2014-02-04', '2014-02-20 06:00:00', NULL, 4800, 5, 700, 820, 68.3333, 0),
 ('taf002', 5, NULL, 9, '0', 2, 'Bmw325xi', 'Bmw 325xi Año: 2006 Marca: BMW Modelo: 325 ms', 19000, 'real', '2014-02-26', '2014-02-28 06:00:00', NULL, 19800, 5, 3000, 3360, 280, 0),
-('maf001', 1, NULL, 9, '0', 2, 'Cortadora_de_plasma', 'Cortadora de plasma, marca Miller, Serie: LGY434AD', 2000, 'real', '2014-01-02', '2014-01-08 06:00:00', NULL, 2050, 10, 100, 195, 16.25, 0),
+('maf001', 1, 9, 9, '7', 2, 'Cortadora_de_plasma', 'Cortadora de plasma, marca Miller, Serie: LGY434AD', 2000, 'real', '2014-01-02', '2014-06-25 20:51:16', '2014-06-25', 2050, 10, 100, 195, 16.25, 1),
 ('meaf009', 3, NULL, 5, '0', 3, 'Lapto', 'DELL E 6400 ,X200 LENOVO   - EN BLACK FUSION', 2900, 'real', '2014-01-14', '2014-01-17 06:00:00', NULL, 2935, 10, 200, 273.5, 22.7917, 0),
 ('meaf010', 3, NULL, 9, '0', 4, 'Ventilador', 'Ventilador, de potencia corta.', 75, 'real', '2014-01-22', '2014-01-24 06:00:00', NULL, 80, 10, 10, 7, 0.583333, 0),
 ('teaf001', 4, NULL, 9, '0', 5, 'Casa_san_salvador', 'Casa en San Salvador dirección: Col Flor Blanca (San Salvador) San Salvador, área 1,020.37 mts 1,182.23v2', 80000, 'real', '2014-01-02', '2014-01-23 06:00:00', NULL, 81200, 20, 5000, 3810, 317.5, 0),
@@ -181,7 +181,14 @@ CREATE TABLE IF NOT EXISTS `cat_depreciacion_activo` (
   PRIMARY KEY (`id_depreciacion_activo`),
   KEY `id_activofijo_idx` (`id_activofijo`),
   KEY `id_cuentacontable_idx` (`id_cuentacontable`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=12 ;
+
+--
+-- Volcado de datos para la tabla `cat_depreciacion_activo`
+--
+
+INSERT INTO `cat_depreciacion_activo` (`id_depreciacion_activo`, `id_activofijo`, `id_cuentacontable`, `año_mes`, `cuota_mensual`, `parte1`, `depreciacion_acumulada`, `saldo_restante`) VALUES
+(11, 'maf001', 1, '2014-06-25', '', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -190,28 +197,25 @@ CREATE TABLE IF NOT EXISTS `cat_depreciacion_activo` (
 --
 
 CREATE TABLE IF NOT EXISTS `cat_empleado` (
-  `id_empleado` int(11) NOT NULL,
-  `codigo_empleado` varchar(10) COLLATE latin1_general_ci NOT NULL,
-  `id_sucursal` int(10) NOT NULL,
-  `nombre_empleado` varchar(45) COLLATE latin1_general_ci NOT NULL,
-  `direccion_empleado` varchar(45) COLLATE latin1_general_ci NOT NULL,
-  `telefono_empleado` varchar(9) COLLATE latin1_general_ci NOT NULL,
-  `email_empleado` varchar(45) COLLATE latin1_general_ci NOT NULL,
+  `id_empleado` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo_empleado` varchar(10) NOT NULL,
+  `nombre_empleado` varchar(45) NOT NULL,
+  `direccion_empleado` varchar(45) NOT NULL,
+  `telefono_empleado` varchar(9) NOT NULL,
+  `email_empleado` varchar(45) NOT NULL,
   PRIMARY KEY (`id_empleado`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `cat_empleado`
 --
 
-INSERT INTO `cat_empleado` (`id_empleado`, `codigo_empleado`, `id_sucursal`, `nombre_empleado`, `direccion_empleado`, `telefono_empleado`, `email_empleado`) VALUES
-(2, 'E02', 9, 'jose roberto', 'San Miguel', '77985599', 'joseroberto@hotmail.com'),
-(5, 'E05', 9, 'mario nelson', 'Usulutan', '61548796', 'marionelson@hotmail.com'),
-(6, 'E06', 9, 'maria  jose', 'Usulutan', '76354789', 'mariajose@hotmail.com'),
-(7, 'E07', 10, 'daniel rodriguez', 'Usulutan', '61589977', 'josedaniel@hotmail.com'),
-(13, 'E15', 9, 'maria del carmen', 'Usulutan', '77655645', 'mariadelcarmen@hotmail.com'),
-(14, 'E16', 9, 'Jorge Ernesto Romer', 'Usulutan', '7765-5645', 'jeraromeroa@hotmail.com'),
-(26, 'E31', 8, 'Jose Roberto', 'Usulutan', '77655645', 'jeraromeroa@hotmail.com');
+INSERT INTO `cat_empleado` (`id_empleado`, `codigo_empleado`, `nombre_empleado`, `direccion_empleado`, `telefono_empleado`, `email_empleado`) VALUES
+(1, 'E32', 'Jose Roberto', '11° Calle Oriente', '12345678', 'Jos@serrano.com'),
+(2, 'E33', 'Jose', '11° Calle', '12345678', 'Jose@serrano.com'),
+(3, 'E01', 'Ivette', '12° Calle Oriente', '12345678', 'Ivette@serrano.com'),
+(4, 'e75', 'Jorge Alberto Villegas', 'venezuela', '26451823|', 'jorge@ugb.edu.sv'),
+(5, 'e091mel', 'Melvin Diaz', 'usulutan', '79812231', 'melvin@realmadrid.com');
 
 -- --------------------------------------------------------
 
