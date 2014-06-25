@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-06-2014 a las 18:36:13
--- Versión del servidor: 5.5.27
--- Versión de PHP: 5.4.7
+-- Tiempo de generación: 25-06-2014 a las 15:46:21
+-- Versión del servidor: 5.6.16
+-- Versión de PHP: 5.5.11
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -19,6 +19,27 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `sys_activofijo`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `depreciacion1`()
+BEGIN
+DECLARE depre varchar(15);
+set depre=(select sum(cuota_mensual+depreciacion_acumulada) from cat_depreciacion_activo where id_activofijo="af1") ;
+select 
+        `d`.`cuota_mensual` AS `cuota_mensual`,
+        `d`.`parte1` AS `importe`,
+    `depre` AS `depreciacion_acumulada`,
+        (`d`.`parte1` - `depre`) AS `saldo_restante`
+    from
+        `cat_depreciacion_activo` as`d`
+    where
+        (`d`.`id_activofijo` = 'af1');
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -59,29 +80,27 @@ CREATE TABLE IF NOT EXISTS `cat_activo_fijo` (
 --
 
 INSERT INTO `cat_activo_fijo` (`id_activofijo`, `id_cuentacontable`, `id_area`, `id_sucursal`, `id_empleado`, `id_proveedor`, `nombre_activo_fijo`, `descripcion`, `valor_original`, `tipo_valor`, `fecha_compra`, `fecha_ingreso`, `fecha_inicio_uso`, `importe_depreciable`, `vida_util`, `valor_residual`, `cuota_anual`, `cuota_mensual`, `activado`) VALUES
-('ME01', 3, 2, 2, 'E01', 2, 'Computadora', 'computadora de escritorio Dell', 300, 'estimado', '2010-05-12', '2014-05-17 00:26:34', '2010-06-01', 500, 2, 100, 200, 16.667, 1),
-('M01', 1, 2, 6, 'E02', 2, 'computadora', 'computadora portátil\r\n', 500, 'real', '0000-00-00', '0000-00-00 00:00:00', '2012-08-06', 700, 5, 200, 100, 8.33, 1),
-('TR01', 4, 7, 7, 'E04', 4, 'camion de carga', 'trasporte para traslado de activos\r\n', 30000, 'real', '2011-06-12', '2014-05-17 03:45:48', '2011-07-12', 50000, 5, 1000, 9800, 816.66, 1),
-('TE01', 4, 1, 6, 'E08', 1, 'Edificio', 'edificación de la empresa', 50000, 'real', '2014-05-15', '2014-05-17 03:52:08', '2014-05-29', 70000, 10, 20000, 5000, 41.66, 1),
-('ME02', 3, 6, 5, 'E03', 5, 'Escritorio', 'escritorio para la oficina', 150, 'estimado', '2014-05-14', '2014-05-17 03:55:07', '2014-05-21', 250, 2, 100, 75, 6.25, 1),
-('ME3', 3, 7, 7, 'E16', 4, 'silla', 'silla giratoria para la oficina\r\n', 75, 'estimado', '2014-04-17', '2014-05-17 03:56:40', '2014-05-22', 100, 5, 50, 10, 0.83, 1),
-('ME04', 3, 5, 5, 'E18', 2, 'aireacondicionado', 'aireacondicionado para la oficina\r\n', 600, 'estimado', '2014-05-15', '2014-05-17 05:23:36', '2014-05-22', 800, 3, 200, 66.66, 5.55, 1),
-('ME5', 3, 4, 3, 'E19', 4, 'modulares', 'muebles de oficina\r\n', 1500, 'estimado', '2014-05-15', '2014-05-17 05:38:18', '2014-05-22', 20000, 4, 18500, 2642.85, 220.24, 1),
-('TE02', 4, 2, 2, 'E06', 4, 'Edificio', 'edificaciones de la empresa\r\n', 100000, 'estimado', '2014-05-08', '2014-05-23 05:52:29', '2014-05-29', 100500, 5, 500, 100, 8.33, 1),
-('TE03', 4, 3, 3, 'E07', 5, 'Edificio', 'edificaciones de la empresa', 60000, 'real', '2014-05-23', '2014-05-25 05:59:52', '2014-05-23', 80000, 6, 20000, 3333.33, 277.78, 1),
-('TE04', 4, 3, 4, 'E11', 4, 'Edificio', 'edificaciones de la empresa', 75000, 'real', '2014-05-23', '2014-05-23 06:06:53', '2014-05-31', 90000, 6, 15000, 2500, 208.33, 1),
-('TE05', 4, 5, 5, 'E13', 1, 'Edificio', 'edificaciones de la empresa', 40000, 'estimado', '2014-05-30', '2014-06-10 06:13:46', '2014-06-18', 60000, 5, 20000, 4000, 333.33, 1),
-('ivettesabe', 20, 2, 9, 'E18', 5, 'Monitor', 'para ver', 300, 'real', '2014-06-01', '2014-06-10 03:17:09', '2014-06-02', 500, 20, 100, 20, 1.66667, 0),
-('edifi001', 1, 5, 6, '7', 1, 'Edificio Monumental', 'gvy8tftfty8', 300, 'real', '2014-06-13', '2014-06-15 06:41:01', '2014-06-06', 500, 10, 100, 40, 3.33333, 1),
-('mercedes1', 5, 4, 9, 'E22', 5, 'mercedes', 'asdasdasd', 300, 'real', '2014-06-05', '2014-06-10 01:39:59', '2014-06-05', 500, 5, 100, 80, 6.66667, 1),
-('ferrary02', 5, 2, 9, 'E18', 5, 'ferrary', 'qwdsadasdasd', 300, 'real', '2014-06-01', '2014-06-10 09:02:39', '2014-06-10', 500, 5, 100, 80, 6.66667, 1),
-('lg001', 3, 5, 8, '1', 1, 'Lg', 'ASDASDASD', 300, 'real', '2014-06-02', '2014-06-15 06:33:16', '2014-06-15', 500, 10, 100, 40, 3.33333, 1),
-('Af01', 0, NULL, 4, '0', 1, 'computadoranueva', 'nueva computadora de escritorio', 400, 'real', '2014-06-07', '2014-06-09 06:00:00', NULL, 500, 10, 100, 40, 3.33333, 0),
-('robert01', 4, NULL, 7, '0', 4, 'inothec', 'añsdasd', 200, 'real', '2014-06-15', '2014-06-15 06:00:00', NULL, 600, 20, 100, 25, 2.08333, 0),
-('car1', 5, 7, 9, '1', 5, 'carro de caarga', 'carro de carga', 1500, 'real', '2014-06-15', '2014-06-15 17:09:43', '2014-06-15', 2000, 5, 100, 380, 31.6667, 1),
-('T23', 5, NULL, 2, '0', 1, 'Vehiculo repartidor', 'microbus para Hyunday', 7000, 'real', '2014-06-20', '2014-06-28 06:00:00', NULL, 8000, 5, 200, 1560, 130, 0),
-('T25', 5, NULL, 6, '0', 1, 'Pick-up Toyota', 'vehiculo pick-up con doble transmision', 23000, 'real', '2014-06-02', '2014-06-24 06:00:00', NULL, 24000, 5, 2000, 4400, 366.667, 0),
-('a002', 3, 5, 10, '1', 4, 'ventilador', 'para darse viento', 300, 'real', '2014-06-15', '2014-06-15 17:31:21', '2014-06-15', 350, 10, 250, 7, 0.583333, 1);
+('meaf008', 3, NULL, 7, '0', 4, 'Horno_Microonda', 'horno microondas mabe 0,7´ blanco hmm700wk', 150, 'real', '2014-01-13', '2014-01-20 06:00:00', NULL, 158, 10, 20, 13.8, 1.15, 0),
+('meaf007', 3, NULL, 10, '0', 4, 'Secadora', 'secadora a gas blanca serie: sme1520pmbb', 685, 'real', '2014-01-20', '2014-01-24 06:00:00', NULL, 697, 10, 95, 60.2, 5.01667, 0),
+('meaf006', 3, NULL, 9, '0', 4, 'Lavadora', 'lavadora aqua saver 19 kg grafito\r\nlmh19589zkgg1', 700, 'real', '2014-01-02', '2014-01-24 06:00:00', NULL, 737, 10, 100, 63.7, 5.30833, 0),
+('meaf005', 3, NULL, 7, '0', 4, 'Cocina', 'cocina de gas 20" bisque / inox\r\nemg5115lis1', 445, 'real', '2014-01-03', '2014-01-15 06:00:00', NULL, 450, 10, 50, 40, 3.33333, 0),
+('meaf004', 3, NULL, 5, '0', 4, 'Refrigerador', 'refrigerador automático mabe 10 pies blanco\r\nrf10vw1sip', 550, 'real', '2014-01-08', '2014-01-10 06:00:00', NULL, 584, 10, 89, 49.5, 4.125, 0),
+('meaf', 3, NULL, 5, '0', 4, 'Regrigerador', 'refrigerador automático mabe 10 pies blanco\r\nrf10vw1sip', 550, 'real', '2014-01-16', '2014-01-23 06:00:00', NULL, 577, 10, 79, 49.8, 4.15, 0),
+('meaf003', 3, NULL, 9, '0', 1, 'Camara_Sony', 'Dsc-h200 Sony Camara Semi Profesional ¡20.1mpx! ¡26x Zoom!', 2700, 'real', '2014-01-07', '2014-01-21 06:00:00', NULL, 2730, 10, 280, 245, 20.4167, 0),
+('taf005', 5, NULL, 9, '0', 5, 'Mazda_2', 'Mazda 2 2012 Motor 1.5L Automatico, Full extras!', 7009, 'real', '2014-06-02', '2014-06-06 06:00:00', NULL, 7065, 5, 900, 1233, 102.75, 0),
+('taf004', 5, NULL, 2, '0', 5, 'Panel_e5', 'panel 2 toneladas diesel color blanco', 9800, 'real', '2014-07-04', '2014-07-31 06:00:00', NULL, 10470, 5, 1000, 1894, 157.833, 0),
+('meaf001', 3, NULL, 2, '0', 3, 'Reproductord_CD_DVD', 'Reproductor de CD/DVD con pantalla táctil de 6.1 pulgadas, entrada auxiliar y USB, MIXTRAX y 3 salidas de previo RCA (2-DIN)', 90, 'real', '2014-07-02', '2014-07-17 06:00:00', NULL, 92, 10, 15, 7.7, 0.641667, 0),
+('maf003', 1, NULL, 2, '0', 1, 'Tractor', 'tractor d6b', 25000, 'real', '2014-06-17', '2014-06-20 06:00:00', NULL, 26200, 10, 2500, 2370, 197.5, 0),
+('taf003', 5, NULL, 3, '0', 1, 'Nissan_frontier', 'Nissan frontier D/Cab 4x2 alto turbo diesel con intercooler año 2007', 14000, 'real', '2014-05-13', '2014-05-15 06:00:00', NULL, 14490, 5, 1500, 2598, 216.5, 0),
+('maf002', 1, NULL, 6, '0', 1, 'Tanque_combustible', 'Tanque para combustible de 3,500 galones con bomba.', 4000, 'real', '2014-04-07', '2014-04-16 06:00:00', NULL, 4075, 10, 300, 377.5, 31.4583, 0),
+('taf001', 5, NULL, 8, '0', 1, 'YamahaVStar650', 'Yamaha V Star 650 Custom  Año: 2006 Marca: Yamaha', 4500, 'real', '2014-02-04', '2014-02-20 06:00:00', NULL, 4800, 5, 700, 820, 68.3333, 0),
+('taf002', 5, NULL, 9, '0', 2, 'Bmw325xi', 'Bmw 325xi Año: 2006 Marca: BMW Modelo: 325 ms', 19000, 'real', '2014-02-26', '2014-02-28 06:00:00', NULL, 19800, 5, 3000, 3360, 280, 0),
+('maf001', 1, NULL, 9, '0', 2, 'Cortadora_de_plasma', 'Cortadora de plasma, marca Miller, Serie: LGY434AD', 2000, 'real', '2014-01-02', '2014-01-08 06:00:00', NULL, 2050, 10, 100, 195, 16.25, 0),
+('meaf009', 3, NULL, 5, '0', 3, 'Lapto', 'DELL E 6400 ,X200 LENOVO   - EN BLACK FUSION', 2900, 'real', '2014-01-14', '2014-01-17 06:00:00', NULL, 2935, 10, 200, 273.5, 22.7917, 0),
+('meaf010', 3, NULL, 9, '0', 4, 'Ventilador', 'Ventilador, de potencia corta.', 75, 'real', '2014-01-22', '2014-01-24 06:00:00', NULL, 80, 10, 10, 7, 0.583333, 0),
+('teaf001', 4, NULL, 9, '0', 5, 'Casa_san_salvador', 'Casa en San Salvador dirección: Col Flor Blanca (San Salvador) San Salvador, área 1,020.37 mts 1,182.23v2', 80000, 'real', '2014-01-02', '2014-01-23 06:00:00', NULL, 81200, 20, 5000, 3810, 317.5, 0),
+('teaf002', 4, NULL, 4, '0', 5, 'Casa', 'Casa en La Libertad, san antonio las palmeras, 350 m2, 6 recámaras, 4 baños', 119000, 'real', '2014-02-05', '2014-02-27 06:00:00', NULL, 119450, 20, 20000, 4972.5, 414.375, 0),
+('te002', 4, NULL, 7, '0', 5, 'Bodega', 'Bodega grande, ubicada en Usulutan', 400000, 'real', '2014-03-04', '2014-03-21 06:00:00', NULL, 400700, 20, 50000, 17535, 1461.25, 0);
 
 -- --------------------------------------------------------
 
@@ -102,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `cat_area` (
 --
 
 INSERT INTO `cat_area` (`id_area`, `id_sucursal`, `nombre_area`) VALUES
-(9, 0, 'Direccion'),
+(9, 0, 'Produccion'),
 (5, 5, 'Recursos Humanos'),
 (7, 7, 'Ventas');
 
@@ -155,23 +174,14 @@ CREATE TABLE IF NOT EXISTS `cat_depreciacion_activo` (
   `id_activofijo` varchar(10) COLLATE latin1_general_ci NOT NULL,
   `id_cuentacontable` int(10) NOT NULL,
   `año_mes` date DEFAULT NULL,
+  `cuota_mensual` varchar(10) COLLATE latin1_general_ci NOT NULL,
+  `parte1` varchar(10) COLLATE latin1_general_ci NOT NULL,
   `depreciacion_acumulada` float DEFAULT NULL,
   `saldo_restante` varchar(45) COLLATE latin1_general_ci DEFAULT NULL,
   PRIMARY KEY (`id_depreciacion_activo`),
   KEY `id_activofijo_idx` (`id_activofijo`),
   KEY `id_cuentacontable_idx` (`id_cuentacontable`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=8 ;
-
---
--- Volcado de datos para la tabla `cat_depreciacion_activo`
---
-
-INSERT INTO `cat_depreciacion_activo` (`id_depreciacion_activo`, `id_activofijo`, `id_cuentacontable`, `año_mes`, `depreciacion_acumulada`, `saldo_restante`) VALUES
-(1, 'ferrary02', 5, '2014-06-10', NULL, NULL),
-(4, 'lg001', 3, '2014-06-14', NULL, NULL),
-(5, 'lg001', 3, '2014-06-15', NULL, NULL),
-(6, 'car1', 5, '2014-06-15', NULL, NULL),
-(7, 'a002', 3, '2014-06-15', NULL, NULL);
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=11 ;
 
 -- --------------------------------------------------------
 
@@ -195,35 +205,13 @@ CREATE TABLE IF NOT EXISTS `cat_empleado` (
 --
 
 INSERT INTO `cat_empleado` (`id_empleado`, `codigo_empleado`, `id_sucursal`, `nombre_empleado`, `direccion_empleado`, `telefono_empleado`, `email_empleado`) VALUES
-(1, 'E01', 7, 'Jorge', 'Usulutan', '77655645', 'jeraromeroa@hotmail.com'),
 (2, 'E02', 9, 'jose roberto', 'San Miguel', '77985599', 'joseroberto@hotmail.com'),
-(3, 'E03', 10, 'Tony', 'Usulutan', '77655645', 'jeraromeroa@hotmail.com'),
-(4, 'E04', 7, 'Jorge Ernesto Romer', 'Usulutan', '77655645', 'jeraromeroa@hotmail.com'),
 (5, 'E05', 9, 'mario nelson', 'Usulutan', '61548796', 'marionelson@hotmail.com'),
 (6, 'E06', 9, 'maria  jose', 'Usulutan', '76354789', 'mariajose@hotmail.com'),
 (7, 'E07', 10, 'daniel rodriguez', 'Usulutan', '61589977', 'josedaniel@hotmail.com'),
-(8, 'E08', 9, 'Jorge Ernesto Romer', 'Usulutan', '7765-5645', 'jeraromeroa@hotmail.com'),
-(9, 'E10', 9, 'Jorge Ernesto Romer', 'Usulutan', '7765-5645', 'jeraromeroa@hotmail.com'),
-(10, 'E11', 9, 'Jorge Ernesto Romer', 'Usulutan', '7765-5645', 'jeraromeroa@hotmail.com'),
-(11, 'E13', 9, 'Jorge Ernesto Romer', 'Usulutan', '7765-5645', 'jeraromeroa@hotmail.com'),
-(12, 'E14', 9, 'Jorge Ernesto Romer', 'Usulutan', '7765-5645', 'jeraromeroa@hotmail.com'),
 (13, 'E15', 9, 'maria del carmen', 'Usulutan', '77655645', 'mariadelcarmen@hotmail.com'),
 (14, 'E16', 9, 'Jorge Ernesto Romer', 'Usulutan', '7765-5645', 'jeraromeroa@hotmail.com'),
-(15, 'E17', 9, 'Jorge Ernesto Romer', 'Usulutan', '7765-5645', 'jeraromeroa@hotmail.com'),
-(16, 'E18', 9, 'Jorge Ernesto Romer', 'Usulutan', '7765-5645', 'jeraromeroa@hotmail.com'),
-(17, 'E19', 9, 'Jorge Ernesto Romer', 'Usulutan', '7765-5645', 'jeraromeroa@hotmail.com'),
-(18, 'E20', 9, 'Jorge Ernesto Romer', 'Usulutan', '7765-5645', 'jeraromeroa@hotmail.com'),
-(19, 'E21', 9, 'Jorge Ernesto Romer', 'Usulutan', '7765-5645', 'jeraromeroa@hotmail.com'),
-(20, 'E22', 9, 'Jorge Ernesto Romer', 'Usulutan', '7765-5645', 'jeraromeroa@hotmail.com'),
-(21, 'E23', 9, 'Jorge Ernesto Romer', 'Usulutan', '7765-5645', 'jeraromeroa@hotmail.com'),
-(22, 'E24', 9, 'Jorge Ernesto Romer', 'Usulutan', '7765-5645', 'jeraromeroa@hotmail.com'),
-(23, 'E25', 9, 'Jorge Ernesto Romer', 'Usulutan', '7765-5645', 'jeraromeroa@hotmail.com'),
-(24, 'E26', 9, 'Jorge Ernesto Romer', 'Usulutan', '7765-5645', 'jeraromeroa@hotmail.com'),
-(25, 'E29', 9, 'Jorge Ernesto Romer', 'Usulutan', '7765-5645', 'jeraromeroa@hotmail.com'),
-(26, 'E31', 8, 'Jose Roberto', 'Usulutan', '77655645', 'jeraromeroa@hotmail.com'),
-(27, 'E27', 9, 'Jorge Ernesto Romer', 'Usulutan', '7765-5645', 'jeraromeroa@hotmail.com'),
-(28, 'E28', 9, 'Jorge Ernesto Romer', 'Usulutan', '7765-5645', 'jeraromeroa@hotmail.com'),
-(0, 'E30', 8, 'Jose C', '123 CALLE', '56324187', 'jose12@hotmail.com');
+(26, 'E31', 8, 'Jose Roberto', 'Usulutan', '77655645', 'jeraromeroa@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -266,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `cat_proveedor` (
 --
 
 INSERT INTO `cat_proveedor` (`id_proveedor`, `nombre_provee`, `direccion_provee`, `telefono_provee`, `email_provee`, `nrc`, `nit`) VALUES
-(1, 'cesar', 'usulutan colonia soriano', '4524121', 'cesar@gmail.com', 'asdfsaf', ''),
+(1, 'Proveedora Cesariño', 'usulutan colonia soriano', '2712-5695', 'cesar@gmail.com', '', '21813918332'),
 (2, 'Los Cedros', 'sexta calle poniente colonia san pedro Usulut', '266-1221', 'loscedros.sa.dcv@hotmail.com', '34355', '1232-123242-123-4'),
 (3, 'Panasonic', 'san salvador', '2662-2323', 'panasonic.cor@hotmail.com', '45646', '1232-233221-342-1'),
 (4, 'Industrias Mabe', 'san salvador', '2662-4544', 'industriasmabe@gmail.com', '2323', '1233-121331-122-1'),
@@ -320,20 +308,6 @@ CREATE TABLE IF NOT EXISTS `cat_trasladoaf` (
   PRIMARY KEY (`id_traslado_activo`),
   KEY `id_activofijo_idx` (`id_activofijo`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=9 ;
-
---
--- Volcado de datos para la tabla `cat_trasladoaf`
---
-
-INSERT INTO `cat_trasladoaf` (`id_traslado_activo`, `id_activofijo`, `codigo_traslado`, `motivo_traslado`, `fecha_traslado`, `id_sucursal`, `id_empleado`) VALUES
-(1, 'dsfsfsdf', '12312312', 'dsfsdff', '2014-05-19', 5, 8),
-(2, 'M01', '12312312', 'dsfsdff', '2014-06-18', 9, 0),
-(3, 'ME02', 'trasla01', 'dsfsdff', '2014-06-17', 3, 0),
-(4, 'ME02', 'trasla02', 'dsfsdff', '2014-06-17', 5, 1),
-(5, 'M01', 'trasla03', 'dsfsdffcvb', '2014-06-11', 9, 1),
-(6, 'M01', 'trasla03', 'dsfsdffcvb', '2014-06-11', 9, 1),
-(7, 'edifi001', 'traslado02', 'masdfas', '2014-06-23', 1, 0),
-(8, 'edifi001', 'traslado03', 'estassssfdas', '2014-06-24', 6, 7);
 
 -- --------------------------------------------------------
 
