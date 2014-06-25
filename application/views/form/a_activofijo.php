@@ -23,8 +23,8 @@ mysql_select_db("sys_activofijo");
               <div class="form-group">
             
                   <label for="disabledSelect">Cuenta</label>
- <select value="<?= set_value('id_cuentacontable');?>" class="form-control" name="nombre_cuenta" id="nombre_cuenta" onChange="submit()"> 
-  
+ <select required="required" autofocus="autofocus" value="<?= set_value('id_cuentacontable');?>" class="form-control" name="nombre_cuenta" id="nombre_cuenta" onChange="submit()"> 
+  <option value='' selected> Seleccionar...</option>
                   <?php
                   $sql="SELECT * FROM cat_cuentas_contables";
                   $rec=mysql_query($sql);
@@ -35,6 +35,7 @@ mysql_select_db("sys_activofijo");
                  if(@$_POST['nombre_cuenta']==$row['id_cuentacontable'])
                   echo "SELECTED";
                   echo ">";
+                  
                   echo $row['nombre_cuenta'];
                   echo "</option>";
                   
@@ -70,7 +71,7 @@ echo ">";
  <div class="form-group">
                 <label>Codigo de Activo</label>
                 
-                <input class="form-control" name="id_activofijo" onkeyup="valid(this,'special')" onblur="valid(this,'special')" required="required" autofocus="autofocus" maxlength="10"  min="1" max="10"  value="<?= set_value('id_activofijo');?>">
+                <input class="form-control" name="id_activofijo" onkeyup="valid(this,'special')" onblur="valid(this,'special')" required="required" maxlength="10"  min="1" max="10"  value="<?= set_value('id_activofijo');?>">
               </div>          
  
               <div class="form-group">
