@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-06-2014 a las 23:54:05
--- Versión del servidor: 5.6.16
--- Versión de PHP: 5.5.11
+-- Tiempo de generación: 26-06-2014 a las 05:39:26
+-- Versión del servidor: 5.5.27
+-- Versión de PHP: 5.4.7
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -27,16 +27,20 @@ DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `depreciacion1`()
 BEGIN
 DECLARE depre varchar(15);
-set depre=(select sum(cuota_mensual+depreciacion_acumulada) from cat_depreciacion_activo where id_activofijo="af1") ;
+set depre=(select sum(cat_depreciacion_activo.cuota_mensual+cat_depreciacion_activo.depreciacion_acumulada) 
+from cat_depreciacion_activo, cat_activo_fijo 
+where cat_activo_fijo.id_activofijo=cat_depreciacion_activo.id_activofijo);
+
 select 
         `d`.`cuota_mensual` AS `cuota_mensual`,
-        `d`.`parte1` AS `importe`,
-    `depre` AS `depreciacion_acumulada`,
+        `d`.`parte1` AS `Total a depreciar`,
+		(`d`.`cuota_mensual` + `depreciacion_acumulada`) AS `depreciacion_acumulada`,
         (`d`.`parte1` - `depre`) AS `saldo_restante`
     from
-        `cat_depreciacion_activo` as`d`
+        `cat_depreciacion_activo` as`d`,
+		`cat_activo_fijo` as`c`
     where
-        (`d`.`id_activofijo` = 'af1');
+        (`d`.`id_activofijo` = `c`.`id_activofijo`);
 END$$
 
 DELIMITER ;
@@ -62,10 +66,11 @@ CREATE TABLE IF NOT EXISTS `cat_activo_fijo` (
   `fecha_ingreso` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `fecha_inicio_uso` date DEFAULT NULL,
   `importe_depreciable` float NOT NULL,
+  `parte1` varchar(10) COLLATE latin1_general_ci NOT NULL,
   `vida_util` int(2) NOT NULL,
   `valor_residual` float NOT NULL,
   `cuota_anual` float NOT NULL,
-  `cuota_mensual` float NOT NULL,
+  `cuota_mensual` varchar(10) COLLATE latin1_general_ci NOT NULL,
   `activado` int(11) NOT NULL,
   PRIMARY KEY (`id_activofijo`),
   KEY `id_cuentacontable_idx` (`id_cuentacontable`),
@@ -79,28 +84,30 @@ CREATE TABLE IF NOT EXISTS `cat_activo_fijo` (
 -- Volcado de datos para la tabla `cat_activo_fijo`
 --
 
-INSERT INTO `cat_activo_fijo` (`id_activofijo`, `id_cuentacontable`, `id_area`, `id_sucursal`, `id_empleado`, `id_proveedor`, `nombre_activo_fijo`, `descripcion`, `valor_original`, `tipo_valor`, `fecha_compra`, `fecha_ingreso`, `fecha_inicio_uso`, `importe_depreciable`, `vida_util`, `valor_residual`, `cuota_anual`, `cuota_mensual`, `activado`) VALUES
-('meaf008', 3, NULL, 7, '0', 4, 'Horno_Microonda', 'horno microondas mabe 0,7´ blanco hmm700wk', 150, 'real', '2014-01-13', '2014-01-20 06:00:00', NULL, 158, 10, 20, 13.8, 1.15, 0),
-('meaf007', 3, NULL, 10, '0', 4, 'Secadora', 'secadora a gas blanca serie: sme1520pmbb', 685, 'real', '2014-01-20', '2014-01-24 06:00:00', NULL, 697, 10, 95, 60.2, 5.01667, 0),
-('meaf006', 3, NULL, 9, '0', 4, 'Lavadora', 'lavadora aqua saver 19 kg grafito\r\nlmh19589zkgg1', 700, 'real', '2014-01-02', '2014-01-24 06:00:00', NULL, 737, 10, 100, 63.7, 5.30833, 0),
-('meaf005', 3, NULL, 7, '0', 4, 'Cocina', 'cocina de gas 20" bisque / inox\r\nemg5115lis1', 445, 'real', '2014-01-03', '2014-01-15 06:00:00', NULL, 450, 10, 50, 40, 3.33333, 0),
-('meaf004', 3, NULL, 5, '0', 4, 'Refrigerador', 'refrigerador automático mabe 10 pies blanco\r\nrf10vw1sip', 550, 'real', '2014-01-08', '2014-01-10 06:00:00', NULL, 584, 10, 89, 49.5, 4.125, 0),
-('meaf', 3, NULL, 5, '0', 4, 'Regrigerador', 'refrigerador automático mabe 10 pies blanco\r\nrf10vw1sip', 550, 'real', '2014-01-16', '2014-01-23 06:00:00', NULL, 577, 10, 79, 49.8, 4.15, 0),
-('meaf003', 3, NULL, 9, '0', 1, 'Camara_Sony', 'Dsc-h200 Sony Camara Semi Profesional ¡20.1mpx! ¡26x Zoom!', 2700, 'real', '2014-01-07', '2014-01-21 06:00:00', NULL, 2730, 10, 280, 245, 20.4167, 0),
-('taf005', 5, NULL, 9, '0', 5, 'Mazda_2', 'Mazda 2 2012 Motor 1.5L Automatico, Full extras!', 7009, 'real', '2014-06-02', '2014-06-06 06:00:00', NULL, 7065, 5, 900, 1233, 102.75, 0),
-('taf004', 5, NULL, 2, '0', 5, 'Panel_e5', 'panel 2 toneladas diesel color blanco', 9800, 'real', '2014-07-04', '2014-07-31 06:00:00', NULL, 10470, 5, 1000, 1894, 157.833, 0),
-('meaf001', 3, NULL, 2, '0', 3, 'Reproductord_CD_DVD', 'Reproductor de CD/DVD con pantalla táctil de 6.1 pulgadas, entrada auxiliar y USB, MIXTRAX y 3 salidas de previo RCA (2-DIN)', 90, 'real', '2014-07-02', '2014-07-17 06:00:00', NULL, 92, 10, 15, 7.7, 0.641667, 0),
-('maf003', 1, NULL, 2, '0', 1, 'Tractor', 'tractor d6b', 25000, 'real', '2014-06-17', '2014-06-20 06:00:00', NULL, 26200, 10, 2500, 2370, 197.5, 0),
-('taf003', 5, NULL, 3, '0', 1, 'Nissan_frontier', 'Nissan frontier D/Cab 4x2 alto turbo diesel con intercooler año 2007', 14000, 'real', '2014-05-13', '2014-05-15 06:00:00', NULL, 14490, 5, 1500, 2598, 216.5, 0),
-('maf002', 1, NULL, 6, '0', 1, 'Tanque_combustible', 'Tanque para combustible de 3,500 galones con bomba.', 4000, 'real', '2014-04-07', '2014-04-16 06:00:00', NULL, 4075, 10, 300, 377.5, 31.4583, 0),
-('taf001', 5, NULL, 8, '0', 1, 'YamahaVStar650', 'Yamaha V Star 650 Custom  Año: 2006 Marca: Yamaha', 4500, 'real', '2014-02-04', '2014-02-20 06:00:00', NULL, 4800, 5, 700, 820, 68.3333, 0),
-('taf002', 5, NULL, 9, '0', 2, 'Bmw325xi', 'Bmw 325xi Año: 2006 Marca: BMW Modelo: 325 ms', 19000, 'real', '2014-02-26', '2014-02-28 06:00:00', NULL, 19800, 5, 3000, 3360, 280, 0),
-('maf001', 1, 9, 9, '7', 2, 'Cortadora_de_plasma', 'Cortadora de plasma, marca Miller, Serie: LGY434AD', 2000, 'real', '2014-01-02', '2014-06-25 20:51:16', '2014-06-25', 2050, 10, 100, 195, 16.25, 1),
-('meaf009', 3, NULL, 5, '0', 3, 'Lapto', 'DELL E 6400 ,X200 LENOVO   - EN BLACK FUSION', 2900, 'real', '2014-01-14', '2014-01-17 06:00:00', NULL, 2935, 10, 200, 273.5, 22.7917, 0),
-('meaf010', 3, NULL, 9, '0', 4, 'Ventilador', 'Ventilador, de potencia corta.', 75, 'real', '2014-01-22', '2014-01-24 06:00:00', NULL, 80, 10, 10, 7, 0.583333, 0),
-('teaf001', 4, NULL, 9, '0', 5, 'Casa_san_salvador', 'Casa en San Salvador dirección: Col Flor Blanca (San Salvador) San Salvador, área 1,020.37 mts 1,182.23v2', 80000, 'real', '2014-01-02', '2014-01-23 06:00:00', NULL, 81200, 20, 5000, 3810, 317.5, 0),
-('teaf002', 4, NULL, 4, '0', 5, 'Casa', 'Casa en La Libertad, san antonio las palmeras, 350 m2, 6 recámaras, 4 baños', 119000, 'real', '2014-02-05', '2014-02-27 06:00:00', NULL, 119450, 20, 20000, 4972.5, 414.375, 0),
-('te002', 4, NULL, 7, '0', 5, 'Bodega', 'Bodega grande, ubicada en Usulutan', 400000, 'real', '2014-03-04', '2014-03-21 06:00:00', NULL, 400700, 20, 50000, 17535, 1461.25, 0);
+INSERT INTO `cat_activo_fijo` (`id_activofijo`, `id_cuentacontable`, `id_area`, `id_sucursal`, `id_empleado`, `id_proveedor`, `nombre_activo_fijo`, `descripcion`, `valor_original`, `tipo_valor`, `fecha_compra`, `fecha_ingreso`, `fecha_inicio_uso`, `importe_depreciable`, `parte1`, `vida_util`, `valor_residual`, `cuota_anual`, `cuota_mensual`, `activado`) VALUES
+('meaf008', 3, NULL, 7, '0', 4, 'Horno_Microonda', 'horno microondas mabe 0,7´ blanco hmm700wk', 150, 'real', '2014-01-13', '2014-01-20 06:00:00', NULL, 158, '0', 10, 20, 13.8, '1.15', 0),
+('meaf007', 3, NULL, 10, '0', 4, 'Secadora', 'secadora a gas blanca serie: sme1520pmbb', 685, 'real', '2014-01-20', '2014-01-24 06:00:00', NULL, 697, '0', 10, 95, 60.2, '5.01667', 0),
+('meaf006', 3, NULL, 9, '0', 4, 'Lavadora', 'lavadora aqua saver 19 kg grafito\r\nlmh19589zkgg1', 700, 'real', '2014-01-02', '2014-01-24 06:00:00', NULL, 737, '0', 10, 100, 63.7, '5.30833', 0),
+('meaf005', 3, NULL, 7, '0', 4, 'Cocina', 'cocina de gas 20" bisque / inox\r\nemg5115lis1', 445, 'real', '2014-01-03', '2014-01-15 06:00:00', NULL, 450, '0', 10, 50, 40, '3.33333', 0),
+('meaf004', 3, NULL, 5, '0', 4, 'Refrigerador', 'refrigerador automático mabe 10 pies blanco\r\nrf10vw1sip', 550, 'real', '2014-01-08', '2014-01-10 06:00:00', NULL, 584, '0', 10, 89, 49.5, '4.125', 0),
+('meaf', 3, NULL, 5, '0', 4, 'Regrigerador', 'refrigerador automático mabe 10 pies blanco\r\nrf10vw1sip', 550, 'real', '2014-01-16', '2014-01-23 06:00:00', NULL, 577, '0', 10, 79, 49.8, '4.15', 0),
+('meaf003', 3, NULL, 9, '0', 1, 'Camara_Sony', 'Dsc-h200 Sony Camara Semi Profesional ¡20.1mpx! ¡26x Zoom!', 2700, 'real', '2014-01-07', '2014-01-21 06:00:00', NULL, 2730, '0', 10, 280, 245, '20.4167', 0),
+('taf005', 5, NULL, 9, '0', 5, 'Mazda_2', 'Mazda 2 2012 Motor 1.5L Automatico, Full extras!', 7009, 'real', '2014-06-02', '2014-06-06 06:00:00', NULL, 7065, '0', 5, 900, 1233, '102.75', 0),
+('taf004', 5, NULL, 2, '0', 5, 'Panel_e5', 'panel 2 toneladas diesel color blanco', 9800, 'real', '2014-07-04', '2014-07-31 06:00:00', NULL, 10470, '0', 5, 1000, 1894, '157.833', 0),
+('meaf001', 3, NULL, 2, '0', 3, 'Reproductord_CD_DVD', 'Reproductor de CD/DVD con pantalla táctil de 6.1 pulgadas, entrada auxiliar y USB, MIXTRAX y 3 salidas de previo RCA (2-DIN)', 90, 'real', '2014-07-02', '2014-07-17 06:00:00', NULL, 92, '0', 10, 15, 7.7, '0.641667', 0),
+('maf003', 1, NULL, 2, '0', 1, 'Tractor', 'tractor d6b', 25000, 'real', '2014-06-17', '2014-06-20 06:00:00', NULL, 26200, '0', 10, 2500, 2370, '197.5', 0),
+('taf003', 5, NULL, 3, '0', 1, 'Nissan_frontier', 'Nissan frontier D/Cab 4x2 alto turbo diesel con intercooler año 2007', 14000, 'real', '2014-05-13', '2014-05-15 06:00:00', NULL, 14490, '0', 5, 1500, 2598, '216.5', 0),
+('maf002', 1, NULL, 6, '0', 1, 'Tanque_combustible', 'Tanque para combustible de 3,500 galones con bomba.', 4000, 'real', '2014-04-07', '2014-04-16 06:00:00', NULL, 4075, '0', 10, 300, 377.5, '31.4583', 0),
+('taf001', 5, NULL, 8, '0', 1, 'YamahaVStar650', 'Yamaha V Star 650 Custom  Año: 2006 Marca: Yamaha', 4500, 'real', '2014-02-04', '2014-02-20 06:00:00', NULL, 4800, '0', 5, 700, 820, '68.3333', 0),
+('taf002', 5, NULL, 9, '0', 2, 'Bmw325xi', 'Bmw 325xi Año: 2006 Marca: BMW Modelo: 325 ms', 19000, 'real', '2014-02-26', '2014-02-28 06:00:00', NULL, 19800, '0', 5, 3000, 3360, '280', 0),
+('maf001', 1, 9, 9, '7', 2, 'Cortadora_de_plasma', 'Cortadora de plasma, marca Miller, Serie: LGY434AD', 2000, 'real', '2014-01-02', '2014-06-25 18:10:24', '2014-06-25', 2050, '0', 10, 100, 195, '16.25', 1),
+('meaf009', 3, NULL, 5, '0', 3, 'Lapto', 'DELL E 6400 ,X200 LENOVO   - EN BLACK FUSION', 2900, 'real', '2014-01-14', '2014-01-17 06:00:00', NULL, 2935, '0', 10, 200, 273.5, '22.7917', 0),
+('meaf010', 3, NULL, 9, '0', 4, 'Ventilador', 'Ventilador, de potencia corta.', 75, 'real', '2014-01-22', '2014-01-24 06:00:00', NULL, 80, '0', 10, 10, 7, '0.583333', 0),
+('teaf001', 4, NULL, 9, '0', 5, 'Casa_san_salvador', 'Casa en San Salvador dirección: Col Flor Blanca (San Salvador) San Salvador, área 1,020.37 mts 1,182.23v2', 80000, 'real', '2014-01-02', '2014-01-23 06:00:00', NULL, 81200, '0', 20, 5000, 3810, '317.5', 0),
+('teaf002', 4, NULL, 4, '0', 5, 'Casa', 'Casa en La Libertad, san antonio las palmeras, 350 m2, 6 recámaras, 4 baños', 119000, 'real', '2014-02-05', '2014-02-27 06:00:00', NULL, 119450, '0', 20, 20000, 4972.5, '414.375', 0),
+('te002', 4, NULL, 7, '0', 5, 'Bodega', 'Bodega grande, ubicada en Usulutan', 400000, 'real', '2014-03-04', '2014-03-21 06:00:00', NULL, 400700, '0', 20, 50000, 17535, '1461.25', 0),
+('maq01', 1, 9, 4, '7', 1, 'maquinariadeprueba', 'maquinaria nueva', 200, 'real', '2014-06-25', '2014-06-25 20:26:52', '2014-06-25', 300, '250', 10, 50, 25, '2.08333', 1),
+('MYE123', 3, 9, 3, '7', 3, 'Computadoratoshiba', 'Marca Toshiba, Ram 2gb, disco Duro 160gbHz, Color Azul.', 560, 'real', '2014-06-16', '2014-06-25 21:28:34', '2014-06-25', 600, '520', 10, 80, 52, '4.33333333', 1);
 
 -- --------------------------------------------------------
 
@@ -176,19 +183,21 @@ CREATE TABLE IF NOT EXISTS `cat_depreciacion_activo` (
   `año_mes` date DEFAULT NULL,
   `cuota_mensual` varchar(10) COLLATE latin1_general_ci NOT NULL,
   `parte1` varchar(10) COLLATE latin1_general_ci NOT NULL,
-  `depreciacion_acumulada` float DEFAULT NULL,
-  `saldo_restante` varchar(45) COLLATE latin1_general_ci DEFAULT NULL,
+  `depreciacion_acumulada` decimal(6,2) DEFAULT NULL,
+  `saldo_restante` varchar(45) COLLATE latin1_general_ci DEFAULT '0',
   PRIMARY KEY (`id_depreciacion_activo`),
   KEY `id_activofijo_idx` (`id_activofijo`),
   KEY `id_cuentacontable_idx` (`id_cuentacontable`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=23 ;
 
 --
 -- Volcado de datos para la tabla `cat_depreciacion_activo`
 --
 
 INSERT INTO `cat_depreciacion_activo` (`id_depreciacion_activo`, `id_activofijo`, `id_cuentacontable`, `año_mes`, `cuota_mensual`, `parte1`, `depreciacion_acumulada`, `saldo_restante`) VALUES
-(11, 'maf001', 1, '2014-06-25', '', '', NULL, NULL);
+(22, 'MYE123', 3, '2014-06-25', '4.33333333', '520', 0.00, '0'),
+(21, 'MYE123', 3, '2014-06-25', '4.33333333', '520', 0.00, '0'),
+(19, 'maq01', 1, '2014-06-25', '2.08333', '250', 0.00, '0');
 
 -- --------------------------------------------------------
 
@@ -215,7 +224,7 @@ INSERT INTO `cat_empleado` (`id_empleado`, `codigo_empleado`, `nombre_empleado`,
 (2, 'E33', 'Jose', '11° Calle', '12345678', 'Jose@serrano.com'),
 (3, 'E01', 'Ivette', '12° Calle Oriente', '12345678', 'Ivette@serrano.com'),
 (4, 'e75', 'Jorge Alberto Villegas', 'venezuela', '26451823|', 'jorge@ugb.edu.sv'),
-(5, 'e091mel', 'Melvin Diaz', 'usulutan', '79812231', 'melvin@realmadrid.com');
+(5, 'e90lu', 'Luis Humberto Mejia', 'colinia masferrer', '26624563', 'luisito@gmail.com');
 
 -- --------------------------------------------------------
 
