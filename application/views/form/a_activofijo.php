@@ -83,7 +83,9 @@ echo ">";
        
               <div class="form-group">
                   <label for="disabledSelect">Proveedor</label>
+         
          <select name="id_proveedor" class="form-control" id="id_proveedor">
+           <option value='' selected> Seleccionar...</option>
           <?php 
               foreach($proveedor as $fila)
               {
@@ -136,6 +138,7 @@ echo ">";
               <div class="form-group">
                   <label for="disabledSelect">Sucursal</label>
                          <select name="id_sucursal" class="form-control" id="id_sucursal">
+  <option value='' selected> Seleccionar...</option>
           <?php 
               foreach($sucursal as $fila)
               {

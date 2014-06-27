@@ -21,6 +21,7 @@
                <div class="form-group">
                 <label>Codigo Activo </label>
                 <select name="id_activofijo" class="form-control" id="id_activofijo">
+                  <option value='' selected> Seleccionar Activo</option>
                 <?php 
                   foreach($activofijo as $fila)
                   {
@@ -44,7 +45,9 @@
 
               <div class="form-group">
                 <label>Receptor </label>
+                  
                 <select name="id_sucursal" class="form-control" id="id_sucursal">
+                <option value='' selected> Seleccionar...</option>
                 <?php 
                   foreach($sucursal as $fila)
                   {
@@ -58,7 +61,9 @@
 
               <div class="form-group">
                 <label>Encargado </label>
+
                 <select name="id_empleado" class="form-control" id="id_empleado">
+                  <option value='' selected> Seleccionar...</option>
                 <?php 
                   foreach($empleado as $fila)
                   {
