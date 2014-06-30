@@ -51,7 +51,7 @@
          cat_activo_fijo.activado  = "0";');
         return $query->result();
     }
-     public function alta_activo($id_activofijo,$id_area,$id_empleado,$fecha_inicio_uso,$activado,$id_cuentacontable,$cuota_mensual,$parte1)
+     public function alta_activo($id_activofijo,$id_area,$id_empleado,$fecha_inicio_uso,$activado,$id_cuentacontable,$cuota_mensual,$parte1,$depreciacion_acumulada,$saldo_restante)
     {
         $this->db->where('id_activofijo', $id_activofijo);
         $this->db->update('cat_activo_fijo',array(
@@ -67,7 +67,9 @@
         'id_cuentacontable'           =>$id_cuentacontable,
         'año_mes'                     =>$fecha_inicio_uso,
         'cuota_mensual'               =>$cuota_mensual,
-        'parte1'                      =>$parte1
+        'parte1'                      =>$parte1,
+        'depreciacion_acumulada' => $depreciacion_acumulada,
+        'saldo_restante'    =>  $saldo_restante
 
     ));
     }

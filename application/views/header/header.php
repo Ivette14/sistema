@@ -95,7 +95,7 @@ if (isset($_SESSION['my_usuario']))
                         
                         <li ><a href="<?php echo base_url().'crud_activo'; ?>"><i class="fa fa-edit fa-fw"></i> Activo Fijo</a></li>
                         <ul class="nav nav-second-level">
-                            <li><a href="<?php echo base_url().'crud_activo/activar'; ?>"><i class="fa fa-edit fa-fw"></i> Activar Activos</a></li>
+                            <li><a href="<?php echo base_url().'crud_activo/activar'; ?>"><i class="fa fa-edit fa-fw"></i> Activos sin activar</a></li>
                        
                          <li><a href="<?php echo base_url().'crud_baja'; ?>"><i class="fa fa-edit fa-fw"></i> Baja de Activo</a></li>
                         

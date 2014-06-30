@@ -175,6 +175,8 @@ public function activar()
                 $id_cuentacontable = $this->input->post('id_cuentacontable');
                 $cuota_mensual     = $this->input->post('cuota_mensual');
                 $parte1            = $this->input->post('parte1');
+                $depreciacion_acumulada =  0;
+                $saldo_restante =          $this->input->post('parte1');;
                
         $timestamp = now();
         $timezone = 'UM8';
@@ -184,7 +186,8 @@ public function activar()
         $datestring = "%Y-%m-%d %h:%i:%s";
         $fecha_inicio_uso = $this->now = mdate($datestring, $now);
         $activado = 1;
-        $this->crud_model_activo->alta_activo($id_activofijo,$id_area,$id_empleado,$fecha_inicio_uso,$activado,$id_cuentacontable,$cuota_mensual,$parte1);
+
+        $this->crud_model_activo->alta_activo($id_activofijo,$id_area,$id_empleado,$fecha_inicio_uso,$activado,$id_cuentacontable,$cuota_mensual,$parte1,$depreciacion_acumulada,$saldo_restante);
                     //redireccionamos al controlador CRUD
                     redirect('crud_activo/activar');               
                 }

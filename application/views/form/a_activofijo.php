@@ -327,7 +327,8 @@ document.forms["fvalida"].parte1.value = parte1;
 </script> 
 
 <script type="text/javascript">
-var r={'special':/[\W]/g}
+var r={'especial'/^[0-9]$/g}
+//var r ={'special':/[\W]/g}
 function valid(o,w){
 o.value = o.value.replace(r[w],'');
 }
@@ -348,7 +349,7 @@ o.value = o.value.replace(r[w],'');
 </div>
 </div>
            
-              <?= validation_errors(); ?>
+
      
 
       
