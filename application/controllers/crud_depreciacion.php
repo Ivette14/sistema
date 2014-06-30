@@ -24,10 +24,18 @@ parent::__construct();
           //obtenemos todos los activos
         $activo = $this->crud_model_depreciacion->get_activos();
         //creamos una variable activos para pasarle a la vista
-        $data['saldo'] = $activo;
+        if($query=$this->db->query("CALL procedimiento2"))
+     {
+         $data['saldo'] = $activo;
         
         $this->load->view('header/header');
         $this->load->view('form/frmdepreciacion', $data);
+     }
+      else
+      {
+        show_error('error!');
+      }
+       
     
     }
 

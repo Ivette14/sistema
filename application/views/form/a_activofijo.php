@@ -163,7 +163,7 @@ echo ">";
 <td>
 <div class="form-group">
                 <label>Precio de Compra</label>
-                <input class="form-control" name="valor_original" maxlength="8" placeholder="$"  pattern="/^-?[0-9]+([,\.][0-9]*)?$/"    value="<?= set_value('valor_original');?>">
+                <input class="form-control" name="valor_original" maxlength="8" placeholder="$"     value="<?= set_value('valor_original');?>">
                 
               </div>
 
@@ -180,7 +180,7 @@ echo ">";
 
 <div class="form-group">
                 <label>Otros Gastos</label>
-                 <input class="form-control" name="gastos" maxlength="8" placeholder="$"  pattern="/^-?[0-9]+([,\.][0-9]*)?$/"  value="<?= set_value('gastos');?>">
+                 <input class="form-control" name="gastos" maxlength="8" placeholder="$"    value="<?= set_value('gastos');?>">
 
               </div>
 
@@ -210,7 +210,7 @@ echo ">";
 <td>
 <div class="form-group">
                 <label>Valor Residual (Dolares)</label>
-                <input class="form-control" name="valor_residual" maxlength="8" pattern="/^-?[0-9]+([,\.][0-9]*)?$/"   placeholder="$"  id="valor_residual" value="<?= set_value('valor_residual');?>">
+                <input class="form-control" name="valor_residual" maxlength="8"   placeholder="$"  id="valor_residual" value="<?= set_value('valor_residual');?>">
                 
               </div>
 

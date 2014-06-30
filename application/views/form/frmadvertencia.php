@@ -29,8 +29,7 @@ Se le recomienda corroborar si todos los Activos Fijos que desea depreciar, esta
 de lo contrario, solo podran depreciarse a partir del proximo mes, despues de realizada su debida activación.
  </label>
 <br><br>
-<button type="button"  class="btn btn-primary" value="" onClick="">Realizar Depreciacion</button>
-<button type="button" onclick=location="<?php echo base_url().'crud_activo/procedimiento1/' ?>" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Activar</button>  
+<button type="button" onclick=location="<?php echo base_url().'crud_activo/procedimiento1/' ?>" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i>&nbsp;REALIZAR DEPRECIACION</button>  
 </center>
 
                                                         <!-- /.table-responsive -->                           
