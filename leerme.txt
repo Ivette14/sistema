@@ -1,0 +1,36 @@
+Sistema de activo fijo. Ingresa la siguiente informacion
+Usuarios de la Bd
+    - Usuario: marioabmi
+      Password: 123456*
+Fortalezas:
+- Cuentas
+   -Inserta
+   -Modifica
+   -Elimina
+- Proveedores
+ -Inserta
+   -Modifica
+   -Elimina
+- Sucursales
+   -Inserta
+   -Modifica
+   -Elimina
+- Empleados
+   -Inserta
+   -Modifica
+   -Elimina
+- Areas
+   -Inserta
+   -Modifica
+   -Elimina
+- Activos Fijos
+  - Activar Activo
+  - Dar de Baja Activo
+  - Traslado De activo
+  - Realiza su debida depreciacion, Muestra su valor actual en Libros mediante el formulario de saldos 
+- Validacion de campos En la parte de Registro de nuevos activos
+
+Devilidades: 
+- No se pueden imprimir reportes
+- Gestion de Usuarios
+- No funciona lo de la configuracion

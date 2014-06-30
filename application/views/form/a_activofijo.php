@@ -261,7 +261,7 @@ echo ">";
                 <input  type="hidden" name="post" value="1" />                
                   <button type="submit" class="btn btn-primary" onclick="if(confirm('Esta a putno de agregar un activo'))
 alert('ok!');
-else alert('El registro no se ha eliminado')" >Guardar</button>
+else alert('ok')" >Guardar</button>
                   <button type="button"  class="btn btn-primary" value="Enviar" onClick="depreciacion()">Calcular</button>
                 <button type="button"   onClick=location="<?php echo base_url().'crud_activo'; ?>" class="btn btn-primary">Cancelar</button>
      </fieldset>
