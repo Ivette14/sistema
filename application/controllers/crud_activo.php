@@ -40,7 +40,20 @@ public function activar()
     
     }
 
-  
+  public function advertencia()
+{
+ 
+   
+        //creamos una variable usuarios para pasarle a la vista
+
+        //cargamos nuestra vista
+        $this->load->view('header/header');
+       // $this->load->view('form/prueva');    
+        $this->load->view('form/frmadvertencia');
+       $this->load->view('footer');
+    
+    }
+
     public function index()
     {
         //obtenemos todos los activos
