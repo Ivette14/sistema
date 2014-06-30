@@ -107,10 +107,10 @@ if (isset($_SESSION['my_usuario']))
                         <ul class="nav nav-second-level">
                             <li><a href="<?php echo base_url().'crud_activo/advertencia'; ?>"><i class="fa fa-edit fa-fw"></i> Depreciar Activos</a></li>
                        
-                         <li><a href="<?php echo base_url().'crud_activo/advertencia'; ?>"><i class="fa fa-edit fa-fw"></i> Ver Saldos</a></li>
+                         <li><a href="<?php echo base_url().'crud_depreciacion'; ?>"><i class="fa fa-edit fa-fw"></i> Ver Saldos</a></li>
                         
                         </ul>
-                        <li><a href="<?php echo base_url().'crud_saldo'; ?>"><i class="fa fa-edit fa-fw"></i> Saldo</a></li>
+                   
                         <li><a href="<?php echo base_url().'crud_cuenta'; ?>"><i class="fa fa-edit fa-fw"></i> Cuentas</a></li>
                         <li><a href="<?php echo base_url().'crud/index'; ?>"><i class="fa fa-edit fa-fw"></i> Sucursales</a></li>
                         <li><a href="<?php echo base_url().'crud_area'; ?>"><i class="fa fa-edit fa-fw"></i> Areas</a></li>

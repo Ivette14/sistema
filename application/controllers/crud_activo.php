@@ -228,5 +228,20 @@ public function activar()
             $this->load->view('footer');
     }
 
+ public function procedimiento1()
+    {
+     if($query=$this->db->query("CALL procedimiento1"))
+     {
+        redirect('crud_depreciacion');
+     }
+      else
+      {
+        show_error('error!');
+      }
+
+       // $this->crud_model_depreciacion->procedimiento1;
+            //cargamos la vista
+            
+    }
 
 }

@@ -4,7 +4,7 @@
             
             <ol class="breadcrumb">
              
-              <li class="active"></i><center><h4> Gestor de Activos Fijos</h4></center></li>
+              <li class="active"></i><center><h4> Saldos </h4></center></li>
             </ol>
             
           </div>
@@ -33,7 +33,9 @@
                                             <th>Nombre</th>
                                             <th>Nombre Cuenta</th>
                                             <th>Depreciacion Mensual</th>
-                                            <th>Accion</th>
+                                            <th>Depreciacion Acomulada</th>
+                                            <th>Valor En Libros</th>
+                                         
                                                
                                             
                                         </tr>
@@ -46,8 +48,9 @@
                                             <td><?= $saldo->nombre_activo_fijo?></td> 
                                             <td><?= $saldo->nombre_cuenta?></td> 
                                             <td><?= $saldo->cuota_mensual?></td>
-                                             <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_depreciacion/depreciacion/'.$saldo->id_activofijo; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Depreciar</button></td>
-                                  
+                                            <td><?= $saldo->depreciacion_acumulada?></td>
+                                            <td><?= $saldo->saldo_restante?></td>
+                                            
                                             </tr>
                                                 
                                             <?php endforeach ;?>
