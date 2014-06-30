@@ -51,7 +51,7 @@
 
               <div class="form-group">
               	<input  type="hidden" name="post" value="1" />    			
-                <button type="submit" value="Editar" class="btn btn-primary">Guardar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
                 <button type="button" onclick=location="<?php echo base_url().'crud/index'; ?>" class="btn btn-primary">Cancelar</button>
               </div>   
 

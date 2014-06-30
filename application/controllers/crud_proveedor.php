@@ -71,9 +71,9 @@ parent::__construct();
             {
             $this->form_validation->set_rules('nombre_provee', 'Nombre proveedor', 'required|trim|xss_clean');
             $this->form_validation->set_rules('direccion_provee', 'Direccion proveedor', 'required|trim|xss_clean');
-            $this->form_validation->set_rules('telefono_provee', 'Telefono Poveedor', 'required|numeric|trim|xss_clean');
+            $this->form_validation->set_rules('telefono_provee', 'Telefono Poveedor', 'required|trim|xss_clean');
             $this->form_validation->set_rules('email_provee', 'Email proveedor', 'required|trim|xss_clean');
-            $this->form_validation->set_rules('nit', 'Nit Proveedor', 'required|numeric|trim|xss_clean');
+            $this->form_validation->set_rules('nit', 'Nit Proveedor', 'required|trim|xss_clean');
              
             $this->form_validation->set_message('required','El Campo <b>%s</b> Es Obligatorio');
             $this->form_validation->set_message('numeric','El Campo <b>%s</b> Solo Acepta Números');

@@ -32,13 +32,14 @@ parent::__construct();
          //Si Existe Post y es igual a uno
         if($this->input->post('post') && $this->input->post('post')==1)
         {
-            $this->form_validation->set_rules('nombre_sucursal', 'Nombre Sucursal', 'required|trim|xss_clean');
+            $this->form_validation->set_rules('nombre_sucursal', 'Nombre Sucursal', 'required|alpha|trim|xss_clean');
             $this->form_validation->set_rules('telefono_sucursal', 'Telefono', 'required|numeric|trim|xss_clean');
             $this->form_validation->set_rules('direccion_sucursal', 'Direccion', 'required|trim|xss_clean');
             $this->form_validation->set_rules('departamento', 'Departamento', 'required|trim|xss_clean');
              
             $this->form_validation->set_message('required','El Campo <b>%s</b> Es Obligatorio');
             $this->form_validation->set_message('numeric','El Campo <b>%s</b> Solo Acepta Números');
+            $this->form_validation->set_message('alpha','El Campo <b>%s</b> Solo Acepta caracteres alfabeticos');
             if ($this->form_validation->run() == TRUE)
             {
                 $nombre_sucursal = $this->input->post('nombre_sucursal');
@@ -72,13 +73,14 @@ parent::__construct();
             //Si existe el post para editar
             if($this->input->post('post') && $this->input->post('post')==1)
             {
-            $this->form_validation->set_rules('nombre_sucursal', 'Nombre_sucursal', 'required|trim|xss_clean');
-            $this->form_validation->set_rules('telefono_sucursal', 'Telefono_sucursal', 'required|numeric|trim|xss_clean');
+            $this->form_validation->set_rules('nombre_sucursal', 'Nombre_sucursal', 'required|alpha|trim|xss_clean');
+            $this->form_validation->set_rules('telefono_sucursal', 'Telefono_sucursal', 'required|alpha|numeric|trim|xss_clean');
             $this->form_validation->set_rules('direccion_sucursal', 'Direccion_sucursal', 'required|trim|xss_clean');
             $this->form_validation->set_rules('departamento', 'Departamento', 'required|trim|xss_clean');
              
             $this->form_validation->set_message('required','El Campo <b>%s</b> Es Obligatorio');
             $this->form_validation->set_message('numeric','El Campo <b>%s</b> Solo Acepta Números');
+            $this->form_validation->set_message('alpha','El Campo <b>%s</b> Solo Acepta caracteres alfabeticos');
                 if ($this->form_validation->run() == TRUE)
                 {
                 $nombre_sucursal    = $this->input->post('nombre_sucursal');

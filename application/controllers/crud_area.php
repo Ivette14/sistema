@@ -34,12 +34,13 @@ parent::__construct();
                  //Si Existe Post y es igual a uno
         if($this->input->post('post') && $this->input->post('post')==1)
         {
-            $this->form_validation->set_rules('nombre_area', 'Nombre de Area', 'required|trim|xss_clean');
+            $this->form_validation->set_rules('nombre_area', 'Nombre de Area', 'required|alpha|trim|xss_clean');
             
                      
              
             $this->form_validation->set_message('required','El Campo <b>%s</b> Es Obligatorio');
             $this->form_validation->set_message('numeric','El Campo <b>%s</b> Solo Acepta Números');
+            $this->form_validation->set_message('alpha','El Campo <b>%s</b> Solo Acepta caracteres alfabeticos');
             if ($this->form_validation->run() == TRUE)
             {                
                 $nombre_area    = $this->input->post('nombre_area');
@@ -72,12 +73,13 @@ parent::__construct();
             //Si existe el post para editar
             if($this->input->post('post') && $this->input->post('post')==1)
             {
-            $this->form_validation->set_rules('nombre_area', 'Nombre de area', 'required|trim|xss_clean');
+            $this->form_validation->set_rules('nombre_area', 'Nombre de area', 'required|alpha|trim|xss_clean');
             
          
              
             $this->form_validation->set_message('required','El Campo <b>%s</b> Es Obligatorio');
             $this->form_validation->set_message('numeric','El Campo <b>%s</b> Solo Acepta Números');
+            $this->form_validation->set_message('alpha','El Campo <b>%s</b> Solo Acepta caracteres alfabeticos');
             if ($this->form_validation->run() == TRUE)
             {
                 $nombre_area        = $this->input->post('nombre_area');

@@ -16,26 +16,26 @@
               
               <div class="form-group">
                 <label>Nombre del Proveedor</label>
-                <input name="nombre_provee" class="form-control">
+                <input name="nombre_provee" required="required" class="form-control">
               </div>
 
                <div class="form-group">
                 <label>Telefono</label>
-                <input name="telefono_provee" class="form-control">
+                <input name="telefono_provee" required="required" class="form-control">
               </div>
 
                <div class="form-group">
                 <label>Email</label>
-                <input name="email_provee" class="form-control">
+                <input name="email_provee" required="required" class="form-control">
               </div>
 
               <div class="form-group">
                 <label>Direccion</label>
-                <input name="direccion_provee" class="form-control">
+                <input name="direccion_provee" required="required" class="form-control">
               </div>
                <div class="form-group">
                 <label>Nit</label>
-                <input name="nit" class="form-control">
+                <input name="nit" required="required" class="form-control">
               </div>
 
               <div class="form-group">
