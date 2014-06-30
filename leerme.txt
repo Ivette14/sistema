@@ -34,3 +34,15 @@ Devilidades:
 - No se pueden imprimir reportes
 - Gestion de Usuarios
 - No funciona lo de la configuracion
+
+
+INTEGRANTES:
+
+APARICIO FUNES, ADILKARIN ISAAC               			USIS031408
+AVALOS, RONYS JASIRI                    	    		USIS003707
+DÍAZ GANUZA, MELVIN ALEXIS	           			USIS047008
+HERNÁNDEZ  ROMERO, JOSUE OTONIEL       				USIS028009
+PÉREZ MEJÍA, IVETTE ESMERALDA                			USIS005309
+QUINTANILLA BERMUDEZ, PATRICIA ESTHER 				USIS014409
+RIVAS GONZÁLEZ, MARIO NELSON            			USIS022809
+SERRANO CASTRO, JOSÉ ROBERTO            			USIS033106
