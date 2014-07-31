@@ -10,7 +10,8 @@
         </div><!-- /.row -->
 
             <!-- /.row -->
-        <div class="form-group"> <button type="button" onclick=location="<?php echo base_url().'crud_traslado/Agregar'; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Nuevo Traslado</button></div>       
+        <div class="form-group"> <button type="button" onclick=location="<?php echo base_url().'crud_traslado/Agregar'; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Nuevo Traslado</button></div> 
+        <button type="submit" onclick=location="<?php echo base_url().'crud_traslado/pdftraslado'; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Nuevo Traslado</button>      
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
