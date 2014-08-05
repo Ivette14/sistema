@@ -9,6 +9,7 @@ class Direccion extends CI_Controller {
 		$this->load->library('pagination');
 		$this->load->library(array('session','form_validation'));
 		$this->load->model("model_usuario");
+			$this->load->model("crud_model_menu");
 		$alarma=0;
 
 
@@ -17,7 +18,11 @@ class Direccion extends CI_Controller {
 
 function index(){
 
-	$this->load->view('header/header');
+ $menus= $this->crud_model_menu->menu();
+        //creamos una variable usuarios para pasarle a la vista
+        $data['menu'] =   $menus;
+
+$this->load->view('header/header', $data);
 $this->load->view('form/inicio');
 $this->load->view('footer');
 }

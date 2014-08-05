@@ -18,8 +18,13 @@ parent::__construct();
   
 public function index_nuevo()
 {       
+ $activos= $this->crud_model_activo->get_activar_activos();
+        //creamos una variable usuarios para pasarle a la vista
+        $data['activo'] =   $activos;
+        //creamos una variable usuarios para pasarle a la vista
 
-        $this->load->view('header/header');
+        //cargamos nuestra vista
+        $this->load->view('header/header',$data);
         $this->load->view('form/a_activofijo');
         $this->load->view('footer');;
         
@@ -27,15 +32,11 @@ public function index_nuevo()
 public function activar()
 {
  
-   $activos= $this->crud_model_activo->get_activar_activos();
-        //creamos una variable usuarios para pasarle a la vista
-        $data['activo'] =   $activos;
-        //creamos una variable usuarios para pasarle a la vista
-
+  
         //cargamos nuestra vista
         $this->load->view('header/header');
        // $this->load->view('form/prueva');    
-        $this->load->view('form/frmactivofijo_activar',$data);
+        $this->load->view('form/frmactivofijo_activar');
        $this->load->view('footer');
     
     }

@@ -34,6 +34,20 @@ if (isset($_SESSION['my_usuario']))
     
 
     <!-- Core CSS - Include with every page -->
+<link href="<?php echo base_url().'seteo/js/devoops.js'; ?>" type="javascript" >
+  <link href="<?php echo base_url().'seteo/js/devoops.min.js'; ?>" type="javascript">  
+   <link href="<?php echo base_url().'seteo/plugins/bootstrap/bootstrap.css'; ?>" rel="stylesheet">
+
+<link href="<?php echo base_url().'seteo/plugins/jquery-ui/jquery-ui.min.css'; ?>" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+<link href="<?php echo base_url().'seteo/plugins/fancybox/jquery.fancybox.css'; ?>" rel="stylesheet">
+<link href="<?php echo base_url().'seteo/plugins/fullcalendar/fullcalendar.css'; ?>" rel="stylesheet">
+<link href="<?php echo base_url().'seteo/plugins/xcharts/xcharts.min.css'; ?>" rel="stylesheet">
+<link href="<?php echo base_url().'seteo/plugins/select2/select2.css'; ?>" rel="stylesheet">
+<link href="<?php echo base_url().'seteo/css/style.css' ; ?>" rel="stylesheet">
+
+
     <link href="<?php echo base_url().'seteo/css/bootstrap.min.css'; ?>" rel="stylesheet">
     <link href="<?php echo base_url().'seteo/font-awesome/css/font-awesome.css'; ?>" rel="stylesheet">
 
@@ -45,6 +59,13 @@ if (isset($_SESSION['my_usuario']))
     <!-- SB Admin CSS - Include with every page -->
     <link href="<?php echo base_url().'seteo/css/sb-admin.css'; ?>" rel="stylesheet">
 
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+        google.load("jquery", "1.4.4");
+        </script>
+        <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
 </head>
 
 <body>
@@ -91,33 +112,11 @@ if (isset($_SESSION['my_usuario']))
                 <div class="sidebar-collapse">
                     <ul class="nav" id="side-menu">
                        
-                        <li><a href="<?php echo base_url().'direccion/hrefini'; ?>"><i class="fa fa-dashboard fa-fw"></i> Inicio  </a></li>
-                        
-                        <li ><a href="<?php echo base_url().'crud_activo'; ?>"><i class="fa fa-edit fa-fw"></i> Activo Fijo</a></li>
-                        <ul class="nav nav-second-level">
-                            <li><a href="<?php echo base_url().'crud_activo/activar'; ?>"><i class="fa fa-edit fa-fw"></i> Activos sin activar</a></li>
+                                            <?php foreach ($menu as $menu):?>
+                                                
+                        <li><a href="<?  echo base_url().$menu->url;  ?>"><i class="fa fa-dashboard fa-fw"></i> <?= $menu->opcion?> </a></li>
+                           <?php endforeach ;?>
                        
-                         <li><a href="<?php echo base_url().'crud_baja'; ?>"><i class="fa fa-edit fa-fw"></i> Baja de Activo</a></li>
-                        
-                        </ul>
-                        <li><a href="<?php echo base_url().'crud_empleado'; ?>"><i class="fa fa-edit fa-fw"></i> Empleados</a></li>
-                        <li><a href="<?php echo base_url().'crud_proveedor'; ?>"><i class="fa fa-edit fa-fw"></i> Proveedores</a></li>
-                        <li><a href="<?php echo base_url().'crud_depreciacion'; ?>"><i class="fa fa-edit fa-fw"></i> Depreciacion</a></li>
-
-                        <ul class="nav nav-second-level">
-                            <li><a href="<?php echo base_url().'crud_activo/advertencia'; ?>"><i class="fa fa-edit fa-fw"></i> Depreciar Activos</a></li>
-                       
-                         <li><a href="<?php echo base_url().'crud_depreciacion'; ?>"><i class="fa fa-edit fa-fw"></i> Ver Saldos</a></li>
-                        
-                        </ul>
-                   
-                        <li><a href="<?php echo base_url().'crud_cuenta'; ?>"><i class="fa fa-edit fa-fw"></i> Cuentas</a></li>
-                        <li><a href="<?php echo base_url().'crud/index'; ?>"><i class="fa fa-edit fa-fw"></i> Sucursales</a></li>
-                        <li><a href="<?php echo base_url().'crud_area'; ?>"><i class="fa fa-edit fa-fw"></i> Areas</a></li>
-                        <li><a href="<?php echo base_url().'crud_traslado'; ?>"><i class="fa fa-edit fa-fw"></i> Traslado de Activo</a></li>
-                        <li><a href="<?php echo base_url().'usuarios'; ?>"><i class="fa fa-edit fa-fw"></i> Usuario</a></li>
-                        <li><a href="#"><i class="fa fa-wrench fa-fw"></i> Setting</a></li>
-
                     </ul>
                     <!-- /#side-menu -->
                 </div>
