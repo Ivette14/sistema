@@ -17,13 +17,13 @@ class Direccion extends CI_Controller {
 	 /* END function Admin */
 
 function index(){
-
- $menus= $this->crud_model_menu->menu();
+   $usu = 1;
+   $menus = $this->crud_model_menu->menu($usu);
         //creamos una variable usuarios para pasarle a la vista
-        $data['menu'] =   $menus;
+     $data['menus'] =   $menus;
 
-$this->load->view('header/header', $data);
-$this->load->view('form/inicio');
+$this->load->view('header/header');
+$this->load->view('form/inicio', $data);
 $this->load->view('footer');
 }
 function hrefini(){

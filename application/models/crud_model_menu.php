@@ -5,7 +5,7 @@
     {
         parent::__construct();
     }
-    public function menu()
+    public function menu($usu)
     {
 
   $query = $this->db->query('SELECT usuarios.id_usuario, 
@@ -18,8 +18,7 @@ FROM gu_rol_menu, gu_opcion, gu_rol, usuarios
 where usuarios.id_rol = gu_rol.id_rol
 and gu_rol_menu.id_opcion = gu_opcion.id_opcion 
 and gu_rol_menu.id_rol = gu_rol.id_rol
-and usuarios.id_usuario=2;
-');
+and (usuarios.id_usuario= 1); ');
         return $query->result();
 
     }

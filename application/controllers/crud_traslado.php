@@ -11,17 +11,20 @@ parent::__construct();
         $this->load->library(array('session','form_validation'));
         $this->load->model("crud_model_traslado");
         $this->load->helper(array('form'));
+            $this->load->model("crud_model_menu");
         $this->load->library('form_validation');
     }
      
     public function index()
-    {
+    {   $menus = $this->crud_model_menu->menu($usu);
+        //creamos una variable usuarios para pasarle a la vista
+     $data1['menus'] =   $menus;
         //obtenemos todos los empleado
         $traslados = $this->crud_model_traslado->tabla();       
         //creamos una variable empleados para pasarle a la vista
         $data['traslados'] = $traslados;
         //cargamos nuestra vista
-        $this->load->view('header/header');
+        $this->load->view('header/header', $data1);
         $this->load->view('form/frmtraslado',$data);
         $this->load->view('footer');
     

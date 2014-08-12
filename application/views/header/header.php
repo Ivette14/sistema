@@ -27,7 +27,7 @@ if (isset($_SESSION['my_usuario']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="<?php echo base_url();  ?>">
 
-    <title>Sistema de Activo Fijo</title>
+    <title>Sistema de Activo Fijo </title>
      
     <!-- Código del Icono -->
     <link href="<?php echo base_url().'seteo/logos/logo7.png'; ?>" type="image/x-icon" rel="shortcut icon" />
@@ -94,12 +94,12 @@ if (isset($_SESSION['my_usuario']))
                     </a>
                     <ul class="dropdown-menu dropdown-user">
            
-             <li><a href='acceso/salir'><i class="fa fa-user fa-fw"></i>Perfil</a>
+             <li><a href='#'><i class="fa fa-user fa-fw"></i>Perfil</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> </a>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>aaaa </a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href='acceso/salir'><i class="fa fa-sign-out fa-fw"></i>Cerrar Session</a>
+                        <li><a href='#'><i class="fa fa-sign-out fa-fw"></i>Cerrar Session</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -111,12 +111,35 @@ if (isset($_SESSION['my_usuario']))
             <div class="navbar-default navbar-static-side" role="navigation">
                 <div class="sidebar-collapse">
                     <ul class="nav" id="side-menu">
+
+
+
+
+
+                        <li><a href="<?php echo base_url().'direccion/hrefini'; ?>"><i class="fa fa-dashboard fa-fw"></i> Inicio  </a></li>
+                        
+                        <li ><a href="<?php echo base_url().'crud_activo'; ?>"><i class="fa fa-edit fa-fw"></i> Activo Fijo</a></li>
+                        <ul class="nav nav-second-level">
+                            <li><a href="<?php echo base_url().'crud_activo/activar'; ?>"><i class="fa fa-edit fa-fw"></i> Activos sin activar</a></li>
                        
-                                            <?php foreach ($menu as $menu):?>
-                                                
-                        <li><a href="<?  echo base_url().$menu->url;  ?>"><i class="fa fa-dashboard fa-fw"></i> <?= $menu->opcion?> </a></li>
-                           <?php endforeach ;?>
-                       
+                         <li><a href="<?php echo base_url().'crud_baja'; ?>"><i class="fa fa-edit fa-fw"></i> Baja de Activo</a></li>
+                        
+                        </ul>
+
+    <li><a href="<?php echo base_url().'crud_empleado'; ?>"><i class="fa fa-edit fa-fw"></i> Empleados</a></li>
+                         <li><a href="<?php echo base_url().'crud_proveedor'; ?>"><i class="fa fa-edit fa-fw"></i> Proveedores</a></li>
+                         <li><a href="<?php echo base_url().'crud_depreciacion'; ?>"><i class="fa fa-edit fa-fw"></i> Depreciacion</a></li>
+                        <ul class="nav nav-second-level">
+                            <li><a href="<?php echo base_url().'crud_activo/advertencia'; ?>"><i class="fa fa-edit fa-fw"></i> Depreciar Activos</a></li>
+                         <li><a href="<?php echo base_url().'crud_activo/advertencia'; ?>"><i class="fa fa-edit fa-fw"></i> Ver Saldos</a></li>                        
+                        </ul>
+                         <li><a href="<?php echo base_url().'crud_saldo'; ?>"><i class="fa fa-edit fa-fw"></i> Saldo</a></li>
+                         <li><a href="<?php echo base_url().'crud_cuenta'; ?>"><i class="fa fa-edit fa-fw"></i> Cuentas</a></li>
+                         <li><a href="<?php echo base_url().'crud/index'; ?>"><i class="fa fa-edit fa-fw"></i> Sucursales</a></li>
+        
+
+
+
                     </ul>
                     <!-- /#side-menu -->
                 </div>
