@@ -32,11 +32,12 @@ public function index_nuevo()
 public function activar()
 {
  
-  
-        //cargamos nuestra vista
+ $activos= $this->crud_model_activo->get_activar_activos();
+        //creamos una variable usuarios para pasarle a la vista
+        $data['activo'] =   $activos;
         $this->load->view('header/header');
        // $this->load->view('form/prueva');    
-        $this->load->view('form/frmactivofijo_activar');
+        $this->load->view('form/frmactivofijo_activar', $data);
        $this->load->view('footer');
     
     }

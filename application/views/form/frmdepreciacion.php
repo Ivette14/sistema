@@ -14,7 +14,9 @@
             <table>
                 <tr>
                    
-                    
+                <form action="<?php $ruta;?>exportar/toExcel_depreciacion" name="frmExcel" id="frmExcel" method "post">
+                    <a href="" onclick="generar_reporte_excel();">assas</a>
+                </form>  
                 </tr>
             </table>
         <div class="form-group"> </div>       
@@ -67,3 +69,10 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+    <?php
+    function generar_reporte_excel()
+    {
+        document.getElementById("frmExcel").submit();
+
+    }
+    ?>
