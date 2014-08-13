@@ -26,6 +26,8 @@
                     <div class="panel panel-default">
                         <!-- /.panel-heading -->
                       <form action="" id="tabla_sucursal" method="post" role="form">
+                        <button type="button" onclick=location="<?php echo base_url().'crud_depreciacion/toExcel_saldo';?>" title="Exportar a Excel" class="btn btn-default" ><i class="glyphicon glyphicon-file"></i>&nbsp;Excel</button>
+                        <button type="button" onclick=location="<?php echo base_url().'crud_traslado/toExcel_traslado';?>" title="Exportar a PDF" class="btn btn-default" ><i class="glyphicon glyphicon-file"></i>&nbsp;PDF</button>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -36,14 +38,10 @@
                                             <th>Nombre Cuenta</th>
                                             <th>Depreciacion Mensual</th>
                                             <th>Depreciacion Acomulada</th>
-                                            <th>Valor En Libros</th>
-                                         
-                                               
-                                            
+                                            <th>Valor En Libros</th> 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                           
                                             <?php foreach ($saldo as $saldo):?>
                                             <tr>
                                             <td><?= $saldo->id_activofijo?></td>   
@@ -52,9 +50,7 @@
                                             <td><?= $saldo->cuota_mensual?></td>
                                             <td><?= $saldo->depreciacion_acumulada?></td>
                                             <td><?= $saldo->saldo_restante?></td>
-                                            
                                             </tr>
-                                                
                                             <?php endforeach ;?>
                                             
                                     </tbody>
