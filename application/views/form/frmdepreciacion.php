@@ -10,25 +10,19 @@
           </div>
         </div><!-- /.row -->
 
-            <!-- /.row -->
-            <table>
-                <tr>
-                   
-                <form action="<?php $ruta;?>exportar/toExcel_depreciacion" name="frmExcel" id="frmExcel" method "post">
-                    <a href="" onclick="generar_reporte_excel();">assas</a>
-                </form>  
-                </tr>
-            </table>
+            <!-- /.row -->            
         <div class="form-group"> </div>       
-                            <div class="form-group"> </div> 
+                              
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <!-- /.panel-heading -->
-                      <form action="" id="tabla_sucursal" method="post" role="form">
+                      <form role="form">                        
+                        <div class="panel-body">
+                            <div class="form-group" align="right">
                         <button type="button" onclick=location="<?php echo base_url().'crud_depreciacion/toExcel_saldo';?>" title="Exportar a Excel" class="btn btn-default" ><i class="glyphicon glyphicon-file"></i>&nbsp;Excel</button>
                         <button type="button" onclick=location="<?php echo base_url().'crud_traslado/toExcel_traslado';?>" title="Exportar a PDF" class="btn btn-default" ><i class="glyphicon glyphicon-file"></i>&nbsp;PDF</button>
-                        <div class="panel-body">
+                        </div>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>

@@ -184,11 +184,7 @@
         }
     }
 
-        function toExcel_traslado()
-        {
-            $data['reporte_traslado'] = $this->crud_model_traslado->tabla();
-            $this->load->view('reportes/reporte_traslado',$data);
-        }
+        
         
 }
 

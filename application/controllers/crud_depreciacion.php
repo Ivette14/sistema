@@ -81,9 +81,8 @@ parent::__construct();
         //creamos una variable activos para pasarle a la vista
         if($query=$this->db->query("CALL procedimiento2"))
         {
-         $data['reporte_saldo'] = $activo;        
-
-        $this->load->view('reportes/reporte_saldo', $data);
+         $data['reporte_saldo'] = $activo;
+         $this->load->view('reportes/reporte_saldo', $data);
         }
          else
         {
