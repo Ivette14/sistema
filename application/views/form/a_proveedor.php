@@ -41,7 +41,7 @@
               <div class="form-group">
                      <button type="submit" class="btn btn-primary" onclick="if(confirm('Exito en agregar registro'))
 alert('ok!');
-else alert('El registro no se ha eliminado')" >Guardar</button>
+else alert('No se a Ingresado los Datos')" >Guardar</button>
                 <button type="button" onclick=location="<?php echo base_url().'crud_proveedor'; ?>" class="btn btn-primary">Cancelar</button>
               </div>              
 

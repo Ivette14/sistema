@@ -16,12 +16,12 @@
 
               <div class="form-group">
                 <label>Nombre de la Cuenta</label>
-                <input name="nombre_cuenta" class="form-control">
+                <input name="nombre_cuenta" required="required"  class="form-control">
               </div>
 
                <div class="form-group">
                 <label>Vida Util</label>
-                <input name="vida_util" class="form-control">
+                <input name="vida_util" required="required"  class="form-control">
               </div>
  
 
@@ -29,7 +29,7 @@
                 <input  type="hidden" name="post" value="1" />                
                  <button type="submit" class="btn btn-primary" onclick="if(confirm('Exito en agregar registro'))
 alert('ok!');
-else alert('El registro no se ha eliminado')" >Guardar</button>
+else alert('No se a Ingresado los datos')" >Guardar</button>
                 <button type="button" onclick=location="<?php echo base_url().'crud_cuenta'; ?>" class="btn btn-primary">Cancelar</button>
               </div>   
                 

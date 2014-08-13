@@ -17,49 +17,34 @@
 
               <div class="form-group">
                 <label>Codigo de empleado</label>
-                <input name="codigo_empleado" class="form-control" value="<?= set_value('codigo_empleado');?>">
+                <input name="codigo_empleado" class="form-control" required="required" value="<?= set_value('codigo_empleado');?>">
               </div>
 
-             
-             <!-- <div class="form-group">
-                   <label>Sucursal en la que operara</label>
-              <select name="id_sucursal" class="form-control" id="id_sucursal">
-                <?php 
-                foreach($sucursal as $fila)
-                {
-                ?>
-                  <option value="<?=$fila -> id_sucursal ?>"><?=$fila -> nombre_sucursal ?></option>
-                <?php
-                }
-                ?>        
-              </select>
-              </div>    
--->
               <div class="form-group">
                 <label>Nombre del empleado</label>
-                <input name="nombre_empleado" class="form-control" value="<?= set_value('nombre_empleado');?>" >
+                <input name="nombre_empleado" class="form-control" required="required" value="<?= set_value('nombre_empleado');?>" >
               </div>
 
               <div class="form-group">
                 <label>Direccion</label>
-                <input name="direccion_empleado" class="form-control" value="<?= set_value('direccion_empleado');?>">
+                <input name="direccion_empleado" class="form-control" required="required" value="<?= set_value('direccion_empleado');?>">
               </div>
 
               <div class="form-group">
                 <label>Telefono</label>
-                <input name="telefono_empleado" class="form-control" value="<?= set_value('telefono_empleado');?>">
+                <input name="telefono_empleado" class="form-control" required="required" value="<?= set_value('telefono_empleado');?>">
               </div>              
 
                <div class="form-group">
                 <label>Email</label>
-                <input name="email_empleado" class="form-control" value="<?= set_value('email_empleado');?>" placeholder="example@example.com">
+                <input name="email_empleado" class="form-control" required="required" value="<?= set_value('email_empleado');?>" placeholder="example@example.com">
               </div> 
 
               <div class="form-group">
                 <input type="hidden" name="post" value="1" />                
-                <button type="submit" class="btn btn-primary" onclick="if(confirm('Exito en agregar registro'))
+                <button type="submit" class="btn btn-primary" onclick="if(confirm('Estas seguro de los Datos Ingresados'))
                 alert('ok!');
-                else alert('El registro no se ha eliminado')" >Guardar</button>
+                else alert('El registro no a sido Ingresado')" >Guardar</button>
                 <button type="button" onclick=location="<?php echo base_url().'crud_empleado/index'; ?>" class="btn btn-primary">Cancelar</button>
               </div>
             

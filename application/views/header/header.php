@@ -93,17 +93,11 @@ if (isset($_SESSION['my_usuario']))
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-           
              <li><a href='#'><i class="fa fa-user fa-fw"></i>Perfil</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>aaaa </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href='#'><i class="fa fa-sign-out fa-fw"></i>Cerrar Session</a>
-                        </li>
+             </li>
+                  <li><?php echo(isset($usuario)&&$usuario!=false)?><a href="acceso/salir"><i class="fa fa-sign-out fa-fw"></i>Cerrar Sesion</a></li>
                     </ul>
                     <!-- /.dropdown-user -->
-                </li>
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
@@ -127,13 +121,14 @@ if (isset($_SESSION['my_usuario']))
                         </ul>
 
     <li><a href="<?php echo base_url().'crud_empleado'; ?>"><i class="fa fa-edit fa-fw"></i> Empleados</a></li>
+        <li><a href="<?php echo base_url().'crud_traslado'; ?>"><i class="fa fa-edit fa-fw"></i> Traslado</a></li>
                          <li><a href="<?php echo base_url().'crud_proveedor'; ?>"><i class="fa fa-edit fa-fw"></i> Proveedores</a></li>
                          <li><a href="<?php echo base_url().'crud_depreciacion'; ?>"><i class="fa fa-edit fa-fw"></i> Depreciacion</a></li>
                         <ul class="nav nav-second-level">
                             <li><a href="<?php echo base_url().'crud_activo/advertencia'; ?>"><i class="fa fa-edit fa-fw"></i> Depreciar Activos</a></li>
-                         <li><a href="<?php echo base_url().'crud_activo/advertencia'; ?>"><i class="fa fa-edit fa-fw"></i> Ver Saldos</a></li>                        
+                         <li><a href="<?php echo base_url().'crud_depreciacion'; ?>"><i class="fa fa-edit fa-fw"></i> Ver Saldos</a></li>                        
                         </ul>
-                         <li><a href="<?php echo base_url().'crud_saldo'; ?>"><i class="fa fa-edit fa-fw"></i> Saldo</a></li>
+                        <li><a href="<?php echo base_url().'crud_area'; ?>"><i class="fa fa-edit fa-fw"></i>Area</a></li>
                          <li><a href="<?php echo base_url().'crud_cuenta'; ?>"><i class="fa fa-edit fa-fw"></i> Cuentas</a></li>
                          <li><a href="<?php echo base_url().'crud/index'; ?>"><i class="fa fa-edit fa-fw"></i> Sucursales</a></li>
         
