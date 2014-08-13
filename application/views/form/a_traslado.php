@@ -15,13 +15,13 @@
             <form method="post" role="form">
               <div class="form-group">
                 <label>Codigo Traslado de Activo </label>
-                <input name="codigo_traslado" class="form-control" value="<?= set_value('codigo_traslado');?>">
+                <input name="codigo_traslado" required="required" class="form-control" value="<?= set_value('codigo_traslado');?>">
               </div>
 
                <div class="form-group">
                 <label>Codigo Activo </label>
-                <select name="id_activofijo" class="form-control" id="id_activofijo">
-                  <option value='' selected> Seleccionar Activo</option>
+                <select name="id_activofijo" required="required" class="form-control" id="id_activofijo">
+                  <option value=''  selected> Seleccionar Activo</option>
                 <?php 
                   foreach($activofijo as $fila)
                   {
@@ -46,8 +46,8 @@
               <div class="form-group">
                 <label>Receptor </label>
                   
-                <select name="id_sucursal" class="form-control" id="id_sucursal">
-                <option value='' selected> Seleccionar...</option>
+                <select  required="required" name="id_sucursal" class="form-control" id="id_sucursal">
+                <option value=''  selected> Seleccionar...</option>
                 <?php 
                   foreach($sucursal as $fila)
                   {
