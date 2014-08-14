@@ -68,6 +68,59 @@ parent::__construct();
         }
     }
 
+    public function pdfbaja()
+    {        
+        require('http://localhost:8080/JavaBridge/java/Java.inc');
+        $dirInforme ='C:/xampp/htdocs/sistema/application/views/reportes'; 
+        $Informe = "ReporteActivoBaja"; 
+        $jrDirLib = "C:/Tomcat 7.0/webapps/JavaBridge/WEB-INF/lib"; 
+ 
+        $handle = @opendir($jrDirLib); 
+        try 
+    { 
+ 
+        $Conexion=new java("org.altic.jasperReports.JdbcConnection"); 
+        //Driver MySql 
+        $Conexion->setDriver("com.mysql.jdbc.Driver"); 
+        //Conexion a la Base de Datos 
+        $Conexion->setConnectString("jdbc:mysql://localhost/sys_activofijo"); 
+        //Usuario 
+        $Conexion->setUser("root"); 
+        //Password 
+        $Conexion->setPassword(""); 
+        //Compilacion del Reporte 
+        $JspCompil=new JavaClass('net.sf.jasperreports.engine.JasperCompileManager'); 
+        $Reporte=$JspCompil->compileReport($dirInforme.'\\'.$Informe.".jrxml"); 
+ 
+        $JspCompil=new JavaClass('net.sf.jasperreports.engine.JasperFillManager'); 
+        $Imprime=$JspCompil->fillReport($Reporte, new java('java.util.HashMap'),   
+        $Conexion->getConnection() 
+        ); 
+ 
+        //Exportacion del reporte
+  
+        $JspExport=new JavaClass('net.sf.jasperreports.engine.JasperExportManager');
+        $JspExport->exportReportToPdfFile($Imprime,$dirInforme.$Informe.".pdf");
+        if (file_exists($dirInforme.$Informe.".pdf"))
+        {
+            header('Content-disposition:attachment;filename="'.$Informe.'pdf"');
+            header('Content-Type:application/pdf');
+            header('Content-Transfer-Enconding:binary');
+            header('Content-Length:'.@filesize($dirInforme.$Informe.".pdf"));
+            header('Pragma:no-cache');
+            header('Cache-Control:must-revalidate,post-check=0,pre-check=0');
+            header('Expires:0');set_time_limit(0);@readfile($dirInforme.$Informe.".pdf") or die("Ocurrio un Problema");
+        }   
+    }
+
+        catch (JavaException $ex)
+        {
+            $trace = new Java('java.io.ByteArrayOutputStream');
+            $ex->printStackTrace(new Java('java.io.PrintStream', $trace));
+            print nl2br("java stack trace: $trace\n");return false;
+        }
+    }
+
     
 }
 

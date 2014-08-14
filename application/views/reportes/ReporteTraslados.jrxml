@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report10" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="416aebf4-ba48-4ffb-92cb-cc2e649564ee">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="290"/>
+	<property name="ireport.y" value="146"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -156,7 +156,7 @@ INNER JOIN cat_activo_fijo ON cat_activo_fijo.id_activofijo = cat_trasladoaf.id_
 	<columnHeader>
 		<band height="174" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table 1" style="table 1" x="45" y="0" width="757" height="174" uuid="8e78117e-05f8-464f-928b-70e4c05fff4d"/>
+				<reportElement key="table 1" style="table 1" x="45" y="10" width="757" height="164" uuid="8e78117e-05f8-464f-928b-70e4c05fff4d"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="New Dataset" uuid="596c3742-9de7-42c7-9ba8-9fca80dc9b54">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
@@ -308,25 +308,12 @@ INNER JOIN cat_activo_fijo ON cat_activo_fijo.id_activofijo = cat_trasladoaf.id_
 				<text><![CDATA[Derechos Reservados 2014]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="672" y="24" width="130" height="20" uuid="37b42369-ad28-4518-865e-837ee682dc61"/>
-				<textElement>
-					<font size="11"/>
-				</textElement>
+				<reportElement x="654" y="24" width="148" height="28" uuid="43bce32b-0c47-476f-a676-6fd2c9b04890"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
-			<textField evaluationTime="Report">
-				<reportElement x="738" y="0" width="64" height="20" uuid="559aed88-6e33-413d-a8e0-9a8db7acbdca"/>
-				<textElement>
-					<font size="11"/>
-				</textElement>
-				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
 			<textField>
-				<reportElement x="672" y="0" width="66" height="20" uuid="dff5cf27-5aa1-48d9-9bcd-5a877cf19b4d"/>
-				<textElement textAlignment="Right">
-					<font size="11"/>
-				</textElement>
-				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				<reportElement x="654" y="4" width="148" height="20" uuid="1e805664-a9b4-4ab4-a9c9-34599b2740a9"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>

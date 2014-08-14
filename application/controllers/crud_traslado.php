@@ -135,7 +135,7 @@
     {        
         require('http://localhost:8080/JavaBridge/java/Java.inc');
         $dirInforme ='C:/xampp/htdocs/sistema/application/views/reportes'; 
-        $Informe = "report10" ; 
+        $Informe = "ReporteTraslados"; 
         $jrDirLib = "C:/Tomcat 7.0/webapps/JavaBridge/WEB-INF/lib"; 
  
         $handle = @opendir($jrDirLib); 
