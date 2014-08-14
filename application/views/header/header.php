@@ -5,7 +5,7 @@ if (isset($_SESSION['my_usuario']))
 {
 
 ?>
-<html>
+<html lang="en">
 
 <head>
 
@@ -17,11 +17,10 @@ if (isset($_SESSION['my_usuario']))
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
    
         <!-- Bootstrap --> 
-        <link href="css/bootstrap.min.css" rel="stylesheet"> 
+        <link href="<?php echo base_url().'css/bootstrap.min.css'; ?>"rel="stylesheet">  
         <!-- JQUERY UI --> 
-        <link href="css/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet"> 
-        <link href="css/smoothness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet"> 
-
+        <link href="<?php echo base_url().'css/smoothness/jquery-ui-1.10.4.custom.css'; ?>"     rel="stylesheet"> 
+        <link href="<?php echo base_url().'css/smoothness/jquery-ui-1.10.4.custom.min.css'; ?>"   rel="stylesheet"> 
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,7 +58,6 @@ if (isset($_SESSION['my_usuario']))
     <!-- SB Admin CSS - Include with every page -->
     <link href="<?php echo base_url().'seteo/css/sb-admin.css'; ?>" rel="stylesheet">
 
-
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script type="text/javascript" src="http://www.google.com/jsapi"></script>
         <script type="text/javascript">
@@ -89,12 +87,12 @@ if (isset($_SESSION['my_usuario']))
 
            <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-             <li><a href='#'><i class="fa fa-user fa-fw"></i>Perfil</a>
-             </li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                </a>
+            <ul class="dropdown-menu dropdown-user">
+            <li><a href='#'><i class="fa fa-user fa-fw"></i>Perfil</a>
+            </li>
                   <li><?php echo(isset($usuario)&&$usuario!=false)?><a href="acceso/salir"><i class="fa fa-sign-out fa-fw"></i>Cerrar Sesion</a></li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -131,6 +129,7 @@ if (isset($_SESSION['my_usuario']))
                         <li><a href="<?php echo base_url().'crud_area'; ?>"><i class="fa fa-edit fa-fw"></i>Area</a></li>
                           <li><a href="<?php echo base_url().'crud_cuenta'; ?>"><i class="fa fa-edit fa-fw"></i> Cuentas</a></li>
                           <li><a href="<?php echo base_url().'crud/index'; ?>"><i class="fa fa-edit fa-fw"></i> Sucursales</a></li>
+                                    <li><a href="<?php echo base_url().'usuarios'; ?>"><i class="fa fa-edit fa-fw"></i> Usuarios</a></li>
 
 
 

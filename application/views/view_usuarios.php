@@ -1,42 +1,25 @@
-<script src="js/jquery-1.11.0.min.js"></script> 
-        <script src="js/bootstrap.min.js"></script> 
-        <!-- JQUERY UI --> 
-        <script src="js/jquery-ui-1.10.4.custom.js"></script> 
-        <script src="js/jquery-ui-1.10.4.custom.min.js"></script> 
-
-
 
 <div class="row">
-          <div class="col-lg-12">
-          <br><br>
-            
-            <ol class="breadcrumb">
-             
+<div class="col-lg-12"> 
+<br><br>
+<ol class="breadcrumb">
 
-              <li class="active"></i><center><h4> Gestor de Activos Fijos</h4></center></li>
+<li class="active"></li><center><h4>Gestor de Activos Fijos</h4></center></li>
+<li class="active"></li><center><h4>Gestor de Usuarios</h4></center></li> 
 
-              <li class="active"></i><center><h4> Gestor de Usuarios</h4></center></li>
-
-            </ol>
-            
-          </div>
-        </div>
-
-
+</ol>
+</div>
+</div> 
 <div class="container-fluid"> 
-
  
 	<button type="button" onclick="prepara_form( 'Nuevo', 0 )" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i>&nbsp;Agregar usuario</button> 
- 
+
 	<!-- TABLA DE USUARIOS --> 
 	<table class="completa table"> 
 		<thead> 
 			<tr> 
-			    
-			     <th>Rol de Usuario</th>
-				<th>Usuario</th> 
 				<th>Nombre</th> 
-			
+				<th>Usuario</th> 
 			
 				<th></th> 
 			</tr> 
@@ -53,10 +36,21 @@
 		<!-- HIDDEN --> 
 		<input type="hidden" name="id_usuario" id="id_usuario"> 
 		<table class="completa"> 
-			<tr> 
-				<td><label for="nombre">Rol de Usuario: *</label></td> 
+		<tr> 
+				<td><label for="nombre">Rol : *</label></td> 
 				<td> 
-					<input type="text" class="form-control" name="id_rol" id="id_rol"> 
+				  <select name="id_rol" class="form-control" id="id_rol">
+           <option value='' selected> Seleccionar...</option>
+          <?php 
+              foreach($rol as $fila)
+              {
+          ?>
+            <option value="<?=$fila -> id_rol ?>"><?=$fila -> rol ?></option>
+          <?php
+              }
+          ?>        
+              </select>
+					
 				</td> 
 			</tr> 
 			<tr> 
@@ -83,7 +77,7 @@
 					<input type="password" class="form-control" id="clave_" name="clave_"> 
 				</td> 
 			</tr> 
-			
+			<tbody id="lista"></tbody> 
 		</table> 
 	<?php echo form_close() ?> 
 </div> 
@@ -109,12 +103,12 @@
 					
 					var fila=''; 
 					$.each(data.lista, function( k, v ){ 
-						fila  ='<tr tabindex="2014'+v.id_usuario+'" >';
-						 fila +='<td>'+v.id_rol+'</td>';
-						 fila +='<td>'+v.nombre_usuario+'</td>'; 
-						fila +='<td>'+v.nombre_completo+'</td>'; 	
+						fila  ='<tr tabindex="2014'+v.id_usuario+'" >'; 
+					
+						fila +='<td>'+v.nombre_completo+'</td>'; 
+						fila +='<td>'+v.nombre_usuario+'</td>'; 
 						fila +='<td>'; 
-						fila += '<i class="glyphicon glyphicon-pencil" onclick="prepara_form(\'Editar\', '+v.id_usuario+')" title="EDITAR"></i>'; 
+						fila +='<i class="glyphicon glyphicon-pencil" onclick="prepara_form(\'Editar\', '+v.id_usuario+')" title="EDITAR"></i>'; 
 						fila +='<i class="glyphicon glyphicon-remove" onclick="confirm_delete( '+v.id_usuario+' )" title="ELIMINAR"></i>'; 
 						fila +='</td>'; 
 						fila +='</tr>'; 
@@ -146,13 +140,11 @@
 					if( data.type==false ){ 
 						dialogo('Notificación', data.message); 
 					}else{ 
-						exd = new Date();
-						exd.getDate();
 						var v=data.usuario[0]; 
-						$('#id_rol').val( v.id_rol ); 
+							$('#id_rol').val( v.id_rol );
 						$('#nombre_usuario').val( v.nombre_usuario ); 
-						$('#nombre_completo').val( v.nombre_completa );
-						$('#fecha_creacion').val( exd.fecha_creacion );
+						$('#nombre_completo').val( v.nombre_completa ); 
+						$('#genero option[value="'+v.genero+'"]').attr('selected', true); 
 						load_form( accion ); 
 					} 
 				}, 

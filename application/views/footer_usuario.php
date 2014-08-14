@@ -83,6 +83,11 @@
         </script> 
 
   
+        <script src="<?php echo base_url().'js/jquery-1.11.0.min.js'; ?>"></script> 
+        <script src="<?php echo base_url().'js/bootstrap.min.js'; ?>"></script> 
+        <!-- JQUERY UI --> 
+        <script src="<?php echo base_url().'js/jquery-ui-1.10.4.custom.js'; ?>"></script> 
+        <script src="<?php echo base_url().'js/jquery-ui-1.10.4.custom.min.js'; ?>"></script> 
    
 </body>
 

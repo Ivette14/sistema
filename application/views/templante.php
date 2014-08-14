@@ -1,5 +1,5 @@
 <?php 
 $this->load->view('header/header'); 
 $this->load->view( $page ); 
-$this->load->view( 'footer'); 
+$this->load->view( 'footer_usuario'); 
 ?>

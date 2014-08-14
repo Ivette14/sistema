@@ -6,13 +6,16 @@ class usuarios extends CI_Controller {
 	public function __construct(){ 
 		parent::__construct(); 
 		session_start(); 
-		$this->load->model('model_usuarios'); 
+		$this->load->model('model_usuario'); 
 	} 
  
  
  
 	public function index(){	 
-		if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+		if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' );
+		 $rol= $this->model_usuario->rol();
+        //creamos una variable usuarios para pasarle a la vista
+        $data['rol'] =   $rol;
 		$data['usuario']=$_SESSION['my_usuario']; 
 		$data['page']   ='view_usuarios'; 
 		$this->load->view('templante', $data); 
@@ -22,7 +25,7 @@ class usuarios extends CI_Controller {
  
 	function traer_lista(){ 
 		$data=array(); 
-		$data['lista']=$this->model_usuarios->traer_usuarios(); 
+		$data['lista']=$this->model_usuario->traer_usuarios(); 
 		if( $data['lista']==false ){ 
 			$data['type']   =false; 
 			$data['message']='No hay usuarios.'; 
@@ -41,7 +44,7 @@ class usuarios extends CI_Controller {
 			$data['type']   =false; 
 			$data['message']='El parámetro id_usuario falló.'; 
 		}else{ 
-			$data['usuario']=$this->model_usuarios->traer_usuarios( $id_usuario ); 
+			$data['usuario']=$this->model_usuario->traer_usuarios( $id_usuario ); 
 			if( $data['usuario']==false ){ 
 				$data['type']   =false; 
 				$data['message']='No se encontró el usuario.'; 
@@ -56,8 +59,8 @@ class usuarios extends CI_Controller {
  
 	function save_form(){ 
 		$fecha = time();
-		$data = date("Ymd");
-		   $this->form_validation->set_rules('id_rol', 'id_rol', 'required|numeric|trim|xss_clean');
+		$data=array(); 
+		$this->form_validation->set_rules('id_rol', 'id_rol', 'trim|required|xss_clean'); 
 		$this->form_validation->set_rules('nombre_usuario', 'nombre_usuario', 'trim|required|xss_clean'); 
 		$this->form_validation->set_rules('nombre_completo', 'nombre_completo', 'trim|required|xss_clean'); 
 
@@ -71,7 +74,6 @@ class usuarios extends CI_Controller {
 		} 
  
 		$this->form_validation->set_message('matches', 'Las claves no coinciden'); 
-		 $this->form_validation->set_message('numeric','El Campo <b>%s</b> Solo Acepta Números');
 		$this->form_validation->set_message('required', 'campo %s requerido'); 
  
 		if( $this->form_validation->run() === FALSE ){ 
@@ -80,10 +82,10 @@ class usuarios extends CI_Controller {
 		}else{ 
 			unset($_POST['clave_']); 
 			if( $id_usuario==0 ){ 
-				$hecho=$this->model_usuarios->save_usuario( $_POST ); 
+				$hecho=$this->model_usuario->save_usuario( $id_usuario, $_POST ); 
 			}else{ 
 				if( $_POST['clave']==''||$_POST['clave']==null)unset($_POST['clave']); 
-				$hecho=$this->model_usuarios->edit_usuario( $id_usuario, $_POST ); 
+				$hecho=$this->model_usuario->edit_usuario( $id_usuario, $_POST ); 
 			} 
 			if( $hecho==false ){ 
 				$data['type']   =false; 
@@ -97,15 +99,15 @@ class usuarios extends CI_Controller {
 		$this->output->set_content_type('application/json')->set_output( json_encode( $data ) ); 
 	} 
  
- 
-	function delete_(){ 
+
+function delete_(){ 
 		$data=array(); 
 		$id_usuario=(int)$this->input->post('id_usuario'); 
 		if( $id_usuario==0 ){ 
 			$data['type']   =false; 
-			$data['message']='El parámetro idusuarios falló.'; 
+			$data['message']='El parámetro id usuarios falló.'; 
 		}else{ 
-			$hecho=$this->model_usuarios->delete_( $id_usuario ); 
+			$hecho=$this->model_usuario->delete_( $id_usuario ); 
 			if( $hecho==false ){ 
 				$data['type']   =false; 
 				$data['message']='No se pudo eliminar.'; 
@@ -116,5 +118,6 @@ class usuarios extends CI_Controller {
 		} 
 		$this->output->set_content_type('application/json')->set_output( json_encode( $data ) ); 
 	} 
- 
+
+
 }
