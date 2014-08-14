@@ -10,9 +10,7 @@ parent::__construct();
         $this->load->helper('url');
         $this->load->library('pagination');
         $this->load->library(array('session','form_validation'));
-
         $this->load->model("crud_model_depreciacion");
-
         $this->load->model("crud_model");
         $this->load->helper(array('form'));
         $this->load->library('form_validation');
@@ -21,7 +19,7 @@ parent::__construct();
     public function index()
     {
 
-          //obtenemos todos los activos
+        //obtenemos todos los activos
         $activo = $this->crud_model_depreciacion->get_activos();
         //creamos una variable activos para pasarle a la vista
         if($query=$this->db->query("CALL procedimiento2"))
@@ -73,6 +71,22 @@ parent::__construct();
             $this->crud_model->eliminar_sucursal($id_sucursal);
             //redireccionamos al controlador CRUD
             redirect('crud'); 
+        }
+    }
+
+            function toExcel_saldo()
+    {
+        //obtenemos todos los activos
+        $activo = $this->crud_model_depreciacion->get_activos();
+        //creamos una variable activos para pasarle a la vista
+        if($query=$this->db->query("CALL procedimiento2"))
+        {
+         $data['reporte_saldo'] = $activo;
+         $this->load->view('reportes/reporte_saldo', $data);
+        }
+         else
+        {
+        show_error('error!');
         }
     }
 

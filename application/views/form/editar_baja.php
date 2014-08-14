@@ -46,4 +46,4 @@
         </div><!-- /.row -->
 
       </div><!-- /#page-wrapper -->
-      
+         <?= validation_errors(); ?>

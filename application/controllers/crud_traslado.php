@@ -4,7 +4,7 @@
     public function __construct()
     {
         //Cargamos El Constructor
-parent::__construct();
+    parent::__construct();
         @ session_start();
         $this->load->helper('url');
         $this->load->library('pagination');
@@ -16,15 +16,14 @@ parent::__construct();
     }
      
     public function index()
-    {   $menus = $this->crud_model_menu->menu($usu);
+    { 
         //creamos una variable usuarios para pasarle a la vista
-     $data1['menus'] =   $menus;
         //obtenemos todos los empleado
         $traslados = $this->crud_model_traslado->tabla();       
         //creamos una variable empleados para pasarle a la vista
         $data['traslados'] = $traslados;
         //cargamos nuestra vista
-        $this->load->view('header/header', $data1);
+        $this->load->view('header/header');
         $this->load->view('form/frmtraslado',$data);
         $this->load->view('footer');
     
@@ -42,8 +41,7 @@ parent::__construct();
             $this->form_validation->set_rules('id_activofijo', 'Codigo Activo', 'required|trim|xss_clean');
             $this->form_validation->set_rules('motivo_traslado', 'Motivo de Traslado', 'required|trim|xss_clean');
             $this->form_validation->set_rules('fecha_traslado', 'Fecha de Traslado', 'required|trim|xss_clean');
-            $this->form_validation->set_rules('id_sucursal', 'Emisor de Traslado', 'required|trim|xss_clean');
-            
+            $this->form_validation->set_rules('id_sucursal', 'Emisor de Traslado', 'required|trim|xss_clean');          
 
             $this->form_validation->set_message('required','El Campo <b>%s</b> Es Obligatorio');
             $this->form_validation->set_message('numeric','El Campo <b>%s</b> Solo Acepta Números');
@@ -137,7 +135,7 @@ parent::__construct();
     {        
         require('http://localhost:8080/JavaBridge/java/Java.inc');
         $dirInforme ='C:/xampp/htdocs/sistema/application/views/reportes'; 
-        $Informe = "ReporteTraslados" ; 
+        $Informe = "report10" ; 
         $jrDirLib = "C:/Tomcat 7.0/webapps/JavaBridge/WEB-INF/lib"; 
  
         $handle = @opendir($jrDirLib); 
@@ -186,5 +184,9 @@ parent::__construct();
         }
     }
 
+        
+        
 }
+
+
 ?>

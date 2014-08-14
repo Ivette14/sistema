@@ -15,13 +15,13 @@
             <form method="post" role="form">
               <div class="form-group">
                 <label>Codigo Traslado de Activo </label>
-                <input name="codigo_traslado" class="form-control" value="<?= set_value('codigo_traslado');?>">
+                <input name="codigo_traslado" required="required" class="form-control" value="<?= set_value('codigo_traslado');?>">
               </div>
 
                <div class="form-group">
                 <label>Codigo Activo </label>
-                <select name="id_activofijo" class="form-control" id="id_activofijo">
-                  <option value='' selected> Seleccionar Activo</option>
+                <select name="id_activofijo" required="required" class="form-control" id="id_activofijo">
+                  <option value=''  selected> Seleccionar Activo</option>
                 <?php 
                   foreach($activofijo as $fila)
                   {
@@ -35,19 +35,19 @@
 
               <div class="form-group">
                 <label>Motivo de Traslado </label>
-                <input name="motivo_traslado" class="form-control" value="<?= set_value('motivo_traslado');?>">
+                <input name="motivo_traslado" class="form-control" required="required"  value="<?= set_value('motivo_traslado');?>">
               </div>
 
               <div class="form-group">
                 <label>Fecha de Traslado </label>
-                <input type="date" name="fecha_traslado" class="form-control" value="<?= set_value('fecha_traslado');?>">
+                <input type="date" name="fecha_traslado" required="required"  class="form-control" value="<?= set_value('fecha_traslado');?>">
               </div>              
 
               <div class="form-group">
                 <label>Receptor </label>
                   
-                <select name="id_sucursal" class="form-control" id="id_sucursal">
-                <option value='' selected> Seleccionar...</option>
+                <select  required="required" name="id_sucursal" class="form-control" id="id_sucursal">
+                <option value=''  selected> Seleccionar...</option>
                 <?php 
                   foreach($sucursal as $fila)
                   {
@@ -62,7 +62,7 @@
               <div class="form-group">
                 <label>Encargado </label>
 
-                <select name="id_empleado" class="form-control" id="id_empleado">
+                <select name="id_empleado" required="required"  class="form-control" id="id_empleado">
                   <option value='' selected> Seleccionar...</option>
                 <?php 
                   foreach($empleado as $fila)
@@ -79,7 +79,7 @@
                 <input  type="hidden" name="post" value="1" />                
                     <button type="submit" class="btn btn-primary" onclick="if(confirm('Exito en agregar registro'))
 alert('ok!');
-else alert('El registro no se ha eliminado')" >Guardar</button>
+else alert('No se a Ingresado los Datos')" >Guardar</button>
                 <button type="button" onclick=location="<?php echo base_url().'crud_traslado'; ?>" class="btn btn-primary">Cancelar</button>
               </div>              
             </form>

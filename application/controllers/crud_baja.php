@@ -43,14 +43,16 @@ parent::__construct();
             //Si existe el post para editar
             if($this->input->post('post') && $this->input->post('post')==1)
             {
-            $this->form_validation->set_rules('activado', 'Activado', 'required|numeric|trim|xss_clean');
-            
+            $this->form_validation->set_rules('activado', 'Activado', 'required|trim|xss_clean');
+              $this->form_validation->set_rules('id_activofijo', 'Codigo activo fijo', 'required|trim|xss_clean'); 
+          $this->form_validation->set_rules('motivo_baja', 'Activado', 'required|trim|xss_clean');  
              
                 $this->form_validation->set_message('numeric','El Campo <b>%s</b> Solo Acepta Números');
+                      $this->form_validation->set_message('required','El Campo <b>%s</b> Es Obligatorio');
                 if ($this->form_validation->run() == TRUE)
                 {
                 $id_activofijo = $this->input->post('id_activofijo');
-                $activado = $this->input->post('activado');
+                $activado = 2;
                 $motivo_baja = $this->input->post('motivo_baja');
                 $this->crud_model_baja->editar($id_activofijo,$activado,$motivo_baja);
                     //redireccionamos al controlador CRUD
