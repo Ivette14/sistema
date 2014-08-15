@@ -20,7 +20,7 @@
              
               <div class="form-group">
                 <input type="hidden" name="post" value="1" />                
-             <button type="submit" class="btn btn-primary" onclick="if(confirm('Exito en agregar registro'))
+             <button type="submit" class="btn btn-primary" onclick="if(confirm('Los Datos son Corecto?'))
 alert('ok!');
 else alert('No se a Ingrtesado los Datos')" >Guardar</button>
 

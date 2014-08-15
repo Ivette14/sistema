@@ -18,7 +18,7 @@
 
     }
     //actualizamos los datos de un usuario por id
-    public function actualizar_proveedor($id_proveedor,$nombre_provee,$direccion_provee,$telefono_provee,$email_provee, $data)
+    public function actualizar_proveedor($id_proveedor,$nombre_provee,$direccion_provee,$telefono_provee,$email_provee, $nit)
     {
         $this->db->where('id_proveedor', $id_proveedor);
         $this->db->update('cat_proveedor',array(

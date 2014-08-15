@@ -34,9 +34,8 @@ parent::__construct();
                  //Si Existe Post y es igual a uno
         if($this->input->post('post') && $this->input->post('post')==1)
         {
-            $this->form_validation->set_rules('nombre_area', 'Nombre de Area', 'required|alpha|trim|xss_clean');
-            
-                     
+            $this->form_validation->set_rules('nombre_area', 'Nombre de Area', 'required|trim|xss_clean');
+             
              
             $this->form_validation->set_message('required','El Campo <b>%s</b> Es Obligatorio');
             $this->form_validation->set_message('numeric','El Campo <b>%s</b> Solo Acepta Números');

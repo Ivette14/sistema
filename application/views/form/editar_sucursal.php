@@ -30,7 +30,7 @@
 
               <div class="form-group">
                   <label for="disabledSelect">Dapartamento</label>
-                  <select id="disabledSelect" name="departamento" class="form-control" value="<?= set_value('departamento',$dato['departamento']);?>">>
+                  <select id="disabledSelect" name="departamento" class="form-control" value="<?= set_value('departamento',$dato['departamento']);?>">
                   <option>Seleccione un Dapartamento</option>
                   <option>Ahuchapan</option>
                   <option>Santa Ana</option>
@@ -57,6 +57,6 @@
 
 
             </form>
-
+      <?= validation_errors(); ?>
     </div>
 </div>
