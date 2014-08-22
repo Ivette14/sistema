@@ -13,17 +13,20 @@
         $this->load->helper(array('form'));
             $this->load->model("crud_model_menu");
         $this->load->library('form_validation');
+         $this->load->model("crud_model_menu");
     }
      
     public function index()
     { 
+           if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario']; 
         //creamos una variable usuarios para pasarle a la vista
         //obtenemos todos los empleado
         $traslados = $this->crud_model_traslado->tabla();       
         //creamos una variable empleados para pasarle a la vista
         $data['traslados'] = $traslados;
         //cargamos nuestra vista
-        $this->load->view('header/header');
+        $this->load->view('header/header', $data);
         $this->load->view('form/frmtraslado',$data);
         $this->load->view('footer');
     
@@ -31,6 +34,9 @@
 
     public function agregar()
     {
+           if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $datos['usuario']=$_SESSION['my_usuario']; 
+
         $datas['sucursal'] = $this->crud_model_traslado->sucur();
         $datas['empleado'] = $this->crud_model_traslado->empleado();
         $datos['activofijo'] = $this->crud_model_traslado->activo();
@@ -70,6 +76,8 @@
      
     public function editar($id_traslado_activo=0)
     {
+           if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario']; 
         //verificamos si existe el id
         $datas['sucursal'] = $this->crud_model_traslado->sucur();
         $datas['empleado'] = $this->crud_model_traslado->empleado();
@@ -117,6 +125,8 @@
      
     public function eliminar($id_traslado_activo=0)
     {
+           if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario']; 
         //verificamos si existe el id
         $respuesta = $this->crud_model_traslado->get_traslado($id_traslado_activo);
         //si nos retorna FALSE mostramos la pag 404.

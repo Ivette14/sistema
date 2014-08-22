@@ -12,16 +12,19 @@ parent::__construct();
         $this->load->model("crud_model_baja");
         $this->load->helper(array('form'));
         $this->load->library('form_validation');
+           $this->load->model("crud_model_menu");
     }
      
     public function index()
     {
+         if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario'];
         //obtenemos todos los usuarios
         $activo = $this->crud_model_baja->get_bajas();
         //creamos una variable usuarios para pasarle a la vista
         $data['activo'] = $activo;
         //cargamos nuestra vista
-        $this->load->view('header/header');
+        $this->load->view('header/header', $data);
         $this->load->view('form/frmbaja',$data);
         $this->load->view('footer');
     
@@ -32,6 +35,8 @@ parent::__construct();
 
     public function editar($id_activofijo=0)
     {
+        if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+          $data['usuario']=$_SESSION['my_usuario'];
         //verificamos si existe el id
         $respuesta = $this->crud_model_baja->get_act($id_activofijo);
 
@@ -62,7 +67,7 @@ parent::__construct();
             //devolvemos los datos del usuario
             $data['dato'] = $respuesta;
             //cargamos la vista
-            $this->load->view('header/header');
+            $this->load->view('header/header', $data);
             $this->load->view('form/editar_baja',$data);
             $this->load->view('footer');
         }

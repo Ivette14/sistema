@@ -12,24 +12,28 @@ parent::__construct();
         $this->load->model("crud_model_proveedor");
         $this->load->helper(array('form'));
         $this->load->library('form_validation');
+         $this->load->model("crud_model_menu");
     }
      
     public function index()
     {
+           if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario']; 
         //obtenemos todos los usuarios
         $proveedor = $this->crud_model_proveedor->get_proveedores();
         //creamos una variable usuarios para pasarle a la vista
         $data['proveedor'] = $proveedor;
         //cargamos nuestra vista
-        $this->load->view('header/header');
+        $this->load->view('header/header', $data);
         $this->load->view('form/frmproveedor',$data);
         $this->load->view('footer');
     
     }
     public function nuevo()
     {
-
- $this->load->view('header/header');
+   if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario']; 
+ $this->load->view('header/header', $data);
         $this->load->view('form/a_proveedor');
         $this->load->view('footer');
     
@@ -59,6 +63,8 @@ parent::__construct();
      
     public function editar($id_proveedor=0)
     {
+           if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario']; 
          //verificamos si existe el id
         $respuesta = $this->crud_model_proveedor->get_proveedor($id_proveedor);
         //si nos retorna FALSE le mostramos la pag 404
@@ -92,7 +98,7 @@ parent::__construct();
             //devolvemos los datos del usuario
             $data['dato'] = $respuesta;
             //cargamos la vista
-            $this->load->view('header/header');
+            $this->load->view('header/header', $data);
             $this->load->view('form/editar_proveedor',$data);
             $this->load->view('footer');
         }
@@ -101,6 +107,8 @@ parent::__construct();
      
     public function eliminar($id_proveedor=0)
     {
+           if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario']; 
         //verificamos si existe el id
         $respuesta = $this->crud_model_proveedor->get_proveedor($id_proveedor);
         //si nos retorna FALSE mostramos la pag 404.

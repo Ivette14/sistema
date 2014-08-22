@@ -13,7 +13,7 @@
 <div class="container-fluid"> 
  
 	<button type="button" onclick="prepara_form( 'Nuevo', 0 )" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i>&nbsp;Agregar usuario</button> 
-
+<button type="button"  onClick=location="<?php echo base_url().'rol'; ?>" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i>&nbsp;Administracion De Roles </button> 
 	<!-- TABLA DE USUARIOS --> 
 	<table class="completa table"> 
 		<thead> 
@@ -155,7 +155,41 @@
 		}else{ 
 			load_form( accion ); 
 		} 
-	};// ----------------------- 
+	};// -----------------------
+		function prepara_form( accion, id_usuario ){ 
+		$('#my_form')[0].reset(); 
+		$('#genero option[value=""]').attr('selected', true); 
+		$('#id_usuario').val( id_usuario ); 
+		if( accion=='Editar' ){ 
+			$.ajax({ 
+				url      : 'usuarios/traer_usuario	', 
+				type     : 'post', 
+				dataType : 'json', 
+				data     : { id_usuario : id_usuario }, 
+				beforeSend : function(){ 
+					alerta( img + ' Espere...' ); 
+				}, 
+				success : function(data){ 
+					alerta(); 
+					if( data.type==false ){ 
+						dialogo('Notificación', data.message); 
+					}else{ 
+						var v=data.usuario[0]; 
+							$('#id_rol').val( v.id_rol );
+						$('#nombre_usuario').val( v.nombre_usuario ); 
+						$('#nombre_completo').val( v.nombre_completa ); 
+						$('#genero option[value="'+v.genero+'"]').attr('selected', true); 
+						load_form( accion ); 
+					} 
+				}, 
+				error : function(){ 
+					alerta(); dialogo( 'Error', 'Error en la función usuarios/traer_usuario.' ); 
+				} 
+			}); 
+		}else{ 
+			load_form( accion ); 
+		} 
+	}; 
 	function load_form( accion ){ 
 		$( "#div_form" ).dialog({ 
 		    autoOpen  : true, 

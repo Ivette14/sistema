@@ -13,29 +13,36 @@ parent::__construct();
         $this->load->model("crud_model_activo");
         $this->load->helper(array('form'));
         $this->load->library('form_validation');
+        $this->load->model("crud_model_menu");
       
     }
   
 public function index_nuevo()
-{       
+{      
+ if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+
  $activos= $this->crud_model_activo->get_activar_activos();
+
         //creamos una variable usuarios para pasarle a la vista
+  $data['usuario']=$_SESSION['my_usuario']; 
         $data['activo'] =   $activos;
         //creamos una variable usuarios para pasarle a la vista
 
         //cargamos nuestra vista
         $this->load->view('header/header',$data);
         $this->load->view('form/a_activofijo');
-        $this->load->view('footer');;
+        $this->load->view('footer');
         
 }
 public function activar()
 {
- 
+ if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
  $activos= $this->crud_model_activo->get_activar_activos();
         //creamos una variable usuarios para pasarle a la vista
+          $data['usuario']=$_SESSION['my_usuario']; 
         $data['activo'] =   $activos;
-        $this->load->view('header/header');
+
+        $this->load->view('header/header', $data);
        // $this->load->view('form/prueva');    
         $this->load->view('form/frmactivofijo_activar', $data);
        $this->load->view('footer');
@@ -44,12 +51,12 @@ public function activar()
 
   public function advertencia()
 {
- 
+ if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
    
         //creamos una variable usuarios para pasarle a la vista
-
+  $data['usuario']=$_SESSION['my_usuario']; 
         //cargamos nuestra vista
-        $this->load->view('header/header');
+        $this->load->view('header/header', $data);
        // $this->load->view('form/prueva');    
         $this->load->view('form/frmadvertencia');
        $this->load->view('footer');
@@ -59,15 +66,18 @@ public function activar()
     public function index()
     {
         //obtenemos todos los activos
-                
+                    
+if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+     
                         //obtenemos todos los usuarios
         $activos= $this->crud_model_activo->get_activos();
         //creamos una variable usuarios para pasarle a la vista
+           $data['usuario']=$_SESSION['my_usuario']; 
         $data['activo'] =   $activos;
         //creamos una variable usuarios para pasarle a la vista
 
         //cargamos nuestra vista
-        $this->load->view('header/header');
+        $this->load->view('header/header',$data);
        // $this->load->view('form/prueva');    
         $this->load->view('form/frmactivofijo',$data);
        $this->load->view('footer');
@@ -78,8 +88,9 @@ public function activar()
 
     public function nuevo()
     {
-
- $this->load->view('header/header');
+if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+  $data['usuario']=$_SESSION['my_usuario']; 
+ $this->load->view('header/header',$data);
         $this->load->view('form/a_activo');
         $this->load->view('footer');
     
@@ -87,7 +98,8 @@ public function activar()
          public function agregar()
  
     { 
-
+if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+  $data['usuario']=$_SESSION['my_usuario']; 
   $datas['cuenta'] = $this->crud_model_activo->cuenta();
   $datas['proveedor'] = $this->crud_model_activo->proveedor();
    $datas['sucursal'] = $this->crud_model_activo->sucursal();
@@ -155,7 +167,7 @@ public function activar()
             
             }
         }
-        $this->load->view('header/header');
+        $this->load->view('header/header',$data);
         $this->load->view('form/a_activofijo', $datas);
         $this->load->view('footer');
     }
@@ -164,7 +176,8 @@ public function activar()
 
     public function activar_activo($id_activofijo=0)
     {
-
+if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+  $data['usuario']=$_SESSION['my_usuario']; 
          //verificamos si existe el id
         $datas['area'] = $this->crud_model_activo->area();
         $datas['empleado'] = $this->crud_model_activo->empleado();
@@ -219,6 +232,7 @@ public function activar()
 
      public function ver_activo($id_activofijo=0)
     {
+        if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
         $activo=$this->crud_model_activo->get_activo($id_activofijo);
         $data['dato'] = $activo;
     

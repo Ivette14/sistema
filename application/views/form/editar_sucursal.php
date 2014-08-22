@@ -52,7 +52,7 @@
               <div class="form-group">
               	<input  type="hidden" name="post" value="1" />    			
                 <button type="submit" class="btn btn-primary">Guardar</button>
-                <button type="button" onclick=location="<?php echo base_url().'crud/index'; ?>" class="btn btn-primary">Cancelar</button>
+                <button type="button" onclick=location="<?php echo base_url().'crud'; ?>" class="btn btn-primary">Cancelar</button>
               </div>   
 
 

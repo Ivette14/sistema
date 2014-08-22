@@ -12,16 +12,19 @@ parent::__construct();
         $this->load->model("crud_model_cuenta");
         $this->load->helper(array('form'));
         $this->load->library('form_validation');
+         $this->load->model("crud_model_menu");
     }
      
     public function index()
     {
+         if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario']; 
         //obtenemos todos los usuarios
         $cuenta = $this->crud_model_cuenta->get_cuentas();
         //creamos una variable usuarios para pasarle a la vista
         $data['cuenta'] = $cuenta;
         //cargamos nuestra vista
-        $this->load->view('header/header');
+        $this->load->view('header/header', $data);
         $this->load->view('form/frmcuentas',$data);
         $this->load->view('footer');
     
@@ -29,6 +32,8 @@ parent::__construct();
 
     public function agregar()
     {
+         if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario']; 
          if($this->input->post('post') && $this->input->post('post')==1)
          //Si Existe Post y es igual a uno
             {
@@ -47,13 +52,15 @@ parent::__construct();
             }
         }
            //cargamos nuestra vista
-        $this->load->view('header/header');
+        $this->load->view('header/header', $data);
         $this->load->view('form/a_cuentas');
         $this->load->view('footer');
       }  
 
     public function editar($id_cuentacontable=0)
     {
+         if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario']; 
         //verificamos si existe el id
         $respuesta = $this->crud_model_cuenta->get_cuenta($id_cuentacontable);
         //si nos retorna FALSE le mostramos la pag 404
@@ -82,7 +89,7 @@ parent::__construct();
             //devolvemos los datos del usuario
             $data['dato'] = $respuesta;
             //cargamos la vista
-            $this->load->view('header/header');
+            $this->load->view('header/header', $data);
             $this->load->view('form/editar_cuenta',$data);
             $this->load->view('footer');
         }
@@ -90,6 +97,8 @@ parent::__construct();
      
     public function eliminar($id_cuentacontable=0)
     {
+         if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario']; 
         //verificamos si existe el id
         $respuesta = $this->crud_model_cuenta->get_cuentas($id_cuentacontable);
         //si nos retorna FALSE mostramos la pag 404.

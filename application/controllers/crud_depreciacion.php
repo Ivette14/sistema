@@ -14,11 +14,13 @@ parent::__construct();
         $this->load->model("crud_model");
         $this->load->helper(array('form'));
         $this->load->library('form_validation');
+         $this->load->model("crud_model_menu");
     }
      
     public function index()
     {
-
+   if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario']; 
         //obtenemos todos los activos
         $activo = $this->crud_model_depreciacion->get_activos();
         //creamos una variable activos para pasarle a la vista
@@ -26,7 +28,7 @@ parent::__construct();
      {
          $data['saldo'] = $activo;
         
-        $this->load->view('header/header');
+        $this->load->view('header/header', $data);
         $this->load->view('form/frmdepreciacion', $data);
      }
       else
@@ -42,6 +44,8 @@ parent::__construct();
      
     public function depreciacion($id_activofijo=0)
     {
+           if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario']; 
         //verificamos si existe el id
         $respuesta = $this->crud_model_depreciacion->get_activo($id_activofijo);
           if($respuesta==false)
@@ -50,7 +54,7 @@ parent::__construct();
         {
            $data['dato'] = $respuesta;
             //cargamos la vista
-            $this->load->view('header/header');
+            $this->load->view('header/header', $data);
             $this->load->view('form/depreciacion',$data);
             $this->load->view('footer');
         }

@@ -4,7 +4,7 @@ class Direccion extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		@ session_start();
+		 session_start();
 		$this->load->helper('url');
 		$this->load->library('pagination');
 		$this->load->library(array('session','form_validation'));
@@ -16,14 +16,14 @@ class Direccion extends CI_Controller {
 	}
 	 /* END function Admin */
 
-function index(){
-   $usu = 1;
-   $menus = $this->crud_model_menu->menu($usu);
-        //creamos una variable usuarios para pasarle a la vista
-     $data['menus'] =   $menus;
+function index(){ 
+	
+if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+		$data['usuario']=$_SESSION['my_usuario']; 
 
-$this->load->view('header/header');
-$this->load->view('form/inicio', $data);
+ 
+$this->load->view('header/header',$data);
+$this->load->view('form/inicio');
 $this->load->view('footer');
 }
 function hrefini(){

@@ -6,14 +6,16 @@ class usuarios extends CI_Controller {
 	public function __construct(){ 
 		parent::__construct(); 
 		session_start(); 
-		$this->load->model('model_usuario'); 
+		$this->load->model('model_usuario');
+		 $this->load->model("crud_model_menu"); 
 	} 
  
  
  
 	public function index(){	 
 		if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' );
-		 $rol= $this->model_usuario->rol();
+		 $rol= $this->model_usuario->rol(); 
+           $data['usuario']=$_SESSION['my_usuario'];
         //creamos una variable usuarios para pasarle a la vista
         $data['rol'] =   $rol;
 		$data['usuario']=$_SESSION['my_usuario']; 

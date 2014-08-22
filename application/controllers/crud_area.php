@@ -12,16 +12,19 @@ parent::__construct();
         $this->load->model("crud_model_area");
         $this->load->helper(array('form'));
         $this->load->library('form_validation');
+         $this->load->model("crud_model_menu");
     }
      
     public function index()
     {
+           if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario']; 
         //obtenemos todos los empleado
         $areas = $this->crud_model_area->tabla();            
         //creamos una variable empleados para pasarle a la vista
         $data['areas'] = $areas;
         //cargamos nuestra vista
-        $this->load->view('header/header');
+        $this->load->view('header/header', $data);
         $this->load->view('form/frmarea',$data);
         $this->load->view('footer');
     
@@ -30,7 +33,8 @@ parent::__construct();
     public function agregar()
     {
        
-        
+           if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario']; 
                  //Si Existe Post y es igual a uno
         if($this->input->post('post') && $this->input->post('post')==1)
         {
@@ -52,7 +56,7 @@ parent::__construct();
         }
 
          //cargamos nuestra vista
-        $this->load->view('header/header');
+        $this->load->view('header/header', $data);
         $this->load->view('form/a_area');
         $this->load->view('footer');
     
@@ -61,6 +65,9 @@ parent::__construct();
      
     public function editar($id_area=0)
     {
+
+           if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario']; 
         //verificamos si existe el id
         $respuesta = $this->crud_model_area->get_area($id_area);
         
