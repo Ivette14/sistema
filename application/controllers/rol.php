@@ -79,8 +79,23 @@ public function index(){
 				$data['type']      =true; 
 				$data['message']   ='El rol ha sido guardado.'; 
 				$data['id_rol']=($id_rol==0)?$hecho:$id_rol; 
+
+
 			} 
 		} 
+
+ if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario'];
+
+
+       $opcion = $this->model_rol->get_opcion();
+        //creamos una variable usuarios para pasarle a la vista
+        $data['opcion'] = $opcion;
+        //cargamos nuestra vista
+        $this->load->view('header/header', $data);
+        $this->load->view('form/asignar_menu',$data);
+        $this->load->view('footer');
+
 		$this->output->set_content_type('application/json')->set_output( json_encode( $data ) ); 
 	} 
  
@@ -103,5 +118,28 @@ public function index(){
 		} 
 		$this->output->set_content_type('application/json')->set_output( json_encode( $data ) ); 
 	} 
+
+ function index_opcion(){
+
+ if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario'];
+
+
+       $opcion = $this->model_rol->get_opcion();
+        //creamos una variable usuarios para pasarle a la vista
+        $data['opcion'] = $opcion;
+        //cargamos nuestra vista
+        $this->load->view('header/header', $data);
+        $this->load->view('form/asignar_menu',$data);
+        $this->load->view('footer');
+
+
+
+
+ }
+ 
+
+
+
  
 }

@@ -24,7 +24,7 @@
                                         <tr>                                            
                                             <th>Nombre de la Area</th>                                            
                                             <th>Editar</th>
-                                            <th>Eliminar</th>
+                                         <!--     <th>Eliminar</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>                                           
@@ -33,7 +33,8 @@
                                             
                                             <td><?= $area->nombre_area?></td>
                                             <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_area/editar/'.$area->id_area; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Editar</button></td>
-                                            <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_area/eliminar/'.$area->id_area; ?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>&nbsp;Eliminar</button></td> 
+                                          <!--    <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_area/eliminar/'.$area->id_area; ?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>&nbsp;Eliminar</button></td> 
+                                            -->
                                             </tr>
                                             <?php endforeach ;?>
 

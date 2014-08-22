@@ -27,7 +27,7 @@
                                             <th>Cuenta</th>
                                             <th>Vida Util</th>
                                             <th>Editar</th>
-                                            <th>Eliminar</th>
+                                           <!--  <th>Eliminar</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -38,7 +38,8 @@
                                             <td><?= $cuenta->vida_util?></td> 
                                           
                                             <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_cuenta/editar/'.$cuenta->id_cuentacontable; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Editar</button></td>
-                                            <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_cuenta/eliminar/'.$cuenta->id_cuentacontable; ?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>&nbsp;Eliminar</button></td> 
+                                           <!--   <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_cuenta/eliminar/'.$cuenta->id_cuentacontable; ?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>&nbsp;Eliminar</button></td> 
+                                           -->
                                             </tr>
                                             <?php endforeach ;?>
                                           

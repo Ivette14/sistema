@@ -31,7 +31,7 @@
                                             <th>Telefono</th>
                                             <th>Email</th>
                                             <th>Editar</th>
-                                            <th>Eliminar</th>
+                                          <!--    <th>Eliminar</th>-->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -44,7 +44,7 @@
                                             <td><?= $empleado->telefono_empleado?></td>
                                             <td><?= $empleado->email_empleado?></td>
                                             <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_empleado/editar/'.$empleado->id_empleado; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Editar</button></td>
-                                            <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_empleado/eliminar/'.$empleado->id_empleado; ?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>&nbsp;Eliminar</button></td> 
+                                        <!--    <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_empleado/eliminar/'.$empleado->id_empleado; ?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>&nbsp;Eliminar</button></td> --> 
                                             </tr>
                                             <?php endforeach ;?>
                                          

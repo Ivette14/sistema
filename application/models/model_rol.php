@@ -14,7 +14,7 @@ class Model_rol extends CI_Model {
 		$this->db->insert('gu_rol', $post); 
 		return($this->db->affected_rows()>0)?$this->db->insert_id():false; 
 	} 
- 
+
  
 	function edit_usuario( $id_usuario, $post ){ 
 		$this->db->where('id_usuario', $id_usuario); 
@@ -26,6 +26,12 @@ class Model_rol extends CI_Model {
 		$this->db->where('id_rol', $id_rol); 
 		$this->db->delete('gu_rol'); 
 		return($this->db->affected_rows()>0)?true:false; 
-	} 
+	}
+
+	 public function get_opcion()
+    {
+        $sql = $this->db->get('gu_opcion');
+        return $sql->result();
+    } 
  
 }

@@ -30,7 +30,7 @@
                                             <th>Email</th>
                                             <th>Nit</th>
                                             <th>Editar</th>
-                                            <th>Eliminar</th>
+                                            <!--  <th>Eliminar</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -43,7 +43,8 @@
                                             <td><?= $proveedor->email_provee?></td>
                                              <td><?= $proveedor->nit?></td>
                                          <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_proveedor/editar/'.$proveedor->id_proveedor; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Editar</button></td>
-                                         <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_proveedor/eliminar/'.$proveedor->id_proveedor; ?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>&nbsp;Eliminar</button></td>
+                                         <!--  <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_proveedor/eliminar/'.$proveedor->id_proveedor; ?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>&nbsp;Eliminar</button></td>
+                                            -->
                                             </tr>
                                            <?php endforeach ;?>
                                     

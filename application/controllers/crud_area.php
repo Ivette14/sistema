@@ -79,7 +79,7 @@ parent::__construct();
             //Si existe el post para editar
             if($this->input->post('post') && $this->input->post('post')==1)
             {
-            $this->form_validation->set_rules('nombre_area', 'Nombre de area', 'required|alpha|trim|xss_clean');
+            $this->form_validation->set_rules('nombre_area', 'Nombre de area', 'required|trim|xss_clean');
             
          
              
