@@ -4,7 +4,7 @@
 <br><br>
 <ol class="breadcrumb">
 
-<li class="active"></li><center><h4>Gestor de Activos Fijos</h4></center></li>
+
 <li class="active"></li><center><h4>Gestor de Roles</h4></center></li> 
 
 </ol>
