@@ -108,6 +108,15 @@
 
     }
     //actualizamos los datos de un usuario por id
+     public function actualizar_activo($id_activofijo,$nombre_activo_fijo,$id_area, $descripcion)
+    {
+        $this->db->where('id_activofijo', $id_activofijo);
+        $this->db->update('cat_activo_fijo',array(
+            'nombre_activo_fijo'   => $nombre_activo_fijo,
+            'id_area'              => $id_area,
+            'descripcion'          => $descripcion
+            ));
+    }
    
     public function cuenta()
     {

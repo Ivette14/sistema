@@ -18,7 +18,6 @@ class usuarios extends CI_Controller {
            $data['usuario']=$_SESSION['my_usuario'];
         //creamos una variable usuarios para pasarle a la vista
         $data['rol'] =   $rol;
-		$data['usuario']=$_SESSION['my_usuario']; 
 		$data['page']   ='view_usuarios'; 
 		$this->load->view('templante', $data); 
 	} 

@@ -91,7 +91,7 @@ if (isset($_SESSION['my_usuario']))
                 <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                 </a>
             <ul class="dropdown-menu dropdown-user">
-            <li><a href='#'><i class="fa fa-user fa-fw"></i><?php echo(isset($usuario)&&$usuario!=false)?$usuario['nombre_usuario']:'' ?></a>
+            <li><a href='direccion'><i class="fa fa-user fa-fw"></i><?php echo(isset($usuario))?$usuario['nombre_usuario']:'' ?></a>
             </li>
                   <li><a href="acceso/salir"><i class="fa fa-sign-out fa-fw"></i>Cerrar Sesion</a></li>
                     </ul>

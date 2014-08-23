@@ -66,7 +66,7 @@
                                             <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_activo/ver_activo/'.$activo->id_activofijo; ?>" class="btn btn-primary"><i class=""></i>Ver</button></td>
                                            <!--  <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_activo/eliminar/'.$activo->id_activofijo; ?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>&nbsp;Eliminar</button></td> 
                                             -->
-                                            <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_activo/eliminar/'.$activo->id_activofijo; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Editar</button></td>
+                                            <td align="center"><button type="button" onclick=location="<?php echo base_url().'crud_activo/editar/'.$activo->id_activofijo; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Editar</button></td>
                                             </tr>
                                             <?php endforeach ;?>
                                            
