@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `sys_activofijo` /*!40100 DEFAULT CHARACTER SET utf8 */;
+﻿CREATE DATABASE  IF NOT EXISTS `sys_activofijo` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `sys_activofijo`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
@@ -184,7 +184,7 @@ CREATE TABLE `cat_empleado` (
   `id_empleado` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_empleado` varchar(10) NOT NULL,
   `nombre_empleado` varchar(45) NOT NULL,
-  `direccion_empleado` varchar(45) NOT NULL,
+  `direccion_empleado` varchar(100) NOT NULL,
   `telefono_empleado` varchar(9) NOT NULL,
   `email_empleado` varchar(45) NOT NULL,
   PRIMARY KEY (`id_empleado`)
@@ -241,7 +241,7 @@ DROP TABLE IF EXISTS `cat_proveedor`;
 CREATE TABLE `cat_proveedor` (
   `id_proveedor` int(10) NOT NULL AUTO_INCREMENT,
   `nombre_provee` varchar(45) COLLATE latin1_general_ci NOT NULL,
-  `direccion_provee` varchar(45) COLLATE latin1_general_ci NOT NULL,
+  `direccion_provee` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `telefono_provee` varchar(9) COLLATE latin1_general_ci NOT NULL,
   `email_provee` varchar(50) COLLATE latin1_general_ci NOT NULL,
   `nrc` varchar(45) COLLATE latin1_general_ci NOT NULL,
