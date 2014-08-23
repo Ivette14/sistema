@@ -169,7 +169,7 @@ CREATE TABLE `cat_depreciacion_activo` (
 
 LOCK TABLES `cat_depreciacion_activo` WRITE;
 /*!40000 ALTER TABLE `cat_depreciacion_activo` DISABLE KEYS */;
-INSERT INTO `cat_depreciacion_activo` VALUES (2,'meaf008',1,'2014-06-26',6.32,500.15,102.16,397.99),(3,'meaf007',2,'2014-06-26',7.32,400.16,83.2,316.96),(4,'meaf006',1,'2014-06-26',10,200,180,20),(26,'maf002',1,'2014-06-29',31.4583,0,NULL,NULL),(27,'maf003',1,'2014-06-29',197.5,0,NULL,NULL),(28,'meaf',3,'2014-06-29',4.15,0,NULL,NULL),(29,'meaf001',3,'2014-06-29',0.641667,0,NULL,NULL),(30,'maquina11',1,'2014-06-29',3.16667,380,NULL,NULL),(31,'meaf003',3,'2014-06-29',20.4167,0,NULL,NULL),(32,'meaf004',3,'2014-06-29',4.125,0,NULL,NULL),(33,'meaf005',3,'2014-06-29',3.33333,0,23.3333,-23.3333),(34,'bonito01',1,'2014-06-29',1.20833,145,9.66666,135.333),(35,'cccc',1,'2014-06-29',2.41667,290,7.41667,282.583),(36,'meaf006',3,'2014-07-25',5.30833,0,0,0),(37,'meaf009',3,'2014-07-25',22.7917,0,0,0);
+INSERT INTO `cat_depreciacion_activo` VALUES (2,'meaf008',1,'2014-06-26',6.32,500.15,108.48,391.67),(3,'meaf007',2,'2014-06-26',7.32,400.16,90.52,309.64),(4,'meaf006',1,'2014-06-26',10,200,190,10),(26,'maf002',1,'2014-06-29',31.4583,0,NULL,NULL),(27,'maf003',1,'2014-06-29',197.5,0,NULL,NULL),(28,'meaf',3,'2014-06-29',4.15,0,NULL,NULL),(29,'meaf001',3,'2014-06-29',0.641667,0,NULL,NULL),(30,'maquina11',1,'2014-06-29',3.16667,380,NULL,NULL),(31,'meaf003',3,'2014-06-29',20.4167,0,NULL,NULL),(32,'meaf004',3,'2014-06-29',4.125,0,NULL,NULL),(33,'meaf005',3,'2014-06-29',3.33333,0,23.3333,-23.3333),(34,'bonito01',1,'2014-06-29',1.20833,145,10.875,134.125),(35,'cccc',1,'2014-06-29',2.41667,290,9.83334,280.167),(36,'meaf006',3,'2014-07-25',5.30833,0,0,0),(37,'meaf009',3,'2014-07-25',22.7917,0,0,0);
 /*!40000 ALTER TABLE `cat_depreciacion_activo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,7 +197,7 @@ CREATE TABLE `cat_empleado` (
 
 LOCK TABLES `cat_empleado` WRITE;
 /*!40000 ALTER TABLE `cat_empleado` DISABLE KEYS */;
-INSERT INTO `cat_empleado` VALUES (1,'E32','Jose Roberto','11° Calle Oriente','12345678','Jos@serrano.com'),(2,'E33','Jose','11° Calle','12345678','Jose@serrano.com'),(3,'E01','Ivette','12° Calle Oriente','12345678','Ivette@serrano.com'),(4,'e75','Jorge Alberto Villegas','venezuela','26451823|','jorge@ugb.edu.sv'),(5,'e90lu','Luis Humberto Mejia','colinia masferrer','26624563','luisito@gmail.com');
+INSERT INTO `cat_empleado` VALUES (1,'E32','Jose Roberto','11° Calle Oriente','12345678','Jos@serrano.com'),(2,'E33','Jose','11° Calle','12345678','Jose@serrano.com'),(4,'e75','Jorge Alberto Villegas','venezuela','26451823|','jorge@ugb.edu.sv'),(5,'e90lu','Luis Humberto Mejia','colinia masferrer','26624563','luisito@gmail.com');
 /*!40000 ALTER TABLE `cat_empleado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -354,7 +354,7 @@ CREATE TABLE `gu_opcion` (
   `tipo` int(1) NOT NULL,
   PRIMARY KEY (`id_opcion`),
   KEY `jd_menu_idx` (`id_menu`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -363,7 +363,7 @@ CREATE TABLE `gu_opcion` (
 
 LOCK TABLES `gu_opcion` WRITE;
 /*!40000 ALTER TABLE `gu_opcion` DISABLE KEYS */;
-INSERT INTO `gu_opcion` VALUES (1,1,'Activo Fijo','crud_activo',0),(2,0,'Empleados','crud_empleado',0),(3,0,'Proveedores','crud_proveedor',0),(4,2,'Depreciacion','crud_depreciacion',0),(5,0,'Cuentas','crud_cuenta',0),(6,0,'Sucursales','crud/index',0),(7,0,'Areas','crud_area',0),(8,0,'Traslado De Activo','crud_traslado',0);
+INSERT INTO `gu_opcion` VALUES (1,1,'Activo Fijo','crud_activo',0),(2,0,'Activos Sin Activar','crud_activo/activar',0),(3,0,'Baja De Activos','crud_Baja',0),(4,2,'Empleados','crud_empleado',0),(5,0,'Traslado','crud_traslado',0),(6,0,'Proveedores','crud_proveedor',0),(7,0,'Depreciacion','crud_depreciacion',0),(8,0,'Depreciar Activos','crud_activo/advertencia',0),(9,0,'Ver saldos','crud_depreciacion',0),(10,0,'Area','crud_area',0),(11,0,'Cuentas','crud_cuenta',0),(12,0,'Sucursales','crud',0),(13,0,'Usuarios','usuarios',0);
 /*!40000 ALTER TABLE `gu_opcion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -378,7 +378,7 @@ CREATE TABLE `gu_rol` (
   `id_rol` int(11) NOT NULL AUTO_INCREMENT,
   `rol` varchar(45) COLLATE latin1_general_ci DEFAULT NULL,
   PRIMARY KEY (`id_rol`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -387,7 +387,7 @@ CREATE TABLE `gu_rol` (
 
 LOCK TABLES `gu_rol` WRITE;
 /*!40000 ALTER TABLE `gu_rol` DISABLE KEYS */;
-INSERT INTO `gu_rol` VALUES (1,'Administrador'),(2,'Contador'),(3,'mario');
+INSERT INTO `gu_rol` VALUES (1,'Administrador'),(2,'Contador'),(3,'mario'),(4,'Secretaria'),(8,'Reportero'),(7,'agente');
 /*!40000 ALTER TABLE `gu_rol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -413,7 +413,7 @@ CREATE TABLE `gu_rol_menu` (
 
 LOCK TABLES `gu_rol_menu` WRITE;
 /*!40000 ALTER TABLE `gu_rol_menu` DISABLE KEYS */;
-INSERT INTO `gu_rol_menu` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(2,1),(2,2),(2,3),(3,5),(3,6);
+INSERT INTO `gu_rol_menu` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,10),(1,11),(1,12),(1,13),(2,1),(2,2),(2,3),(2,4),(2,8),(3,2),(3,5),(3,6),(3,7);
 /*!40000 ALTER TABLE `gu_rol_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -452,15 +452,14 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuarios` (
-  `id_usuario` int(10) NOT NULL,
+  `id_usuario` int(10) NOT NULL AUTO_INCREMENT,
   `id_rol` int(11) NOT NULL,
   `nombre_usuario` varchar(45) COLLATE latin1_general_ci NOT NULL,
   `clave` varchar(45) COLLATE latin1_general_ci NOT NULL,
   `nombre_completo` varchar(45) COLLATE latin1_general_ci NOT NULL,
-  `fecha_creacion` time NOT NULL,
   PRIMARY KEY (`id_usuario`),
   KEY `id_rol_idx` (`id_rol`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -469,9 +468,163 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,2,'@marioabmi','eb5a790b34e06e2ce3346fa2ca5d6abb','Mario Nelsonm Rivas Gonzalez','00:00:00'),(2,3,'@praticia','e10adc3949ba59abbe56e057f20f883e','Patricia','00:00:00'),(3,2,'@rony','e10adc3949ba59abbe56e057f20f883e','Rony','00:00:00');
+INSERT INTO `usuarios` VALUES (1,1,'@marioabmi','e10adc3949ba59abbe56e057f20f883e','Mario Nelson Rivas'),(3,2,'@rony','e10adc3949ba59abbe56e057f20f883e','Rony'),(5,3,'@David','e10adc3949ba59abbe56e057f20f883e','David'),(6,3,'@israel','e10adc3949ba59abbe56e057f20f883e','Israel');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'sys_activofijo'
+--
+/*!50003 DROP PROCEDURE IF EXISTS `depreciacion1` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `depreciacion1`()
+BEGIN
+
+declare depre  FLOAT;
+select depre =cat_depreciacion_activo.cuota_mensual+cat_depreciacion_activo.depreciacion_acumulada
+from cat_depreciacion_activo;
+select 
+
+
+        cuota_mensual as CuotaM,
+        parte1 AS Totaldepreciar,
+		(cuota_mensual+depreciacion_acumulada) AS Depreciacionacumulada
+	
+		
+    from
+        cat_depreciacion_activo;
+UPDATE `sys_activofijo`.`cat_depreciacion_activo` SET `depreciacion_acumulada`= (`cuota_mensual`+`depreciacion_acumulada`);
+		
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `primero` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `primero`(cuota_mensual float, depreciacion_acumulada float)
+BEGIN
+
+select cat_depreciacion_activo.depreciacion_acumulada as DepreciacionAcumulada,
+		cat_depreciacion_activo.saldo_restante as SaldoRestante
+from cat_depreciacion_activo;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `procedimiento1` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `procedimiento1`()
+BEGIN
+
+update cat_depreciacion_activo
+
+set depreciacion_acumulada = cuota_mensual+depreciacion_acumulada
+where saldo_restante>"0" and depreciacion_acumulada!=parte1;
+
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `procedimiento2` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `procedimiento2`()
+BEGIN
+update cat_depreciacion_activo
+set saldo_restante=parte1-depreciacion_acumulada
+
+where saldo_restante>"0" and depreciacion_acumulada!=parte1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `prueba` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `prueba`()
+BEGIN
+
+update cat_depreciacion_activo
+set depreciacion_acumulada = cuota_mensual+depreciacion_acumulada;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `prueba1` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `prueba1`()
+BEGIN
+update cat_depreciacion_activo
+set saldo_restante=parte1-depreciacion_acumulada
+
+where saldo_restante>"0" and depreciacion_acumulada!=parte1;
+
+
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -482,4 +635,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-08-08  9:51:40
+-- Dump completed on 2014-08-22 22:06:35
