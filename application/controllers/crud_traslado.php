@@ -176,7 +176,7 @@
         $JspExport->exportReportToPdfFile($Imprime,$dirInforme.$Informe.".pdf");
         if (file_exists($dirInforme.$Informe.".pdf"))
         {
-            header('Content-disposition:attachment;filename="'.$Informe.'pdf"');
+            header('Content-disposition:attachment;filename="'.$Informe.'"');
             header('Content-Type:application/pdf');
             header('Content-Transfer-Enconding:binary');
             header('Content-Length:'.@filesize($dirInforme.$Informe.".pdf"));
