@@ -33,8 +33,8 @@ if (isset($_SESSION['my_usuario']))
     
 
     <!-- Core CSS - Include with every page -->
-<link href="<?php echo base_url().'seteo/js/devoops.js'; ?>" type="javascript" >
-  <link href="<?php echo base_url().'seteo/js/devoops.min.js'; ?>" type="javascript">  
+    <link href="<?php echo base_url().'seteo/js/devoops.js'; ?>" type="javascript" >
+    <link href="<?php echo base_url().'seteo/js/devoops.min.js'; ?>" type="javascript">  
    <link href="<?php echo base_url().'seteo/plugins/bootstrap/bootstrap.css'; ?>" rel="stylesheet">
 
 <link href="<?php echo base_url().'seteo/plugins/jquery-ui/jquery-ui.min.css'; ?>" rel="stylesheet">

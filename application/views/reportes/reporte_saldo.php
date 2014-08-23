@@ -1,12 +1,13 @@
 <?php
-	header("Content-type: application/octet-stream");
+	header("Content-type: application/vnd.ms-excel");
 	header("Content-Disposition: attachment; filename=reporte_saldo.xls");
 	header("Pragma: no-cache");
 	header("Expires: 0");
 ?>
-<table>
+<table>     
 	<tr>
-		<td style="font-weight: bold;text-align: center; font-size:1.5; background-color:#BA5A41; color: #fff;" colspan="6">
+		<td style="font-weight: bold;text-align: center; font-size:25; background-color:#99CCFF; color: #fff;" colspan="6">
+                  Reporte de Depreciacion
 		</td>
 	</tr>
 	<tr>

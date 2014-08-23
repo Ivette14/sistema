@@ -273,7 +273,7 @@ if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' );
  
         $Conexion=new java("org.altic.jasperReports.JdbcConnection"); 
         //Driver MySql 
-        $Conexion->setDriver("com.mysql.jdbc.Driver"); 
+        $Conexion->setDriver("org.gjt.mm.mysql.Driver"); 
         //Conexion a la Base de Datos 
         $Conexion->setConnectString("jdbc:mysql://localhost/sys_activofijo"); 
         //Usuario 
@@ -326,7 +326,7 @@ if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' );
  
         $Conexion=new java("org.altic.jasperReports.JdbcConnection"); 
         //Driver MySql 
-        $Conexion->setDriver("com.mysql.jdbc.Driver"); 
+        $Conexion->setDriver("org.gjt.mm.mysql.Driver"); 
         //Conexion a la Base de Datos 
         $Conexion->setConnectString("jdbc:mysql://localhost/sys_activofijo"); 
         //Usuario 
