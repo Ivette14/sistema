@@ -292,7 +292,7 @@ if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' );
     {
      if($query=$this->db->query("CALL procedimiento1"))
      {
-        redirect('crud_depreciacion/versaldo');
+        redirect('crud_depreciacion');
      }
       else
       {
