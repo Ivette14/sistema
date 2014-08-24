@@ -297,7 +297,7 @@ if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' );
 
         redirect('crud_depreciacion/versaldo');
 
-
+ }
       else
       {
         show_error('error!');
