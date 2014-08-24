@@ -1,10 +1,33 @@
-<?php
-	header("Content-type: application/vnd.ms-excel");
-	header("Content-Disposition: attachment; filename=reporte_saldo.xls");
-	header("Pragma: no-cache");
-	header("Expires: 0");
+<?
+header("Content-type: application/vnd.ms-excel");
+header("Content-Disposition: attachment; filename=reporte_saldo.xls");
+header("Pragma: no-cache");
+header("Expires: 0");
 ?>
-<table>     
+<table>   
+
+<tr>
+            <td style="font-weight: bold;text-align: center; font-size:25;  " colspan="6">
+                   
+            <center><img src="C:\xampp\htdocs\sistema\seteo\logos\logo_peque.png"></center>
+            
+            </td>
+</tr>
+
+<tr>
+            <td >
+                   
+            
+            
+            </td>
+</tr>
+
+<th>
+            <td style="font-weight: bold;text-align: center; font-size:25;  color: #000;" colspan="6">
+                  Sistema de Control de Activos Fijos.
+            </td>
+</th> 
+
 	<tr>
 		<td style="font-weight: bold;text-align: center; font-size:25; background-color:#99CCFF; color: #fff;" colspan="6">
                   Reporte de Depreciacion
@@ -43,6 +66,6 @@
             <td><?= $saldo->depreciacion_acumulada?></td>
             <td><?= $saldo->saldo_restante?></td>
             </tr>
-            <?php endforeach ;?>
+            <? endforeach ; ?>
             </tbody>
 </table>
