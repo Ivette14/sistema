@@ -57,7 +57,7 @@
 			<tr> 
 				<td><label for="nombre">Nombre: *</label></td> 
 				<td> 
-					<input type="text" class="form-control" name="nombre_completo" id="nombre_completo" value="<?= set_value('nombre_completo',$usuario['nombre_completo']);?>"   > 
+					<input type="text" class="form-control" name="nombre_completo" id="nombre_completo"  > 
 				</td> 
 			</tr> 
 			<tr> 
