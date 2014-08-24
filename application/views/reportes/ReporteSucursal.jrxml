@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="94bdf03f-6573-4a55-81c8-3977eb94a944">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="111"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -222,7 +222,7 @@ FROM
 		</band>
 	</title>
 	<pageHeader>
-		<band height="46" splitType="Stretch">
+		<band height="36" splitType="Stretch">
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="0" width="802" height="29" backcolor="#99CCFF" uuid="c302fa27-d039-4b2d-9750-93dbd97c11e6"/>
 				<textElement textAlignment="Center">
@@ -232,8 +232,8 @@ FROM
 			</staticText>
 		</band>
 	</pageHeader>
-	<columnHeader>
-		<band height="125" splitType="Stretch">
+	<detail>
+		<band height="162">
 			<componentElement>
 				<reportElement key="table 6" style="table 6" x="73" y="0" width="729" height="125" uuid="b90968e4-e2c7-4e28-a1b2-30ec7a185107"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
@@ -311,7 +311,7 @@ FROM
 				</jr:table>
 			</componentElement>
 		</band>
-	</columnHeader>
+	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>

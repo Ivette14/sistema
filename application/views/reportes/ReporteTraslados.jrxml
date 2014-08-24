@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report10" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="416aebf4-ba48-4ffb-92cb-cc2e649564ee">
-	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="146"/>
+	<property name="ireport.y" value="36"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -153,10 +153,10 @@ INNER JOIN cat_activo_fijo ON cat_activo_fijo.id_activofijo = cat_trasladoaf.id_
 			</staticText>
 		</band>
 	</pageHeader>
-	<columnHeader>
-		<band height="174" splitType="Stretch">
+	<detail>
+		<band height="129">
 			<componentElement>
-				<reportElement key="table 1" style="table 1" x="45" y="10" width="757" height="164" uuid="8e78117e-05f8-464f-928b-70e4c05fff4d"/>
+				<reportElement key="table 1" style="table 1" x="45" y="0" width="757" height="129" uuid="8e78117e-05f8-464f-928b-70e4c05fff4d"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="New Dataset" uuid="596c3742-9de7-42c7-9ba8-9fca80dc9b54">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
@@ -251,10 +251,10 @@ INNER JOIN cat_activo_fijo ON cat_activo_fijo.id_activofijo = cat_trasladoaf.id_
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="4030eb98-08ca-4408-bcb9-61226ae64acb">
+					<jr:column width="104" uuid="4030eb98-08ca-4408-bcb9-61226ae64acb">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="88c5f6fc-b12b-4b93-8dc5-efe4e5c514ae"/>
+								<reportElement x="0" y="0" width="104" height="30" uuid="88c5f6fc-b12b-4b93-8dc5-efe4e5c514ae"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font isBold="true"/>
 								</textElement>
@@ -263,7 +263,7 @@ INNER JOIN cat_activo_fijo ON cat_activo_fijo.id_activofijo = cat_trasladoaf.id_
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="10" y="0" width="80" height="20" uuid="15bba3dd-b770-43ce-8178-67927a697e58"/>
+								<reportElement x="10" y="0" width="94" height="20" uuid="15bba3dd-b770-43ce-8178-67927a697e58"/>
 								<textElement verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{nombre_sucursal}]]></textFieldExpression>
 							</textField>
@@ -290,7 +290,7 @@ INNER JOIN cat_activo_fijo ON cat_activo_fijo.id_activofijo = cat_trasladoaf.id_
 				</jr:table>
 			</componentElement>
 		</band>
-	</columnHeader>
+	</detail>
 	<pageFooter>
 		<band height="54" splitType="Stretch">
 			<staticText>
