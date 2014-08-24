@@ -39,6 +39,28 @@ parent::__construct();
     
     }
 
+        public function versaldo()
+    {
+   if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario']; 
+        //obtenemos todos los activos
+        $activo = $this->crud_model_depreciacion->get_activos();
+        //creamos una variable activos para pasarle a la vista
+        if($query=$this->db->query("CALL procedimiento2"))
+     {
+         $data['saldo'] = $activo;
+        
+        $this->load->view('header/header', $data);
+        $this->load->view('form/frmversaldo', $data);
+     }
+      else
+      {
+        show_error('error!');
+      }
+       
+    
+    }
+
 
     
      
