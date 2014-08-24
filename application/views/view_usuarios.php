@@ -12,7 +12,8 @@
 <div class="container-fluid"> 
  
 	<button type="button" onclick="prepara_form( 'Nuevo', 0 )" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i>&nbsp;Agregar usuario</button> 
-<button type="button"  onClick=location="<?php echo base_url().'rol'; ?>" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i>&nbsp;Administracion De Roles </button> 
+<button type="button"  onClick=location="<?php echo base_url().'rol'; ?>" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i>&nbsp;Administracion De Roles </button>
+<button type="button"  onClick=location="<?php echo base_url().'setting/backup'; ?>" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i>&nbsp;Backup </button> 
 	<!-- TABLA DE USUARIOS --> 
 	<table class="completa table"> 
 		<thead> 
