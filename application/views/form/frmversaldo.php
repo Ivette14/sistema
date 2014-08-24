@@ -21,8 +21,7 @@
                         <div class="panel-body">
                             <div class="form-group" align="right">
                         <button type="button" onclick=location="<?php echo base_url().'crud_depreciacion/toExcel_saldo';?>" title="Exportar a Excel" class="btn btn-primary" ><i class="glyphicon glyphicon-file"></i>&nbsp;Excel</button>
-                        <!--  <button type="button" onclick=location="<?php echo base_url().'crud_traslado/toExcel_traslado';?>" title="Exportar a PDF" class="btn btn-primary" ><i class="glyphicon glyphicon-file"></i>&nbsp;PDF</button>
-                       -->
+                        
                         </div>
                             <div class="table-responsive">
                                 <table table class="table table-striped table-bordered table-hover" id="dataTables-example">
