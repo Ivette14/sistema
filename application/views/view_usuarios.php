@@ -55,7 +55,7 @@
 			<tr> 
 				<td><label for="nombre">Nombre: *</label></td> 
 				<td> 
-					<input type="text" class="form-control" name="nombre_completo" id="nombre_completo"> 
+					<input type="text" class="form-control" name="nombre_completo" id="nombre_completo" value="<?= set_value('nombre_completo',$usuario['nombre_completo']);?>"   > 
 				</td> 
 			</tr> 
 			<tr> 
@@ -103,7 +103,6 @@
 					var fila=''; 
 					$.each(data.lista, function( k, v ){ 
 						fila  ='<tr tabindex="2014'+v.id_usuario+'" >'; 
-					
 						fila +='<td>'+v.nombre_completo+'</td>'; 
 						fila +='<td>'+v.nombre_usuario+'</td>'; 
 						fila +='<td>'; 
@@ -139,10 +138,11 @@
 					if( data.type==false ){ 
 						dialogo('Notificación', data.message); 
 					}else{ 
-						var v=data.usuario[0]; 
-							$('#id_rol').val( v.id_rol );
+						var v=data.usuario[0];
+								$('#id_rol').val( v.id_rol );
+						$('#nombre_completo').val( v.nombre_completo ); 
 						$('#nombre_usuario').val( v.nombre_usuario ); 
-						$('#nombre_completo').val( v.nombre_completa ); 
+					
 						$('#genero option[value="'+v.genero+'"]').attr('selected', true); 
 						load_form( accion ); 
 					} 
@@ -155,40 +155,7 @@
 			load_form( accion ); 
 		} 
 	};// -----------------------
-		function prepara_form( accion, id_usuario ){ 
-		$('#my_form')[0].reset(); 
-		$('#genero option[value=""]').attr('selected', true); 
-		$('#id_usuario').val( id_usuario ); 
-		if( accion=='Editar' ){ 
-			$.ajax({ 
-				url      : 'usuarios/traer_usuario	', 
-				type     : 'post', 
-				dataType : 'json', 
-				data     : { id_usuario : id_usuario }, 
-				beforeSend : function(){ 
-					alerta( img + ' Espere...' ); 
-				}, 
-				success : function(data){ 
-					alerta(); 
-					if( data.type==false ){ 
-						dialogo('Notificación', data.message); 
-					}else{ 
-						var v=data.usuario[0]; 
-							$('#id_rol').val( v.id_rol );
-						$('#nombre_usuario').val( v.nombre_usuario ); 
-						$('#nombre_completo').val( v.nombre_completa ); 
-						$('#genero option[value="'+v.genero+'"]').attr('selected', true); 
-						load_form( accion ); 
-					} 
-				}, 
-				error : function(){ 
-					alerta(); dialogo( 'Error', 'Error en la función usuarios/traer_usuario.' ); 
-				} 
-			}); 
-		}else{ 
-			load_form( accion ); 
-		} 
-	}; 
+	
 	function load_form( accion ){ 
 		$( "#div_form" ).dialog({ 
 		    autoOpen  : true, 
