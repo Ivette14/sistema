@@ -290,9 +290,11 @@ if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' );
 
  public function procedimiento1()
     {
+        if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+         $data['usuario']=$_SESSION['my_usuario']; 
      if($query=$this->db->query("CALL procedimiento1"))
      {
-        redirect('crud_depreciacion/versaldo');
+        redirect('crud_depreciacion/versaldo',$data);
      }
       else
       {

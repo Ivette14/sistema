@@ -30,6 +30,7 @@ parent::__construct();
         
         $this->load->view('header/header', $data);
         $this->load->view('form/frmdepreciacion', $data);
+         $this->load->view('footer');
      }
       else
       {
@@ -52,6 +53,7 @@ parent::__construct();
         
         $this->load->view('header/header', $data);
         $this->load->view('form/frmversaldo', $data);
+         $this->load->view('footer');
      }
       else
       {
