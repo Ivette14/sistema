@@ -20,7 +20,7 @@
       <label>Codigo:</label> &nbsp;&nbsp;&nbsp;&nbsp;
   <br><br>
   </td>
-  
+ 
   <td>               
       <?php echo ($dato['id_activofijo']);?>
   
@@ -71,7 +71,7 @@
   <br><br>
   </td>
   <td>
-      <?php echo($dato['id_cuentacontable']);?>
+      <?php echo($dato['nombre_cuenta']);?>
       <br><br>
   </td>
   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td></td><td></td>
@@ -81,7 +81,7 @@
  <br><br>
   </td>
   <td>
-        <?php echo($dato['id_sucursal']);?>
+        <?php echo($dato['nombre_sucursal']);?>
     <br><br>
   </td>
   
@@ -106,7 +106,7 @@
    <br><br>
     </td>
     <td> 
-     <?php echo ($dato['id_empleado']);?>
+     <?php echo ($dato['nombre_empleado']);?>
   <br><br>
    </td>
 </tr>
@@ -118,7 +118,7 @@
 <br><br>
 </td>
 <td>
-      <?php echo($dato['id_area']);?>
+      <?php echo($dato['nombre_area']);?>
 <br><br>
 </td>
 </tr>   
@@ -128,7 +128,7 @@
   <br><br>
 </td>
 <td>
-                <?php echo($dato['id_proveedor']);?>
+                <?php echo($dato['nombre_provee']);?>
   <br><br>  
 </td>
 </tr>
@@ -183,15 +183,17 @@
  <label>Depreciacion Acumulada:</label>&nbsp;&nbsp;&nbsp;&nbsp;
   <br><br>
 </td>
-<td><br><br></td>
+<td>
+<?php echo($dato['depreciacion_acumulada']);?>
+<br><br></td>
 </tr>
 </table>
 <HR width=100% align="center">
   <table>
 <tr>
 <td><label>Valor Actual:</label></td>&nbsp;&nbsp;&nbsp;&nbsp;
-  <br><br>
-  <td><br><br></td>
+  <br><br>   
+  <td> <?php echo($dato['saldo_restante']);?>  <br><br></td>
 </tr>
 <tr>
   <td>           <label>Valor Residual:</label>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -201,7 +203,7 @@
 <br><br>
 </td>
 </tr>              
-                   
+                
                  
 </table>
         

@@ -51,7 +51,47 @@
          cat_activo_fijo.activado  = "0";');
         return $query->result();
     }
+  
+    public function ficha_activo($id_activofijo)
+    {
+     $query = $this->db->query("SELECT  
+        cat_activo_fijo.id_activofijo,        
+        cat_activo_fijo.nombre_activo_fijo,
+        cat_activo_fijo.fecha_compra,
+        cat_activo_fijo.fecha_ingreso,
+        cat_cuentas_contables.nombre_cuenta,
+        cat_sucursal.nombre_sucursal,
+        cat_area.nombre_area,
+        cat_activo_fijo.descripcion,
+        cat_empleado.nombre_empleado,
+        cat_area.nombre_area,
+        cat_proveedor.nombre_provee,
+        cat_activo_fijo.valor_original,
+         cat_activo_fijo.fecha_inicio_uso,
+        cat_activo_fijo.cuota_mensual,
+        cat_activo_fijo.cuota_anual,
+        cat_depreciacion_activo.depreciacion_acumulada,
+        cat_depreciacion_activo.saldo_restante,
+        cat_activo_fijo.valor_residual
+        FROM
+        cat_activo_fijo
+        INNER JOIN cat_cuentas_contables ON cat_cuentas_contables.id_cuentacontable = cat_activo_fijo.id_cuentacontable
+        INNER JOIN cat_sucursal ON cat_sucursal.id_sucursal = cat_activo_fijo.id_sucursal
+        INNER JOIN cat_area ON cat_area.id_area = cat_activo_fijo.id_area
+        INNER JOIN cat_empleado ON cat_empleado.id_empleado = cat_activo_fijo.id_empleado
+        INNER JOIN cat_proveedor ON cat_proveedor.id_proveedor = cat_activo_fijo.id_proveedor
+        INNER JOIN cat_depreciacion_activo ON cat_depreciacion_activo.id_activofijo = cat_activo_fijo.id_activofijo
+        WHERE
+         cat_activo_fijo.id_activofijo  = '$id_activofijo' ;");
+  if($query->num_rows()==1)
+        return $query->row_array();
+        else
+        return false;
+
+       }
+
      public function alta_activo($id_activofijo,$id_area,$id_empleado,$fecha_inicio_uso,$activado,$id_cuentacontable,$cuota_mensual,$parte1,$depreciacion_acumulada,$saldo_restante)
+    
     {
         $this->db->where('id_activofijo', $id_activofijo);
         $this->db->update('cat_activo_fijo',array(

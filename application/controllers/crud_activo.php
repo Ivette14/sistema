@@ -275,15 +275,17 @@ if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' );
     {
         if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
          $data['usuario']=$_SESSION['my_usuario']; 
-        $activo=$this->crud_model_activo->get_activo($id_activofijo);
+        $activo= $this->crud_model_activo->ficha_activo($id_activofijo);
+         if($activo==false)
+        show_404();
+        else {  
         $data['dato'] = $activo;
-    
-
         
             //cargamos la vista
             $this->load->view('header/header', $data);
             $this->load->view('form/veractivo',$data);
             $this->load->view('footer');
+}
     }
 
  public function procedimiento1()
