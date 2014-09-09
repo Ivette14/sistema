@@ -16,6 +16,8 @@ public function index(){
 	
            $data['usuario']=$_SESSION['my_usuario'];
         //creamos una variable usuarios para pasarle a la vista
+
+        $data['opcion'] = $this->model_rol->get_opcion();
 		$data['usuario']=$_SESSION['my_usuario']; 
 		$data['page']   ='form/roles'; 
 		$this->load->view('templante', $data);
@@ -137,6 +139,20 @@ public function index(){
 
 
  }
+ 	function edit_rol(){
+if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+		$data['usuario']=$_SESSION['my_usuario']; 
+//obtenemos todos los usuarios
+        $menu = $this->model_rol->get_menu();
+
+        $data['opcion'] = $this->model_rol->get_opcion();
+        //creamos una variable usuarios para pasarle a la vista
+        $data['menu'] = $menu;
+        //cargamos nuestra vista
+$data['page']   ='edit_rol'; 
+		$this->load->view('plantilla', $data); 
+
+        }
  
 
 

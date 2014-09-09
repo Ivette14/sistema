@@ -2,6 +2,15 @@
  
 class Model_rol extends CI_Model { 
  
+     public function get_opcion()
+    {
+        $this->db->order_by('opcion','asc');
+        $opcion = $this->db->get('gu_opcion');
+        if($opcion->num_rows()>0)
+        {
+            return $opcion->result();
+        }
+    }
  
 	function traer_rol( $id_rol=0 ){ 
 		if( $id_rol!=0 )$this->db->where('id_rol', $id_rol); 
@@ -28,10 +37,5 @@ class Model_rol extends CI_Model {
 		return($this->db->affected_rows()>0)?true:false; 
 	}
 
-	 public function get_opcion()
-    {
-        $sql = $this->db->get('gu_opcion');
-        return $sql->result();
-    } 
- 
+
 }
