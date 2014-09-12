@@ -45,11 +45,20 @@ class Model_rol extends CI_Model {
         ));
     }
 
- 
-	function edit_usuario( $id_usuario, $post ){ 
-		$this->db->where('id_usuario', $id_usuario); 
-		return $this->db->update('usuarios', $post); 
-	} 
+  public function actualizar_rol($id_rol, $rol,$id)
+    {
+        $this->db->where('id_rol', $id_rol);
+        $this->db->update('gu_rol',array(            
+            'rol'        => $rol
+            
+        ));
+      $this->db->insert('gu_rol_menu',array(
+            'id_rol'        => $id_rol,
+            'id_opcion'     => $id_opcion      
+            
+            
+        ));;
+    }
  
  
 	function delete_( $id_rol ){ 

@@ -27,11 +27,10 @@ public function index()
 	 public function editar($id_rol=0)
     {
 
-           if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
-           $data['usuario']=$_SESSION['my_usuario']; 
+         
         //verificamos si existe el id
         $respuesta = $this->model_rol->get_rol_($id_rol);
-        $data = $this->model_rol->get_opcion();
+        
         
         //si nos retorna FALSE le mostramos la pag 404
         if($respuesta==false)
@@ -41,8 +40,9 @@ public function index()
             //Si existe el post para editar
             if($this->input->post('post') && $this->input->post('post')==1)
             {
-            $this->form_validation->set_rules('rol', 'Nombre de Rol', 'required|trim|xss_clean');
-            
+             $this->form_validation->set_rules('rol', 'Nombre de Rol', 'required|trim|xss_clean');
+              $this->form_validation->set_rules('id_opcion', 'Id Opcion', 'required|trim|xss_clean');
+           
          
              
             $this->form_validation->set_message('required','El Campo <b>%s</b> Es Obligatorio');
@@ -51,13 +51,23 @@ public function index()
             if ($this->form_validation->run() == TRUE)
             {
                 $rol       = $this->input->post('rol');
-               
-                $this->model_rol->actualizar_area ($id_rol, $rol);
+                $id_opcion       = $this->input->post('id_opcion');
 
-                redirect('crud_area');               
+                foreach ($id_opcion as $id) 
+                	$this->model_rol->actualizar_rol($id_rol, $rol, $id);
+
+                redirect('rol'); 
+                	# code...
+                
+
+               
+                              
             }
             }
             //devolvemos los datos del usuario
+              if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario']; 
+           $data['opcion'] = $this->model_rol->get_opcion();
             $data['dato'] = $respuesta;
             //cargamos la vista
             $this->load->view('header/header',$data);
