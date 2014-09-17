@@ -52,9 +52,11 @@ public function index()
             {
                 $rol       = $this->input->post('rol');
                 $id_opcion       = $this->input->post('id_opcion');
+                  
+               
 
-                foreach ($id_opcion as $id) 
-                	$this->model_rol->actualizar_rol($id_rol, $rol, $id);
+                foreach ($_POST as  $id) 
+                	$this->model_rol->actualizar_rol($id_rol, $id);
 
                 redirect('rol'); 
                 	# code...
