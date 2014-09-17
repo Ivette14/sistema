@@ -16,7 +16,8 @@
 
               <div class="form-group">
                 <label>Nombre Del Rol</label>
-                <input name="rol" class="form-control" value="<?= set_value('rol',$dato['rol']);?>">
+                <input name="rol" class="form-control" value="<?= $dato['rol'];?>">
+                <input name="id_rol" class="form-control" value="<?= set_value('id_rol',$dato['id_rol']);?>">
               </div>
 
                <div class="form-group">

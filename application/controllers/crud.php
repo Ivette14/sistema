@@ -30,37 +30,7 @@ parent::__construct();
         $this->load->view('footer');
     
     }
-public function ejemplo()
-    {
-        if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
-  $data['usuario']=$_SESSION['my_usuario']; 
-  $datas['cuenta'] = $this->crud_model_activo->cuenta();
-  $datas['proveedor'] = $this->crud_model_activo->proveedor();
-   $datas['sucursal'] = $this->crud_model_activo->sucursal();
-  $datas['area'] = $this->crud_model_activo->area();
-     $datas['empleado'] = $this->crud_model_activo->empleado();
-        //cargamos nuestra vista
-        $this->load->view('header/header', $data);
-        $this->load->view('form/reportes/ejemplo',$data);
-        $this->load->view('footer');
-    
-    }
 
-public function ejemplo1()
-    {
-        if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
-  $data['usuario']=$_SESSION['my_usuario']; 
-  $datas['cuenta'] = $this->crud_model_activo->cuenta();
-  $datas['proveedor'] = $this->crud_model_activo->proveedor();
-   $datas['sucursal'] = $this->crud_model_activo->sucursal();
-  $datas['area'] = $this->crud_model_activo->area();
-     $datas['empleado'] = $this->crud_model_activo->empleado();
-        //cargamos nuestra vista
-        $this->load->view('header/header', $data);
-        $this->load->view('form/reportes/ejemplo1',$data);
-        $this->load->view('footer');
-    
-    }
 
 
     public function agregar()
