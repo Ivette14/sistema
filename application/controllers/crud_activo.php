@@ -37,7 +37,7 @@ public function index_nuevo()
 public function activar()
 {
  if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
- $activos= $this->crud_model_activo->get_activar_activos();
+    $activos= $this->crud_model_activo->get_activar_activos();
         //creamos una variable usuarios para pasarle a la vista
           $data['usuario']=$_SESSION['my_usuario']; 
         $data['activo'] =   $activos;
@@ -46,6 +46,36 @@ public function activar()
        // $this->load->view('form/prueva');    
         $this->load->view('form/frmactivofijo_activar', $data);
        $this->load->view('footer');
+    
+    }
+
+public function descanso()
+{
+ if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+    $activos= $this->crud_model_activo->get_activos();
+        //creamos una variable usuarios para pasarle a la vista
+            $data['usuario']=$_SESSION['my_usuario']; 
+            $data['activo'] =   $activos;
+
+        $this->load->view('header/header', $data);
+        // $this->load->view('form/prueva');    
+        $this->load->view('form/frmactivo_descanso', $data);
+        $this->load->view('footer');
+    
+    }
+
+public function reactivar()
+{
+ if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+    $activos= $this->crud_model_activo->reactivar_activos();
+        //creamos una variable usuarios para pasarle a la vista
+            $data['usuario']=$_SESSION['my_usuario']; 
+            $data['activo'] =   $activos;
+
+        $this->load->view('header/header', $data);
+        // $this->load->view('form/prueva');    
+        $this->load->view('form/frmactivo_reactivar', $data);
+        $this->load->view('footer');
     
     }
 
@@ -287,6 +317,52 @@ if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' );
             $this->load->view('footer');
 }
     }
+
+
+    public function descanso_activo($id_activofijo=0)
+
+    {
+        if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario'];
+        //verificamos si existe el id
+        $respuesta = $this->crud_model_activo->get_activos($id_activosfijo);
+        //si nos retorna FALSE mostramos la pag 404.
+        if($respuesta==false)
+        show_404();
+        else
+        {
+
+
+        $activado = 3;
+            //si existe eliminamos el usuario
+            $this->crud_model_activo->estado_activo($id_activofijo,$activado);
+            //redireccionamos al controlador CRUD
+            redirect('crud_activo/descanso'); 
+        }
+    }
+
+        public function reactivar_activo($id_activofijo=0)
+
+    {
+        if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+           $data['usuario']=$_SESSION['my_usuario'];
+        //verificamos si existe el id
+        $respuesta = $this->crud_model_activo->get_activos($id_activosfijo);
+        //si nos retorna FALSE mostramos la pag 404.
+        if($respuesta==false)
+        show_404();
+        else
+        {
+
+
+        $activado = 1;
+            //si existe eliminamos el usuario
+            $this->crud_model_activo->estado_activo($id_activofijo,$activado);
+            //redireccionamos al controlador CRUD
+            redirect('crud_activo/reactivar'); 
+        }
+    }
+
 
  public function procedimiento1()
     {

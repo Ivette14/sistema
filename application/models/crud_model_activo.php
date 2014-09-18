@@ -30,6 +30,31 @@
          cat_activo_fijo.activado  = 1;');
         return $query->result();
     }
+
+        public function reactivar_activos()
+    {    
+        $query = $this->db->query('SELECT  
+        cat_activo_fijo.id_activofijo,        
+        cat_activo_fijo.nombre_activo_fijo,
+        cat_activo_fijo.fecha_ingreso,
+        cat_cuentas_contables.nombre_cuenta,
+        cat_sucursal.nombre_sucursal,
+        cat_area.nombre_area,
+        cat_empleado.nombre_empleado,
+        cat_proveedor.nombre_provee,
+        cat_activo_fijo.cuota_mensual,
+        cat_activo_fijo.parte1
+        FROM
+        cat_activo_fijo
+        INNER JOIN cat_cuentas_contables ON cat_cuentas_contables.id_cuentacontable = cat_activo_fijo.id_cuentacontable
+        INNER JOIN cat_sucursal ON cat_sucursal.id_sucursal = cat_activo_fijo.id_sucursal
+        INNER JOIN cat_area ON cat_area.id_area = cat_activo_fijo.id_area
+        INNER JOIN cat_empleado ON cat_empleado.id_empleado = cat_activo_fijo.id_empleado
+        INNER JOIN cat_proveedor ON cat_proveedor.id_proveedor = cat_activo_fijo.id_proveedor
+        WHERE
+         cat_activo_fijo.activado  = 3;');
+        return $query->result();
+    }
      public function get_activar_activos()
     {    
         $query = $this->db->query('SELECT  
@@ -112,6 +137,16 @@
         'saldo_restante'    =>  $saldo_restante
 
     ));
+    }
+
+     public function estado_activo($id_activofijo,$activado)
+    
+    {
+        $this->db->where('id_activofijo', $id_activofijo);
+        $this->db->update('cat_activo_fijo',array(
+           
+            'activado'          => $activado
+        ));
     }
      //vamos a cargar todos los datos para Combobox
 
