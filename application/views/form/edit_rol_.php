@@ -45,7 +45,7 @@
 <input type="button" onClick="move(this.form.opcion,this.form.id_opcion)" value=">>" id="button2" name="button2">
 </td>
 <td>
-<select multiple size="10" name="id_opcion"  id="id_opcion" value="<?php echo set_value('id_opcion'); ?>" required="required" style="width:150" onDblClick="move(document.combo_box.id_opcion,document.combo_box.opcion)">
+<select multiple size="10" name="id_opcion[]"  id="id_opcion" value="<?php echo set_value('id_opcion'); ?>" required="required" style="width:150" onDblClick="move(document.combo_box.id_opcion,document.combo_box.opcion)">
 </select>
 </td>
 </tr>

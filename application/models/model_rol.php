@@ -36,13 +36,14 @@ class Model_rol extends CI_Model {
 	} 
  
  
-	function save_rol( $rol ){ 
+	function save_rol( $rol, $id ){ 
   
         $this->db->insert('gu_rol',array(
             'rol'        => $rol            
             
             
         ));
+        
     }
 
   public function actualizar_rol($id_rol, $id)

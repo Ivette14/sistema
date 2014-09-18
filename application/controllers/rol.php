@@ -41,7 +41,7 @@ public function index()
             if($this->input->post('post') && $this->input->post('post')==1)
             {
              $this->form_validation->set_rules('rol', 'Nombre de Rol', 'required|trim|xss_clean');
-              $this->form_validation->set_rules('id_opcion', 'Id Opcion', 'required|trim|xss_clean');
+            
            
          
              
@@ -52,9 +52,10 @@ public function index()
             {
             
                 $id_opcion       = $this->input->post('id_opcion');
-
-               
-                $this->model_rol->actualizar_rol($id_rol, $id_opcion);
+                    
+                    foreach ($id_opcion as $id) 
+                                           
+                $this->model_rol->actualizar_rol($id_rol, $id);
 
                 redirect('rol'); 
                 	# code...
