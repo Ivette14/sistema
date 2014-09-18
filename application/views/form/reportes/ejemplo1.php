@@ -16,7 +16,7 @@
             <form  name="fvalida" id="fvalida" method="post" role="form" border="0.5" >
               <div class="form-group">
 <ul class="nav nav-tabs">
-<li  ><a href="crud_activo/a_depreciar/">Agregar Activos</a></li>
+<li  ><a href="crud/ejemplo/">Agregar Activos</a></li>
 <li class="active"><a href="#">Depreciacion De Activo</a></li>
   </ul>
 <table>

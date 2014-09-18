@@ -16,7 +16,7 @@
               <div class="form-group">
 <ul class="nav nav-tabs">
 <li class="active" ><a href="#">Agregar Activos</a></li>
-<li><a href="crud_activo/asignar/">Depreciacion De Activo</a></li>
+<li><a href="crud/ejemplo1/">Depreciacion De Activo</a></li>
 	</ul>
 <div class="form-group">
             

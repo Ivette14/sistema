@@ -37,11 +37,10 @@ public function index()
         show_404();
         else
         {
-            
             //Si existe el post para editar
             if($this->input->post('post') && $this->input->post('post')==1)
             {
-            
+             $this->form_validation->set_rules('rol', 'Nombre de Rol', 'required|trim|xss_clean');
               $this->form_validation->set_rules('id_opcion', 'Id Opcion', 'required|trim|xss_clean');
            
          
@@ -51,11 +50,11 @@ public function index()
             $this->form_validation->set_message('alpha','El Campo <b>%s</b> Solo Acepta caracteres alfabeticos');
             if ($this->form_validation->run() == TRUE)
             {
+                $rol       = $this->input->post('rol');
+                $id_opcion       = $this->input->post('id_opcion');
 
-               
-
-                foreach ($_POST as $id) 
-                	$this->model_rol->actualizar_rol($id_rol,  $_POST);
+                foreach ($id_opcion as $id) 
+                	$this->model_rol->actualizar_rol($id_rol, $rol, $id);
 
                 redirect('rol'); 
                 	# code...

@@ -45,11 +45,19 @@ class Model_rol extends CI_Model {
         ));
     }
 
-  public function actualizar_rol($id_rol, $post)
+  public function actualizar_rol($id_rol, $rol,$id)
     {
-        
-     $this->db->insert('gu_rol_menu', $post); 
-        return($this->db->affected_rows()>0)?$this->db->insert_id():false; 
+        $this->db->where('id_rol', $id_rol);
+        $this->db->update('gu_rol',array(            
+            'rol'        => $rol
+            
+        ));
+      $this->db->insert('gu_rol_menu',array(
+            'id_rol'        => $id_rol,
+            'id_opcion'     => $id_opcion      
+            
+            
+        ));;
     }
  
  
