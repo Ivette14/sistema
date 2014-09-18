@@ -23,6 +23,24 @@
 <tr>
 <td>
 <div class="form-group">
+                <label>Pruebas de campos</label>
+
+
+
+                <input class="form-control" name="id_activofijo" maxlength="8" placeholder="$"   value="<?php echo set_value('id_activofijo',$data['id_activofijo']);?>" >
+
+              </div>
+
+</td>
+<td>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+</td>
+</tr>
+<tr>
+<td>
+<div class="form-group">
                 <label>Precio de Compra</label>
                 <input class="form-control" name="valor_original" maxlength="8" placeholder="$"     value="<?= set_value('valor_original');?>">
                 

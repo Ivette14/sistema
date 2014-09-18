@@ -14,10 +14,7 @@
 
             <form  name="fvalida" id="fvalida" method="post" role="form" border="0.5" >
               <div class="form-group">
-<ul class="nav nav-tabs">
-<li class="active" ><a href="#">Agregar Activos</a></li>
-<li><a href="crud/ejemplo1/">Depreciacion De Activo</a></li>
-	</ul>
+
 <div class="form-group">
             
                   <label for="disabledSelect">Cuenta</label>
@@ -134,6 +131,11 @@ echo ">";
               }
           ?>        
               </select>
+              </div>
+              <div class="form-group">
+               
+               <button type="button" class="btn btn-primary" onClick=location="<?php echo base_url().'crud_activo/agregar_b'; ?>"><i class="glyphicon glyphicon-pencil"></i>Siguiente</button>
+               
               </div>
 
              
