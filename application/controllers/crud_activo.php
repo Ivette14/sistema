@@ -34,6 +34,41 @@ public function index_nuevo()
         $this->load->view('footer');
         
 }
+public function agregar_a()
+    {
+        if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+  $data['usuario']=$_SESSION['my_usuario']; 
+  $data['cuenta'] = $this->crud_model_activo->cuenta();
+  $data['proveedor'] = $this->crud_model_activo->proveedor();
+   $data['sucursal'] = $this->crud_model_activo->sucursal();
+ 
+        //cargamos nuestra vista
+        $this->load->view('header/header', $data);
+        $this->load->view('form/a_activo',$data);
+        $this->load->view('footer');
+    
+    }
+
+public function agregar_b()
+    {
+        if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+        
+             $data['usuario']=$_SESSION['my_usuario']; 
+
+            $data= $this->input->post('id_activofijo');
+
+        //cargamos nuestra vista
+        $this->load->view('header/header', $data);
+        $this->load->view('form/b_activo',$data);
+        $this->load->view('footer');
+                             
+            
+            
+            
+        
+ 
+    
+    }
 public function activar()
 {
  if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 

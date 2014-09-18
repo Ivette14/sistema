@@ -12,7 +12,7 @@
 
             <!-- /.row -->
 
-                    <td><button type="button" onclick=location="<?php echo base_url().'crud_activo/agregar'; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Agregar</button></td>
+                    <td><button type="button" onclick=location="<?php echo base_url().'crud_activo/agregar_a'; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Agregar</button></td>
 
         <div class="form-group"> </div>       
                             <div class="form-group"> </div> 
