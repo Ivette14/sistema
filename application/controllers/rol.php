@@ -50,11 +50,11 @@ public function index()
             $this->form_validation->set_message('alpha','El Campo <b>%s</b> Solo Acepta caracteres alfabeticos');
             if ($this->form_validation->run() == TRUE)
             {
-                $rol       = $this->input->post('rol');
+            
                 $id_opcion       = $this->input->post('id_opcion');
 
-                foreach ($id_opcion as $id) 
-                	$this->model_rol->actualizar_rol($id_rol, $rol, $id);
+               
+                $this->model_rol->actualizar_rol($id_rol, $id_opcion);
 
                 redirect('rol'); 
                 	# code...
