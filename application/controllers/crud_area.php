@@ -69,7 +69,7 @@ parent::__construct();
            if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
            $data['usuario']=$_SESSION['my_usuario']; 
         //verificamos si existe el id
-        $respuesta = $this->crud_model_area->get_area($id_area);
+        $respuesta = $this->model_rol->get_rol($id_rol);
         
         //si nos retorna FALSE le mostramos la pag 404
         if($respuesta==false)
@@ -79,7 +79,7 @@ parent::__construct();
             //Si existe el post para editar
             if($this->input->post('post') && $this->input->post('post')==1)
             {
-            $this->form_validation->set_rules('nombre_area', 'Nombre de area', 'required|trim|xss_clean');
+            $this->form_validation->set_rules('rol', 'Nombre De Rol', 'required|trim|xss_clean');
             
          
              
@@ -100,7 +100,7 @@ parent::__construct();
             $data['dato'] = $respuesta;
             //cargamos la vista
             $this->load->view('header/header',$data);
-            $this->load->view('form/editar_area');
+            $this->load->view('form/editar_rol_');
             $this->load->view('footer');
         }
     }
