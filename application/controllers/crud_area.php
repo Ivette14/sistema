@@ -66,10 +66,10 @@ parent::__construct();
     public function editar($id_area=0)
     {
 
-           if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
-           $data['usuario']=$_SESSION['my_usuario']; 
+        if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
+        $data['usuario']=$_SESSION['my_usuario']; 
         //verificamos si existe el id
-        $respuesta = $this->model_rol->get_rol($id_rol);
+        $respuesta = $this->crud_modelo_area->get_area($id_area);
         
         //si nos retorna FALSE le mostramos la pag 404
         if($respuesta==false)
@@ -93,14 +93,14 @@ parent::__construct();
 
                 $this->crud_model_area->actualizar_area ($id_area, $nombre_area);
 
-                redirect('crud_area');               
+                redirect('crud_area');
             }
             }
             //devolvemos los datos del usuario
             $data['dato'] = $respuesta;
             //cargamos la vista
             $this->load->view('header/header',$data);
-            $this->load->view('form/editar_rol_');
+            $this->load->view('form/editar_area',$data);
             $this->load->view('footer');
         }
     }
