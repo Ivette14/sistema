@@ -53,7 +53,7 @@ parent::__construct();
         
         $this->crud_model_proveedor->agregar_proveedor($data);
              $data['type']      =true; 
-                $data['message']   ='Se registro un Nuevo Poveedor.'; 
+                $data['message']   ='Se registro un Nuevo Proveedor.'; 
         redirect('crud_proveedor'); 
             }
 

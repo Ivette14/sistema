@@ -12,7 +12,7 @@
         <div class="row">
           <div class="col-lg-6">
 
-            <form action="<?php echo base_url().'crud_proveedor/agregar'; ?>" id="mi_form" method="post" role="form">
+            <form action="<?php echo base_url().'crud_proveedor/agregar'; ?>" id="mi_form" method="post" role="form" name="mi_form">
               
               <div class="form-group">
                 <label>Nombre del Proveedor</label>
@@ -39,9 +39,7 @@
               </div>
 
               <div class="form-group">
-                     <button type="submit" class="btn btn-primary" onclick="if(confirm('Exito en agregar registro'))
-alert('ok!');
-else alert('No se a Ingresado los Datos')" >Guardar</button>
+                     <button type="button" class="btn btn-primary" onclick="pregunta()" >Guardar</button>
                 <button type="button" onclick=location="<?php echo base_url().'crud_proveedor'; ?>" class="btn btn-primary">Cancelar</button>
               </div>              
 
@@ -52,3 +50,12 @@ else alert('No se a Ingresado los Datos')" >Guardar</button>
            </div>
         </div><!-- /.row -->
         <?= validation_errors(); ?>
+         <script language="JavaScript"> 
+function pregunta(){ 
+    if (confirm('¿Estas seguro de enviar este formulario?')){ 
+       <?= validation_errors(); ?>
+
+       document.mi_form.submit() 
+    } 
+} 
+</script> 
