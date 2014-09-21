@@ -8,9 +8,6 @@ if (isset($_SESSION['my_usuario']))
 <html lang="en">
 
 <head>
-
-   <script src="jquery.js"></script>     
-     <script src="validCampoFranz.js"></script>
     <base href="<?php echo base_url(); ?>">
         <meta charset="utf-8"> 
         <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
@@ -34,18 +31,7 @@ if (isset($_SESSION['my_usuario']))
 
     <!-- Core CSS - Include with every page -->
     <link href="<?php echo base_url().'seteo/js/devoops.js'; ?>" type="javascript" >
-    <link href="<?php echo base_url().'seteo/js/devoops.min.js'; ?>" type="javascript">  
-   <link href="<?php echo base_url().'seteo/plugins/bootstrap/bootstrap.css'; ?>" rel="stylesheet">
-
-<link href="<?php echo base_url().'seteo/plugins/jquery-ui/jquery-ui.min.css'; ?>" rel="stylesheet">
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-<link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
-<link href="<?php echo base_url().'seteo/plugins/fancybox/jquery.fancybox.css'; ?>" rel="stylesheet">
-<link href="<?php echo base_url().'seteo/plugins/fullcalendar/fullcalendar.css'; ?>" rel="stylesheet">
-<link href="<?php echo base_url().'seteo/plugins/xcharts/xcharts.min.css'; ?>" rel="stylesheet">
-<link href="<?php echo base_url().'seteo/plugins/select2/select2.css'; ?>" rel="stylesheet">
-<link href="<?php echo base_url().'seteo/css/style.css' ; ?>" rel="stylesheet">
-
+    <link href="<?php echo base_url().'seteo/js/devoops.min.js'; ?>" type="javascript"> 
 
     <link href="<?php echo base_url().'seteo/css/bootstrap.min.css'; ?>" rel="stylesheet">
     <link href="<?php echo base_url().'seteo/font-awesome/css/font-awesome.css'; ?>" rel="stylesheet">
@@ -104,7 +90,8 @@ if (isset($_SESSION['my_usuario']))
                 <div class="sidebar-collapse">
                     <ul class="nav" id="side-menu">
 <li><a href="<?php echo base_url().'direccion'; ?>"><i class="fa fa-dashboard fa-fw"></i> Inicio  </a></li>
- 
+
+
 <?php
 
     $usuario1 = $usuario['nombre_usuario'];

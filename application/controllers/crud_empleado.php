@@ -12,7 +12,7 @@ parent::__construct();
         $this->load->model("crud_model_empleado");
         $this->load->helper(array('form'));
         $this->load->library('form_validation');
-           $this->load->model("crud_model_menu");
+        $this->load->model("crud_model_menu");
     }
      
     public function index()
@@ -67,6 +67,28 @@ parent::__construct();
     
 
     }
+
+    public function code_emp()
+    {
+        mysql_connect("localhost", "root", "");
+        mysql_select_db("sys_activofijo");
+        $codigo_empleado = mysql_real_escape_string(@$_POST['codigo_empleado']);
+        $check = mysql_query("SELECT codigo_empleado FROM cat_empleado WHERE codigo_empleado = '$codigo_empleado' ");
+        $check_num_rows = mysql_num_rows($check);
+        if ($codigo_empleado==NULL)
+            echo "";
+        else if(strlen($codigo_empleado)<=2)
+            echo "Demaciado Corto";
+        else
+        {
+            if($check_num_rows==0)
+                echo "Disponible";
+            else if ($check_num_rows==1) {
+                echo "No Disponible";
+            }
+        }
+    }
+
      
     public function editar($id_empleado=0)
     {

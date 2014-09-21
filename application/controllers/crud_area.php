@@ -69,8 +69,7 @@ parent::__construct();
         if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
         $data['usuario']=$_SESSION['my_usuario']; 
         //verificamos si existe el id
-        $respuesta = $this->crud_modelo_area->get_area($id_area);
-        
+        $respuesta = $this->crud_modelo_area->get_area($id_area);        
         //si nos retorna FALSE le mostramos la pag 404
         if($respuesta==false)
         show_404();

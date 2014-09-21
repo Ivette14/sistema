@@ -55,6 +55,19 @@
         return false;
     }
 
+    public function code_empleado($codigo_empleado)
+    {
+
+    $query = $this->db->query('SELECT codigo_empleado FROM cat_empleado 
+                                     WHERE codigo_empleado = codigo_empleado ');
+    return $query->result();
+
+    if( $query->num_rows > 0)
+        echo 0;
+    else
+        echo 1;
+    }
+
      public function tabla()
     {        
        $query = $this->db->query('SELECT *
