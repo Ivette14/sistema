@@ -15,19 +15,23 @@
 
             <form  name="fvalida" id="fvalida" method="post" role="form" border="0.5" >
               <div class="form-group">
-<ul class="nav nav-tabs">
-<li  ><a href="crud/ejemplo/">Agregar Activos</a></li>
-<li class="active"><a href="#">Depreciacion De Activo</a></li>
-  </ul>
 <table>
 <tr>
 <td>
 <div class="form-group">
-                <label>Pruebas de campos</label>
+             
 
 
 
-                <input class="form-control" name="id_activofijo" maxlength="8" placeholder="$"   value="<?php echo set_value('id_activofijo',$data['id_activofijo']);?>" >
+<input  type="hidden" class="form-control" name="id_activofijo" required="required" maxlength="10"  min="1" max="10" value="<?php echo set_value('id_activofijo');?>">
+<input  type="hidden" class="form-control" name="id_cuentacontable" required="required" maxlength="10"  min="1" max="10" value="<?php echo set_value('id_cuentacontable');?>">
+<input  type="hidden" class="form-control" name="vida_util" required="required" maxlength="10"  min="1" max="10" value="<?php echo set_value('vida_util');?>">
+<input  type="hidden" class="form-control" name="nombre_activo_fijo" required="required" maxlength="10"  min="1" max="10" value="<?php echo set_value('nombre_activo_fijo');?>">
+<input  type="hidden" class="form-control" name="id_proveedor" required="required" maxlength="10"  min="1" max="10" value="<?php echo set_value('id_proveedor');?>">
+<input  type="hidden" class="form-control" name="fecha_compra" required="required" maxlength="10"  min="1" max="10" value="<?php echo set_value('fecha_compra');?>">
+<input  type="hidden" class="form-control" name="fecha_ingreso" required="required" maxlength="10"  min="1" max="10" value="<?php echo set_value('fecha_ingreso');?>">
+<input  type="hidden" class="form-control" name="descripcion" required="required" maxlength="10"  min="1" max="10" value="<?php echo set_value('descripcion');?>">
+<input  type="hidden" class="form-control" name="id_sucursal" required="required" maxlength="10"  min="1" max="10" value="<?php echo set_value('id_sucursal');?>">
 
               </div>
 
@@ -42,7 +46,7 @@
 <td>
 <div class="form-group">
                 <label>Precio de Compra</label>
-                <input class="form-control" name="valor_original" maxlength="8" placeholder="$"     value="<?= set_value('valor_original');?>">
+                <input class="form-control" required="required" name="valor_original" maxlength="8" placeholder="$"     value="<?= set_value('valor_original');?>">
                 
               </div>
 
@@ -89,7 +93,7 @@
 <td>
 <div class="form-group">
                 <label>Valor Residual (Dolares)</label>
-                <input class="form-control" name="valor_residual" maxlength="8"   placeholder="$"  id="valor_residual" value="<?= set_value('valor_residual');?>">
+                <input required="required" class="form-control" name="valor_residual" maxlength="8"   placeholder="$"  id="valor_residual" value="<?= set_value('valor_residual');?>">
                 
               </div>
 
@@ -104,7 +108,7 @@
 
 <div class="form-group">
                 <label>Total a depreciar</label>
-                <input class="form-control" name="parte1" readonly maxlength="6"onkeyUp="return ValNumero(this);"  placeholder="$"  id="parte1" value="<?= set_value('parte1');?>">
+                <input class="form-control" required="required" name="parte1" readonly maxlength="6"onkeyUp="return ValNumero(this);"  placeholder="$"  id="parte1" value="<?= set_value('parte1');?>">
                 
               </div>
 
@@ -114,7 +118,7 @@
 <td>
 <div class="form-group">
                 <label>Cuota Anual (Dolares)</label>
-                <input class="form-control" readonly  name="cuota_anual"  placeholder="$"      value="<?= set_value('cuota_anual');?>" >
+                <input class="form-control" required="required" readonly  name="cuota_anual"  placeholder="$"      value="<?= set_value('cuota_anual');?>" >
                 
               </div>
 </td>
@@ -126,7 +130,7 @@
 <td>
  <div class="form-group">
                 <label>Cuota Mensual (Dolares)</label>
-                <input class="form-control" readonly  name="cuota_mensual" placeholder="$"      value="<?= set_value('cuota_mensual');?>">
+                <input class="form-control" readonly required="required"  name="cuota_mensual" placeholder="$"      value="<?= set_value('cuota_mensual');?>">
                 
               </div>
 </td>
@@ -137,16 +141,33 @@
 
              
                
-                <input  type="hidden" name="post" value="1" />                
-                  <button type="submit" class="btn btn-primary" onclick="if(confirm('Esta a punto de agregar un activo'))
-alert('ok!');
-else alert('ok')" >Guardar</button>
-                  <button type="button"  class="btn btn-primary" value="Enviar" onClick="depreciacion()">Calcular</button>
+                <input  type="hidden" name="post" value="2" />                
+                    <button type="submit" class="btn btn-primary" onClick="guardado()" >Guardar</button>
+                  <button type="button"  class="btn btn-primary" id="depreciar" value="Enviar" onClick="depreciacion()">Calcular</button>
                 <button type="button"   onClick=location="<?php echo base_url().'crud_activo'; ?>" class="btn btn-primary">Cancelar</button>
      </fieldset>
 </form>
 <script type="text/javascript">
 
+function guardado()
+{
+var cuota_anual = document.forms['fvalida'].cuota_anual.value;
+
+if(cuota_anual==0)
+{
+  
+ alert('Para Guardar Necesita Hacer El Calculo De Depreciacion Antes'); 
+     document.fvalida.depreciar.focus(); 
+    return false; //devolvemos el foco 
+}
+
+else if (confirm('Esta a punto de agregar un activo'))
+
+alert('ok!');
+
+else alert('ok')
+
+}
 function depreciacion() {
 
 var valor_original = document.forms['fvalida'].valor_original.value;

@@ -16,8 +16,11 @@
                         <!-- /.panel-heading -->
                       <form  method="post" role="form">
                         <div class="panel-body">
-                        <div class="form-group" align="right">                        
-                        <button type="button" onclick=location="<?php echo base_url().'crud_baja/pdfbaja';?>" title="Exportar a PDF" class="btn btn-primary" ><i class="glyphicon glyphicon-file"></i>&nbsp;PDF</button>
+
+                        <div class="form-group" align="right">   
+                         <button type="button" onclick=location="<?php echo base_url().'crud_activo/descanso';?>" title="Dar baja temporal" class="btn btn-warning"><i class="glyphicon glyphicon-warning-sign"></i>&nbsp;Baja temporal</button>
+                     
+                        <button type="button" onclick=location="<?php echo base_url().'crud_baja/pdfbaja';?>" title="Exportar a PDF" class="btn btn-primary" ><i class="glyphicon glyphicon-file"></i>&nbsp;Reporte Activos de baja</button>
                         </div>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">

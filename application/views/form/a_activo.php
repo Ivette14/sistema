@@ -12,10 +12,8 @@
         <div class="row">
           <div class="col-lg-5">
 
-            <form  name="fvalida" id="fvalida" method="post" role="form" border="0.5" >
+       <form  name="fvalida" id="fvalida" method="post" role="form" border="0.5" >
               <div class="form-group">
-
-<div class="form-group">
             
                   <label for="disabledSelect">Cuenta</label>
  <select required="required" autofocus="autofocus" value="<?= set_value('id_cuentacontable');?>" class="form-control" name="nombre_cuenta" id="nombre_cuenta" onChange="submit()"> 
@@ -44,11 +42,6 @@
 
 
 </div>
-
-
-           
-
-
 <div class="form-group">
 
 <?php 
@@ -57,7 +50,7 @@ $sql1="SELECT vida_util FROM cat_cuentas_contables where id_cuentacontable = '$v
 $rec1=mysql_query($sql1);
   while ($row=mysql_fetch_array($rec1))
                    {
-echo "<input type=\"hidden\"  name=\"vida_util\" id=\"vida_util\" value='".$row['vida_util']."' ";
+echo "<input  type=\"hidden\"   name=\"vida_util\" id=\"vida_util\" value='".$row['vida_util']."' ";
 
 echo ">";
 
@@ -84,7 +77,7 @@ echo ">";
               <div class="form-group">
                   <label for="disabledSelect">Proveedor</label>
          
-         <select name="id_proveedor" class="form-control" id="id_proveedor">
+         <select name="id_proveedor" required="required"  class="form-control" id="id_proveedor" value="<?= set_value('id_proveedor');?>">
            <option value='' selected> Seleccionar...</option>
           <?php 
               foreach($proveedor as $fila)
@@ -111,16 +104,12 @@ echo ">";
 
               <div class="form-group">
                 <label>Descripcion del Activo Fijo</label>
-                <textarea class="form-control" name="descripcion" required="required"  rows="3" value="<?= set_value('descripcion');?>"></textarea>
+                <textarea class="form-control" name="descripcion" id="descripcion" required="required"  rows="3" value="<?= set_value('descripcion');?>"></textarea>
               </div>
-
-            
-              
-
 
               <div class="form-group">
                   <label for="disabledSelect">Sucursal</label>
-                         <select name="id_sucursal" class="form-control" id="id_sucursal">
+                         <select name="id_sucursal" required="required"  class="form-control" id="id_sucursal" value="<?= set_value('id_sucursal');?>">
   <option value='' selected> Seleccionar...</option>
           <?php 
               foreach($sucursal as $fila)
@@ -132,15 +121,11 @@ echo ">";
           ?>        
               </select>
               </div>
-              <div class="form-group">
-               
-               <button type="button" class="btn btn-primary" onClick=location="<?php echo base_url().'crud_activo/agregar_b'; ?>"><i class="glyphicon glyphicon-pencil"></i>Siguiente</button>
-               
-              </div>
+
+             <input  type="hidden" name="post" value="1" />                
+                  <button type="submit"  class="btn btn-primary">Siguiente</button>
 
              
-
-
  </form>
         </div>
     </div>

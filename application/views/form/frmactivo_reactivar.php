@@ -18,7 +18,6 @@
                       <form action="" id="tabla_sucursal" method="post" role="form">
                         <div class="panel-body">
                         <div class="form-group" align="right">                        
-                        <button type="button" onclick=location="<?php echo base_url().'crud_activo/pdfactivos_en_uso';?>" title="Exportar a PDF" class="btn btn-primary" ><i class="glyphicon glyphicon-file"></i>&nbsp;PDF</button>
                         </div>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">

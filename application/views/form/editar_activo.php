@@ -15,13 +15,13 @@
             <form method="post" role="form">
               <div class="form-group">
                 <label>Nombre de Activo</label>
-                <input name="nombre_activo_fijo" class="form-control" value="<?= set_value('nombre_activo_fijo',$dato['nombre_activo_fijo']);?>">
+                <input name="nombre_activo_fijo" required="required" class="form-control" value="<?= set_value('nombre_activo_fijo',$dato['nombre_activo_fijo']);?>">
               </div>
 
               
        <div class="form-group">
                   <label for="disabledSelect">Area de Asignacion</label>
-                  <select class="form-control" name="id_area" id="id_area" value="<?= set_value('id_area',$dato['id_area']);?>"  > 
+                  <select class="form-control" required="required" name="id_area" id="id_area" value="<?= set_value('id_area',$dato['id_area']);?>"  > 
                   <option value='' selected> Seleccionar...</option>
               <?php 
                 foreach($area as $fila)
@@ -36,7 +36,7 @@
               </div>
               <div class="form-group">
                 <label>Descripcion</label>
-                <input name="descripcion" class="form-control" value="<?= set_value('descripcion',$dato['descripcion']);?>">
+                <input name="descripcion" required="required"  class="form-control" value="<?= set_value('descripcion',$dato['descripcion']);?>">
               </div>
 
               <div class="form-group">
