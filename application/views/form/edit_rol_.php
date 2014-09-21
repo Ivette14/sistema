@@ -16,9 +16,10 @@
 
               <div class="form-group">
                 <label>Nombre Del Rol</label>
-                <input name="rol" class="form-control" value="<?= set_value('rol',$dato['rol']);?>">
+                <input name="rol" readonly class="form-control" value="<?= set_value('rol',$dato['rol']);?>">
               </div>
 
+<center>
                <div class="form-group">
                 <label>Asignacion De Roles</label>
      <table cellpadding="4" cellspacing="0" border="0">
@@ -54,12 +55,13 @@
 
               </div>
              
+             
               <div class="form-group">
                 <input type="hidden" name="post" value="1" />                
-                <button type="submit" value="editar" class="btn btn-primary">Guardar</button>
-                <button type="button" onclick=location="<?php echo base_url().'rol'; ?>" class="btn btn-primary">Cancelar</button>                
+                <button type="submit" value="editar" class="btn btn-default">Guardar</button>
+                <button type="button" onclick=location="<?php echo base_url().'rol'; ?>" class="btn btn-default">Cancelar</button>                
               </div>              
-
+              </center>
 
             </form>
 

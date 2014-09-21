@@ -12,7 +12,7 @@
         <div class="row">
           <div class="col-lg-6">
 
-            <form method="post" role="form">
+            <form method="post" role="form" name="area" >
               <div class="form-group">
                 <label>Nombre del Area</label>
                 <input name="nombre_area" class="form-control" required="required" value="<?= set_value('nombre_area');?>">
@@ -20,9 +20,7 @@
              
               <div class="form-group">
                 <input type="hidden" name="post" value="1" />                
-             <button type="submit" class="btn btn-primary" onclick="if(confirm('Los Datos son Corecto?'))
-alert('ok!');
-else alert('No se a Ingrtesado los Datos')" >Guardar</button>
+             <button type="submit" class="btn btn-primary" value="Enviar" onclick="confirm('¿Estas seguro de enviar este formulario?');" >Guardar</button>
 
                 <button type="button" onclick=location="<?php echo base_url().'crud_area'; ?>" class="btn btn-primary">Cancelar</button>                
               </div>              
@@ -32,4 +30,7 @@ else alert('No se a Ingrtesado los Datos')" >Guardar</button>
 
            </div>
         </div><!-- /.row -->
-      <?= validation_errors(); ?>
+
+<?= validation_errors(); ?>
+     
+      

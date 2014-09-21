@@ -44,7 +44,7 @@
               </div>              
 
               <div class="form-group">
-                <label>Receptor </label>
+                <label>Sucursal destino </label>
                   
                 <select  required="required" name="id_sucursal" class="form-control" id="id_sucursal">
                 <option value=''  selected> Seleccionar...</option>
@@ -60,7 +60,7 @@
               </div>
 
               <div class="form-group">
-                <label>Encargado </label>
+                <label>Nuevo responsable del bien </label>
 
                 <select name="id_empleado" required="required"  class="form-control" id="id_empleado">
                   <option value='' selected> Seleccionar...</option>

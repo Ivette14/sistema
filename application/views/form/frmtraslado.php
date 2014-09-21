@@ -11,7 +11,7 @@
 
             <!-- /.row -->
         <div class="form-group"> 
-            <button type="button" onclick=location="<?php echo base_url().'crud_traslado/Agregar'; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Nuevo Traslado</button>
+            <button type="button" onclick=location="<?php echo base_url().'crud_traslado/Agregar'; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Registrar Traslado</button>
         </div>           
             <div class="row">
                 <div class="col-lg-12">
