@@ -12,7 +12,8 @@
 
             <!-- /.row -->
 <div class="form-group"> 
-            <button type="button" onclick=location="<?php echo base_url().'rol/Agregar'; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Nuevo Rol</button>
+            <button type="button" onclick=location="<?php echo base_url().'rol/Agregar'; ?>" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i>&nbsp;Nuevo Rol</button>
+        <button type="button" onclick=location="<?php echo base_url().'usuarios'; ?>" class="btn btn-default"><i>Regresar</i>&nbsp;</button>
         </div>           
             <div class="row">
                 <div class="col-lg-12">
