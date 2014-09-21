@@ -16,7 +16,7 @@ parent::__construct();
         $this->load->model("crud_model_menu");
       
     }
-  
+
 public function index_nuevo()
 {      
  if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
@@ -34,41 +34,137 @@ public function index_nuevo()
         $this->load->view('footer');
         
 }
+public  $prueva;
 public function agregar_a()
     {
+
         if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
   $data['usuario']=$_SESSION['my_usuario']; 
   $data['cuenta'] = $this->crud_model_activo->cuenta();
   $data['proveedor'] = $this->crud_model_activo->proveedor();
-   $data['sucursal'] = $this->crud_model_activo->sucursal();
- 
-        //cargamos nuestra vista
+  $data['sucursal'] = $this->crud_model_activo->sucursal();
+
+           if($this->input->post('post') && $this->input->post('post')==1)
+        {
+            $this->form_validation->set_rules('id_activofijo', 'Campo Activo fijo',           'required|trim|xss_clean');
+            $this->form_validation->set_rules('id_cuentacontable', 'Campo Cuenta',   'required|trim|xss_clean');  
+            $this->form_validation->set_rules('vida_util', 'Campo vida_util',   'required|trim|xss_clean');  
+            $this->form_validation->set_rules('id_sucursal', 'Campo Sucursal',              'required|trim|xss_clean');
+            $this->form_validation->set_rules('id_proveedor', 'Campo Proveedor',             'required|trim|xss_clean');
+            $this->form_validation->set_rules('nombre_activo_fijo', ' Campo Nombre activo fijo', 'required|trim|xss_clean');
+            $this->form_validation->set_rules('valor_original', ' Campo valor  original',           'numeric|trim|xss_clean');
+            $this->form_validation->set_rules('fecha_compra', 'Campo fecha compra',             'required|trim|xss_clean');
+            $this->form_validation->set_rules('fecha_ingreso', 'Campo fecha ingreso',           'required|trim|xss_clean');
+            $this->form_validation->set_rules('descripcion', 'Campo descripcion',              'required|trim|xss_clean');   
+           
+            $this->form_validation->set_message('required','El Campo <b>%s</b> Es Obligatorio');
+            $this->form_validation->set_message('numeric','El Campo <b>%s</b> Solo Acepta Números');
+            if ($this->form_validation->run() == TRUE)
+            {
+                $prueva = $this->input->post('id_activofijo');
+                 $prueva = $this->input->post('vida_util');
+                 $prueva = $this->input->post('id_cuentacontable');
+                $prueva = $this->input->post('id_sucursal');
+                 $prueva = $this->input->post('id_empleado');
+                 $prueva= $this->input->post('id_proveedor');
+                $prueva = $this->input->post('nombre_activo_fijo');               
+                 $prueva = $this->input->post('valor_original');
+                 $prueva = $this->input->post('fecha_compra');
+                 $prueva = $this->input->post('fecha_ingreso');        
+                 $prueva = $this->input->post('descripcion');
+               
+               $this->agregar_b_($prueva);
+ return $prueva;
+                }
+
+
+                }
+if($this->input->post('post') && $this->input->post('post')==2)
+        {
+           
+            $this->form_validation->set_rules('vida_util', 'Campo vida_util',   'required|trim|xss_clean');  
+             $this->form_validation->set_rules('id_activofijo', 'Campo Activo fijo',           'required|trim|xss_clean');
+            $this->form_validation->set_rules('id_cuentacontable', 'Campo Cuenta',   'required|trim|xss_clean');  
+            $this->form_validation->set_rules('id_sucursal', 'Campo Sucursal',              'required|trim|xss_clean');
+            $this->form_validation->set_rules('id_proveedor', 'Campo Proveedor',             'required|trim|xss_clean');
+            $this->form_validation->set_rules('nombre_activo_fijo', ' Campo Nombre activo fijo', 'required|trim|xss_clean');
+            $this->form_validation->set_rules('valor_original', ' Campo valor  original',           'numeric|trim|xss_clean');
+            $this->form_validation->set_rules('fecha_compra', 'Campo fecha compra',             'required|trim|xss_clean');
+            $this->form_validation->set_rules('fecha_ingreso', 'Campo fecha ingreso',           'required|trim|xss_clean');
+            $this->form_validation->set_rules('descripcion', 'Campo descripcion',               'required|trim|xss_clean');
+            $this->form_validation->set_rules('importe_depreciable', 'Campo importe_depreciable','required|trim|xss_clean');
+            $this->form_validation->set_rules('parte1', 'Campo parte1',                         'required|trim|xss_clean'); 
+            $this->form_validation->set_rules('vida_util', 'Campo vida_util',                    'required|trim|xss_clean');
+            $this->form_validation->set_rules('varlor_residual', 'Campo varlor residual',        'numeric|trim|xss_clean');
+            $this->form_validation->set_rules('cuota_anual', 'Campo cuota anual',                          'numeric|trim|xss_clean');
+            $this->form_validation->set_rules('cuota_mensual', 'Campo cuota mensual',             'required|trim|xss_clean');   
+           
+            $this->form_validation->set_message('required','El Campo <b>%s</b> Es Obligatorio');
+            $this->form_validation->set_message('numeric','El Campo <b>%s</b> Solo Acepta Números');
+            if ($this->form_validation->run() == TRUE)
+            {
+                
+
+                $id_activofijo = $this->input->post('id_activofijo');
+                $id_cuentacontable = $this->input->post('id_cuentacontable');
+          
+         
+                $id_sucursal = $this->input->post('id_sucursal');
+                $id_empleado = $this->input->post('id_empleado');
+                $id_proveedor= $this->input->post('id_proveedor');
+                $nombre_activo_fijo = $this->input->post('nombre_activo_fijo');
+               
+                $valor_original = $this->input->post('valor_original');
+                $fecha_compra = $this->input->post('fecha_compra');
+                $fecha_ingreso = $this->input->post('fecha_ingreso');
+         
+                $descripcion = $this->input->post('descripcion');
+                $importe_depreciable = $this->input->post('importe_depreciable');
+                $parte1 = $this->input->post('parte1');
+                $vida_util = $this->input->post('vida_util');
+                $valor_residual = $this->input->post('valor_residual');
+            
+               
+                $cuota_anual = $this->input->post('cuota_anual');
+                $cuota_mensual = $this->input->post('cuota_mensual');
+                $activado = 0;
+                $this->crud_model_activo->agregar_activo($id_activofijo,$id_cuentacontable, 
+                     $id_sucursal, $id_empleado, $id_proveedor,$nombre_activo_fijo,$valor_original,
+                    $fecha_compra, $fecha_ingreso,$descripcion,$importe_depreciable, $parte1, $vida_util,
+                    $valor_residual, $cuota_anual,$cuota_mensual, $activado);
+
+
+                redirect('Crud_activo');               
+            
+                }
+
+
+                }
         $this->load->view('header/header', $data);
         $this->load->view('form/a_activo',$data);
         $this->load->view('footer');
-    
     }
 
-public function agregar_b()
+public function agregar_b($dato)
+    {
+        
+        //cargamos nuestra vista
+          
+                
+    }
+
+public function agregar_b_($prueva)
     {
         if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
         
              $data['usuario']=$_SESSION['my_usuario']; 
-
-            $data= $this->input->post('id_activofijo');
-
-        //cargamos nuestra vista
+        //cargamos nuestra vista 
         $this->load->view('header/header', $data);
-        $this->load->view('form/b_activo',$data);
+        $this->load->view('form/b_activo',$prueva);
         $this->load->view('footer');
-                             
-            
-            
-            
-        
- 
-    
+                
     }
+
 public function activar()
 {
  if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 

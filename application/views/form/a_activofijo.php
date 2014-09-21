@@ -259,14 +259,31 @@ echo ">";
              
                
                 <input  type="hidden" name="post" value="1" />                
-                  <button type="submit" class="btn btn-primary" onclick="if(confirm('Esta a punto de agregar un activo'))
-alert('ok!');
-else alert('ok')" >Guardar</button>
+                  <button type="submit" class="btn btn-primary" onClick="guardado()" >Guardar</button>
                   <button type="button"  class="btn btn-primary" value="Enviar" onClick="depreciacion()">Calcular</button>
                 <button type="button"   onClick=location="<?php echo base_url().'crud_activo'; ?>" class="btn btn-primary">Cancelar</button>
      </fieldset>
 </form>
 <script type="text/javascript">
+
+function guardado()
+{
+var cuota_anual = document.forms['fvalida'].cuota_anual.value;
+
+if(cuota_anual==0)
+{
+
+ alert('Para Guardar Necesita Hacer El Calculo De Depreciacion Antes'); 
+    return false; //devolvemos el foco 
+}
+
+else if (confirm('Esta a punto de agregar un activo'))
+
+alert('ok!');
+
+else alert('ok')
+
+}
 
 function depreciacion() {
 

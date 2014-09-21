@@ -151,9 +151,9 @@
      //vamos a cargar todos los datos para Combobox
 
     //agregamos un activo
-    public function agregar_activo($id_activofijo, $id_cuentacontable,$id_area, $id_sucursal, $id_empleado, $id_proveedor,$nombre_activo_fijo,$valor_original,
+    public function agregar_activo($id_activofijo, $id_cuentacontable, $id_sucursal, $id_empleado, $id_proveedor,$nombre_activo_fijo,$valor_original,
     $fecha_compra,$fecha_ingreso,$descripcion,
-     $importe_depreciable,$parte1,$vida_util,$valor_residual,$tipo_valor,$cuota_anual,$cuota_mensual,$activado) 
+     $importe_depreciable,$parte1,$vida_util,$valor_residual,$cuota_anual,$cuota_mensual,$activado) 
     {
         $this->db->insert('cat_activo_fijo',array(
             'id_activofijo'                =>  $id_activofijo,
@@ -165,7 +165,7 @@
             'nombre_activo_fijo'           =>  $nombre_activo_fijo,
             'descripcion'                  =>  $descripcion,
             'valor_original'               =>  $valor_original,            
-             'tipo_valor'                  =>  $tipo_valor,
+            
             'fecha_compra'                 =>  $fecha_compra,
             'fecha_ingreso'                =>  $fecha_ingreso,
           
