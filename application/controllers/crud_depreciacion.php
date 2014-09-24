@@ -14,7 +14,7 @@ parent::__construct();
         $this->load->model("crud_model");
         $this->load->helper(array('form'));
         $this->load->library('form_validation');
-         $this->load->model("crud_model_menu");
+        $this->load->model("crud_model_menu");
     }
      
     public function index()
