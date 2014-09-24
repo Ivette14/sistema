@@ -7,7 +7,7 @@
                 $('#codigo_empleado'). keyup(function(){
                     $.post('crud_empleado/code_emp', {codigo_empleado: form.codigo_empleado.value},
                       function(result) {
-                        $('#codigo').html(result),('<img src="<?php echo base_url().'seteo/logos/loader.gif'; ?>"/> verificando').show();
+                        $('#codigo').html(result).show();
                       
                   });
               });

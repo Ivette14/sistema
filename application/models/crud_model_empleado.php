@@ -75,7 +75,6 @@
                                      GROUP BY codigo_empleado');
        return $query->result();    
     }
-
      
 }
 

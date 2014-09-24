@@ -77,7 +77,7 @@ parent::__construct();
         $check_num_rows = mysql_num_rows($check);
         if ($codigo_empleado==NULL)
             echo "";
-        else if(strlen($codigo_empleado)<=2)
+        else if(strlen($codigo_empleado)<2)
             echo "Demaciado Corto";
         else
         {
