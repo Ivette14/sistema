@@ -153,6 +153,27 @@ public function agregar_b($dato)
                 
     }
 
+public function code_act()
+    {
+        mysql_connect("localhost", "root", "");
+        mysql_select_db("sys_activofijo");
+        $id_activofijo = mysql_real_escape_string(@$_POST['id_activofijo']);
+        $check = mysql_query("SELECT id_activofijo FROM cat_activo_fijo WHERE id_activofijo = '$id_activofijo' ");
+        $check_num_rows = mysql_num_rows($check);
+        if ($id_activofijo==NULL)
+            echo "";
+        else if(strlen($id_activofijo)<=2)
+            echo "Demaciado Corto";
+        else
+        {
+            if($check_num_rows==0)
+                echo "Disponible";
+            else if ($check_num_rows==1) {
+                echo "No Disponible";
+            }
+        }
+    }
+
 public function agregar_b_($prueva)
     {
         if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 

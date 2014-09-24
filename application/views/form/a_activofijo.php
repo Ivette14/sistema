@@ -2,7 +2,6 @@
 mysql_select_db("sys_activofijo");
 
 ?>
-
         <div class="row">
           <div class="col-lg-12">
            <br><br>
@@ -66,13 +65,13 @@ echo ">";
 ?>      
 
 <input type="hidden"  name="id_cuentacontable" id="id_cuentacontable" value="<?=  set_value('nombre_cuenta'); echo  @$_POST['nombre_cuenta'];?>">         
-              </div>
+</div>
 
- <div class="form-group">
-                <label>Codigo de Activo</label>
-                
-                <input class="form-control" name="id_activofijo" onkeyup="valid(this,'special')" onblur="valid(this,'special')" required="required" maxlength="10"  min="1" max="10"  value="<?= set_value('id_activofijo');?>">
-              </div>          
+  <div class="form-group">
+    <label>Codigo de Activo</label>                
+    <input id="id_activofijo" name="id_activofijo" class="form-control" onkeyup="valid(this,'special')" onblur="valid(this,'special')" required="required" maxlength="10"  min="1" max="10"  value="<?= set_value('id_activofijo');?>">
+    <div id="codigo"></div>
+  </div>          
  
               <div class="form-group">
                 <label>Nombre del Activo</label>

@@ -1,71 +1,75 @@
-          <div class="row">
-          <div class="col-lg-6">
-            <br><br>
-            <ol class="breadcrumb">
+  <script type="text/javascript">
+            $(document). ready(function() {
+              $('#codigo'). load('crud_activo/code_act').show();
+
+                $('#id_activofijo'). keyup(function(){
+                    $.post('crud_activo/code_act', {id_activofijo: fvalida.id_activofijo.value},
+                      function(result) {
+                        $('#codigo').html(result).show();
+                      
+                });
+              });
+            });
+  </script>
+
+  <div class="row">
+    <div class="col-lg-6">
+        <br><br>
+        <ol class="breadcrumb">
              
           
-            </ol>
+        </ol>
             
-          </div>
-        </div><!-- /.row -->
+    </div>
+  </div><!-- /.row -->
             
-        <div class="row">
-          <div class="col-lg-5">
-
+  <div class="row">
+    <div class="col-lg-5">
        <form  name="fvalida" id="fvalida" method="post" role="form" border="0.5" >
-              <div class="form-group">
-            
-                  <label for="disabledSelect">Cuenta</label>
- <select required="required" autofocus="autofocus" value="<?= set_value('id_cuentacontable');?>" class="form-control" name="nombre_cuenta" id="nombre_cuenta" onChange="submit()"> 
-  <option value='' selected> Seleccionar...</option>
+          <div class="form-group">            
+            <label for="disabledSelect">Cuenta</label>
+              <select required="required" autofocus="autofocus" value="<?= set_value('id_cuentacontable');?>" class="form-control" name="nombre_cuenta" id="nombre_cuenta" onChange="submit()"> 
+                <option value='' selected> Seleccionar...</option>
                   <?php
                   $sql="SELECT * FROM cat_cuentas_contables";
                   $rec=mysql_query($sql);
                   
                    while ($row=mysql_fetch_array($rec))
                    {
-            echo "<option value='".$row['id_cuentacontable']."' ";
-                 if(@$_POST['nombre_cuenta']==$row['id_cuentacontable'])
+                  echo "<option value='".$row['id_cuentacontable']."' ";
+                  if(@$_POST['nombre_cuenta']==$row['id_cuentacontable'])
                   echo "SELECTED";
                   echo ">";
                   
                   echo $row['nombre_cuenta'];
-                  echo "</option>";
-                  
-                
-                } 
-                  
-                   ?>   
-
-                  </select>
+                  echo "</option>";               
+                }
+                ?>
+              </select>
 
 
 
-</div>
-<div class="form-group">
+          </div>
+  <div class="form-group">
+    <?php 
+      $vida_util = @$_POST['nombre_cuenta'];
+      $sql1="SELECT vida_util FROM cat_cuentas_contables where id_cuentacontable = '$vida_util'";
+      $rec1=mysql_query($sql1);
+      while ($row=mysql_fetch_array($rec1))
+        {
+          echo "<input  type=\"hidden\"   name=\"vida_util\" id=\"vida_util\" value='".$row['vida_util']."' ";
+          echo ">";
+         } 
 
-<?php 
-$vida_util = @$_POST['nombre_cuenta'];
-$sql1="SELECT vida_util FROM cat_cuentas_contables where id_cuentacontable = '$vida_util'";
-$rec1=mysql_query($sql1);
-  while ($row=mysql_fetch_array($rec1))
-                   {
-echo "<input  type=\"hidden\"   name=\"vida_util\" id=\"vida_util\" value='".$row['vida_util']."' ";
+    ?>
+    <input type="hidden"  name="id_cuentacontable" id="id_cuentacontable" value="<?=  set_value('nombre_cuenta'); echo  @$_POST['nombre_cuenta'];?>">         
+  </div>
 
-echo ">";
-
- } 
-
-?>      
-
-<input type="hidden"  name="id_cuentacontable" id="id_cuentacontable" value="<?=  set_value('nombre_cuenta'); echo  @$_POST['nombre_cuenta'];?>">         
-              </div>
-
- <div class="form-group">
-                <label>Codigo de Activo</label>
-                
-                <input class="form-control" name="id_activofijo" onkeyup="valid(this,'special')" onblur="valid(this,'special')" required="required" maxlength="10"  min="1" max="10"  value="<?= set_value('id_activofijo');?>">
-              </div>          
+  <div class="form-group">
+    <label>Codigo de Activo</label>                
+    <input id="id_activofijo" class="form-control" name="id_activofijo" onkeyup="valid(this,'special')" onblur="valid(this,'special')" required="required" maxlength="10"  min="1" max="10"  value="<?= set_value('id_activofijo');?>">
+    <div id="codigo"></div>
+  </div>          
  
               <div class="form-group">
                 <label>Nombre del Activo</label>
