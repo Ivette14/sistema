@@ -102,8 +102,7 @@ parent::__construct();
         }
     }
 
-            function toExcel_saldo()
-    {
+    function toExcel_saldo(){
         //obtenemos todos los activos
         $activo = $this->crud_model_depreciacion->get_activos();
         //creamos una variable activos para pasarle a la vista
@@ -111,6 +110,36 @@ parent::__construct();
         {
          $data['reporte_saldo'] = $activo;
          $this->load->view('reportes/reporte_saldo', $data);
+        }
+         else
+        {
+        show_error('error!');
+        }
+    }
+
+    function toExcel_depre(){
+              //obtenemos todos los activos
+        $activo = $this->crud_model_depreciacion->depre_acumulada();
+        //creamos una variable activos para pasarle a la vista
+        if($query=$this->db->query("CALL procedimiento2"))
+        {
+         $data['reporte_depre_acumulada'] = $activo;
+         $this->load->view('reportes/reporte_depre_acumulada', $data);
+        }
+         else
+        {
+        show_error('error!');
+        }
+    }
+
+       function toExcel_depre_total(){
+              //obtenemos todos los activos
+        $activo = $this->crud_model_depreciacion->depre_total();
+        //creamos una variable activos para pasarle a la vista
+        if($query=$this->db->query("CALL procedimiento2"))
+        {
+         $data['reporte_depre_total'] = $activo;
+         $this->load->view('reportes/reporte_depre_total', $data);
         }
          else
         {

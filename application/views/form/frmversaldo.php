@@ -21,6 +21,8 @@
                         <div class="panel-body">
                             <div class="form-group" align="right">
                         <button type="button" onclick=location="<?php echo base_url().'crud_depreciacion/toExcel_saldo';?>" title="Exportar a Excel" class="btn btn-primary" ><i class="glyphicon glyphicon-file"></i>&nbsp;Excel</button>
+                        <button type="button" onclick=location="<?php echo base_url().'crud_depreciacion/toExcel_depre';?>" title="Exportar a Excel" class="btn btn-primary" ><i class="glyphicon glyphicon-file"></i>&nbsp;Depreciacion Acumulada</button>
+                        <button type="button" onclick=location="<?php echo base_url().'crud_depreciacion/toExcel_depre_total';?>" title="Exportar a Excel" class="btn btn-primary" ><i class="glyphicon glyphicon-file"></i>&nbsp;Depreciacion Total</button>
                         
                         </div>
                             <div class="table-responsive">
