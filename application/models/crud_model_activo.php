@@ -6,6 +6,28 @@
         parent::__construct();
     }
     //vamos a cargar todos los datos de activo fijo 
+public function get_sin_depreciar($fecha_depreciacion)
+
+{
+
+$query = $this->db->query('SELECT count(*) FROM `cat_depreciacion_activo`, cat_activo_fijo 
+WHERE cat_depreciacion_activo.id_activofijo=cat_activo_fijo.id_activofijo
+and cat_activo_fijo.activado="1"
+and cat_depreciacion_activo.depreciacion_acumulada=0
+and `año_mes`like "$fecha_depreciacion"');
+
+return $query->result();
+}
+
+    public function get_fecha($fecha_depreciacion)
+    {
+
+$query = $this->db->query('SELECT count(*) FROM `cat_depreciacion_activo`, cat_activo_fijo 
+WHERE cat_depreciacion_activo.id_activofijo=cat_activo_fijo.id_activofijo
+and cat_activo_fijo.activado="1"
+and `año_mes`like "$fecha_depreciacion"');
+ return $query->result();
+    }
     public function get_activos()
     {    
         $query = $this->db->query('SELECT  

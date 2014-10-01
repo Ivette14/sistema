@@ -155,7 +155,7 @@ public function agregar_b($dato)
 
 public function code_act()
     {
-        mysql_connect("localhost", "root", "");
+        @mysql_connect("localhost", "root", "123456*");
         mysql_select_db("sys_activofijo");
         $id_activofijo = mysql_real_escape_string(@$_POST['id_activofijo']);
         $check = mysql_query("SELECT id_activofijo FROM cat_activo_fijo WHERE id_activofijo = '$id_activofijo' ");
@@ -312,9 +312,6 @@ if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' );
             $this->form_validation->set_message('numeric','El Campo <b>%s</b> Solo Acepta Números');
             if ($this->form_validation->run() == TRUE)
             {
-
-
-
                 $id_activofijo = $this->input->post('id_activofijo');
                 $id_cuentacontable = $this->input->post('id_cuentacontable');
           
@@ -519,21 +516,53 @@ if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' );
  public function procedimiento1()
     {
         if ( !isset($_SESSION['my_usuario']) )redirect( 'acceso', 'refresh' ); 
-         $data['usuario']=$_SESSION['my_usuario']; 
-     if($query=$this->db->query("CALL procedimiento1"))
+         $data['usuario']=$_SESSION['my_usuario'];
+
+ $timestamp = now();
+        $timezone = 'UM8';
+        $daylight_saving = FALSE;
+
+        $now = gmt_to_local($timestamp, $timezone, $daylight_saving);
+        $datestring = "%Y-%m";
+        $fecha_depreciacion = $this->now = mdate($datestring, $now);
+
+$fecha = $this->crud_model_activo->get_fecha($fecha_depreciacion);
+
+
+if ($fecha != 0)
+{
+ $fecha_activos = $this->crud_model_activo->get_sin_depreciar($fecha_depreciacion);
+  if($fecha_activos != 0 )
+{
+if($query=$this->db->query("CALL procedimiento3"))
+             redirect('crud_depreciacion/');
+
+
+}
+else
+{
+    redirect('crud_depreciacion/');
+}
+
+}
+
+else
+{
+if($query=$this->db->query("CALL procedimiento1"))
      {
-
-
         
-
         redirect('crud_depreciacion/');
-
 
  }
       else
       {
         show_error('error!');
       }
+
+  
+}
+
+
 
        // $this->crud_model_depreciacion->procedimiento1;
             //cargamos la vista

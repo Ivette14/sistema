@@ -2,14 +2,20 @@
  
 class Model_rol extends CI_Model { 
  
-     public function get_opcion()
+     public function get_opcion($id_rol)
     {
-        $this->db->order_by('opcion','asc');
-        $opcion = $this->db->get('gu_opcion');
-        if($opcion->num_rows()>0)
-        {
-            return $opcion->result();
-        }
+       
+$query = $this->db->query("SELECT gu_opcion.id_opcion, gu_opcion.opcion
+FROM gu_opcion
+WHERE gu_opcion.id_opcion NOT 
+IN (
+
+SELECT gu_rol_menu.id_opcion
+FROM gu_rol_menu
+inner join gu_rol on gu_rol.id_rol=gu_rol_menu.id_rol
+inner join gu_opcion on gu_opcion.id_opcion=gu_rol_menu.id_opcion
+and gu_rol_menu.id_rol = '$id_rol' )");
+return $query->result();
          
     }
 
@@ -21,13 +27,26 @@ class Model_rol extends CI_Model {
  public function get_rol_($id_rol)
     {
 
-     $sql = $this->db->get_where('gu_rol',array('id_rol'=>$id_rol));
+
+
+$sql = $this->db->get_where('gu_rol',array('id_rol'=>$id_rol));
         if($sql->num_rows()==1)
         return $sql->row_array();
-        else
-        return false;
     }
  
+ public function get_opcion_($id_rol)
+ {
+$query = $this->db->query("SELECT
+gu_opcion.id_opcion, 
+gu_opcion.opcion
+FROM gu_opcion
+INNER join gu_rol_menu ON gu_rol_menu.id_opcion = gu_opcion.id_opcion
+INNER Join gu_rol ON gu_rol.id_rol = gu_rol_menu.id_rol
+WHERE gu_rol_menu.id_rol= '$id_rol' ");
+
+        return $query->result();
+
+ }
 	function traer_rol( $id_rol=0 ){ 
 		if( $id_rol!=0 )$this->db->where('id_rol', $id_rol); 
 		$query=$this->db->get('gu_rol'); 
@@ -55,6 +74,16 @@ class Model_rol extends CI_Model {
             
             
         ));;
+
+ $this->db->where('id_rol', $id_rol);
+        $this->db->update('cat_sucursal',array(
+            'nombre_sucursal'   => $nombre_sucursal,
+            'telefono_sucursal' => $telefono_sucursal,
+            'direccion_sucursal'=> $direccion_sucursal,
+            'departamento'      => $departamento
+        ));
+
+
     }
  
  

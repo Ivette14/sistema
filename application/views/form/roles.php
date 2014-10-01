@@ -52,7 +52,7 @@
                                              <input  type="hidden" name="post" value="1" />
                                      
                               
-                                            <td align="center"><button type="button" onclick=location="<?php echo base_url().'rol/editar/'.$roles->id_rol; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Editar</button></td>
+                                            <td align="center"><button type="button"<button type="button" onclick=location="<?php echo base_url().'rol/editar/'.$roles->id_rol; ?>"  class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Editar</button></td>
                                             </tr>
                                             <?php endforeach ;?>
                                            
