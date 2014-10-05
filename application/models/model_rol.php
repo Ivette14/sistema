@@ -64,23 +64,36 @@ WHERE gu_rol_menu.id_rol= '$id_rol' ");
         ));
         
     }
+public function existencia($id_rol)
+{
+$query = $this->db->query('SELECT count(*) FROM `gu_rol_menu` 
+WHERE id_rol="$id_rol"');
 
-  public function actualizar_rol($id_rol, $id)
+return $query->result();
+
+
+}
+
+
+public function insert_opcion($id_rol, $id)
     {
        
       $this->db->insert('gu_rol_menu',array(
             'id_rol'        => $id_rol,
             'id_opcion'     => $id  
-            
-            
+  
         ));;
 
+ }
+
+  public function actualizar_rol($id_rol, $id)
+    {
+       
  $this->db->where('id_rol', $id_rol);
-        $this->db->update('cat_sucursal',array(
-            'nombre_sucursal'   => $nombre_sucursal,
-            'telefono_sucursal' => $telefono_sucursal,
-            'direccion_sucursal'=> $direccion_sucursal,
-            'departamento'      => $departamento
+ $this->db->update('gu_rol_menu',array(
+            'id_rol'            => $id_rol,
+            'id_opcion'         => $id
+           
         ));
 
 

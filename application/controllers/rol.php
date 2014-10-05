@@ -44,26 +44,40 @@ public function index()
         $respuesta = $this->model_rol->get_rol_($id_rol);
         //si nos retorna FALSE le mostramos la pag 404
         if($respuesta==false)
+
         show_404();
         else
         {
             //Si existe el post para editar
             if($this->input->post('post') && $this->input->post('post')==1)
             {
-             $this->form_validation->set_rules('rol', 'Nombre de Rol', 'required|trim|xss_clean');
-                        
-            $this->form_validation->set_message('required','El Campo <b>%s</b> Es Obligatorio');
-           
-            if ($this->form_validation->run() == TRUE)
-            {
-            
-                $id_opcion       = $this->input->post('id_opcion');
-                    
-                    foreach ($id_opcion as $id) 
-                                           
-                $this->model_rol->actualizar_rol($id_rol, $id);
+             
+            $existencia = $this->model_rol->existencia($id_rol);
 
-                redirect('rol');                   
+                $exis = 1;
+
+                if ($existencia == 0 ) {
+
+
+                $id_opcion       = $this->input->post('id_opcion');
+                foreach ($id_opcion as $id)  
+
+                  $this->model_rol->actualizar_rol($id_rol, $id);
+              redirect('crud'); 
+                        
+                    
+                }
+                else
+                {
+                      $id_opcion       = $this->input->post('id_opcion');
+                foreach ($id_opcion as $id)  
+
+                 $this->model_rol->insert_opcion($id_rol, $id);
+                redirect('rol'); 
+                        
+                }
+            
+                              
             }
             }
             //devolvemos los datos del usuario
@@ -77,9 +91,7 @@ public function index()
         }
 
 
-        //si nos retorna FALSE le mostramos la pag 40
-
-    } 
+        //si nos retorna FALSE le mostramos la pag 40 
  public function agregar()
     {
        
